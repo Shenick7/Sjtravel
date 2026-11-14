@@ -477,9 +477,33 @@
         .rv { opacity: 1; transform: none; }
         .hero-photo img { animation: none; }
       }
+
+      /* ---------- Glitter opening — once per visit ---------- */
+      #glitter-canvas {
+        position: fixed; inset: 0; width: 100%; height: 100%;
+        pointer-events: none; z-index: 9999;
+      }
+      @keyframes glitterBrandGlow {
+        0% { text-shadow: 0 0 0 rgba(201, 162, 39, 0); }
+        28% { text-shadow: 0 0 18px rgba(212, 175, 55, 0.55), 0 0 44px rgba(212, 175, 55, 0.28); }
+        62% { text-shadow: 0 0 22px rgba(212, 175, 55, 0.62), 0 0 56px rgba(212, 175, 55, 0.30); }
+        100% { text-shadow: 0 0 0 rgba(201, 162, 39, 0); }
+      }
+      @keyframes glitterCardPop {
+        0% { transform: scale(0.965) translateY(6px); }
+        45% { transform: scale(1.012) translateY(0); }
+        100% { transform: scale(1) translateY(0); }
+      }
+      body.glitter-on .brand .bname { animation: glitterBrandGlow 2.8s ease-in-out both; }
+      body.glitter-on .fs-card { animation: glitterCardPop 0.95s cubic-bezier(0.22, 0.61, 0.36, 1) 0.85s both; }
+      @media (prefers-reduced-motion: reduce) {
+        #glitter-canvas { display: none !important; }
+        body.glitter-on .brand .bname, body.glitter-on .fs-card { animation: none !important; }
+      }
     </style>
   </head>
   <body>
+    <canvas id="glitter-canvas" aria-hidden="true"></canvas>
     <header class="site">
       <div class="wrap masthead">
         <a class="brand" href="#top" aria-label="SJ Tours and Travels — Journeys Made Simple — home">
@@ -1729,6 +1753,97 @@
 
           window.open("https://flights.sjtravel.in/flights/" + params + "?marker=600744", "_blank", "noopener");
         });
+      })();
+    </script>
+    <script>
+      (function () {
+        /* Glitter opening — gold sparkles fall from the top of the page
+           to the bottom and disappear, once on page load (~2.8s).
+           Pointer-events are off, so it never blocks clicks or scrolling.
+           Nothing plays at all when reduced motion is preferred. */
+        var canvas = document.getElementById("glitter-canvas");
+        if (!canvas) return;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          canvas.remove();
+          return;
+        }
+        var ctx = canvas.getContext("2d");
+        if (!ctx) { canvas.remove(); return; }
+
+        var DURATION = 2800;
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var W = window.innerWidth;
+        var H = window.innerHeight;
+        canvas.width = Math.round(W * dpr);
+        canvas.height = Math.round(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        var GOLDS = ["#b9973a", "#c9a227", "#d4af37", "#e8c874", "#f2d67c"];
+        var count = Math.max(48, Math.min(96, Math.round(W / 13)));
+        var parts = [];
+        for (var i = 0; i < count; i++) {
+          var delay = Math.random() * 0.32; /* stagger the start at the top */
+          parts.push({
+            x: Math.random() * W,
+            size: 1.4 + Math.random() * 3.1,
+            speed: 0.82 + Math.random() * 0.42, /* slight variation in fall speed */
+            delay: delay,
+            swayAmp: 6 + Math.random() * 16,
+            swayFreq: 1.1 + Math.random() * 1.6,
+            phase: Math.random() * Math.PI * 2,
+            twinkle: 2.2 + Math.random() * 3.4,
+            color: GOLDS[i % GOLDS.length],
+            star: Math.random() < 0.28 /* some are 4-point sparkles, most are dots */
+          });
+        }
+
+        document.body.classList.add("glitter-on");
+
+        var startTs = null;
+        function frame(ts) {
+          if (startTs === null) startTs = ts;
+          var t = (ts - startTs) / DURATION;
+          if (t >= 1) {
+            ctx.clearRect(0, 0, W, H);
+            canvas.remove();
+            document.body.classList.remove("glitter-on");
+            return;
+          }
+          ctx.clearRect(0, 0, W, H);
+          /* Whole-effect fade: in quickly, out over the last third */
+          var master = t < 0.08 ? t / 0.08 : (t > 0.66 ? Math.max(0, 1 - (t - 0.66) / 0.34) : 1);
+          for (var j = 0; j < parts.length; j++) {
+            var p = parts[j];
+            var prog = Math.min(1, Math.max(0, (t * (1 + p.delay) - p.delay * 0.55) * p.speed / (1 - 0.12)));
+            /* Fall: start just above the top, end just past the bottom */
+            var y = -14 + prog * (H + 36);
+            if (y < -16 || y > H + 16) continue;
+            var x = p.x + Math.sin(ts / 1000 * p.swayFreq + p.phase) * p.swayAmp * Math.min(1, prog * 3);
+            var tw = 0.55 + 0.45 * Math.sin(ts / 1000 * p.twinkle + p.phase * 3);
+            var edge = y > H - 90 ? Math.max(0, (H - y) / 90) : 1; /* disappear near the bottom */
+            var alpha = master * tw * edge;
+            if (alpha <= 0.02) continue;
+            ctx.globalAlpha = alpha;
+            ctx.fillStyle = p.color;
+            if (p.star) {
+              var s = p.size * 2.1;
+              ctx.beginPath();
+              ctx.moveTo(x, y - s);
+              ctx.quadraticCurveTo(x, y, x + s, y);
+              ctx.quadraticCurveTo(x, y, x, y + s);
+              ctx.quadraticCurveTo(x, y, x - s, y);
+              ctx.quadraticCurveTo(x, y, x, y - s);
+              ctx.fill();
+            } else {
+              ctx.beginPath();
+              ctx.arc(x, y, p.size, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          }
+          ctx.globalAlpha = 1;
+          requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
       })();
     </script>
   </body>
