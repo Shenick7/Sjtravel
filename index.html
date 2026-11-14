@@ -336,6 +336,24 @@
       .fs-actions { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; margin-top: 22px; }
       .fs-more { font-weight: 700; font-size: 0.92rem; text-decoration: none; display: inline-flex; align-items: center; min-height: 2.25rem; }
       .fs-more:hover { text-decoration: underline; }
+      .fs-from, .fs-to { position: relative; }
+      .fs-ac-list {
+        position: absolute; left: 0; right: 0; top: calc(100% + 4px); z-index: 40;
+        list-style: none; margin: 0; padding: 6px;
+        background: #fff; border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: 0 16px 34px rgba(20, 24, 26, 0.16);
+        max-height: 264px; overflow-y: auto; -webkit-overflow-scrolling: touch;
+      }
+      .fs-ac-list[hidden] { display: none; }
+      .fs-ac-item {
+        display: flex; align-items: center; gap: 10px;
+        padding: 11px 12px; border-radius: 8px; cursor: pointer;
+        min-height: 2.75rem; font-size: 0.97rem; color: var(--ink);
+      }
+      .fs-ac-item .fs-ac-code { font-weight: 800; color: var(--accent); letter-spacing: 0.04em; flex: 0 0 auto; }
+      .fs-ac-item .fs-ac-city { font-weight: 600; }
+      .fs-ac-item.active, .fs-ac-item:active { background: var(--accent-soft); }
+      .fs-ac-empty { padding: 11px 12px; font-size: 0.92rem; color: var(--muted); }
       .fs-error {
         margin: 18px 0 0; border: 1px solid #b3261e; background: #fdf1f0; color: #8a1c14;
         border-radius: 10px; padding: 12px 16px; font-size: 0.92rem; font-weight: 700;
@@ -514,11 +532,13 @@
             <div class="fs-grid">
               <div class="f-field fs-from">
                 <label for="fs-from">From</label>
-                <input id="fs-from" name="from" type="text" list="fs-airports" placeholder="e.g. MAA – Chennai" autocomplete="off" />
+                <input id="fs-from" name="from" type="text" placeholder="e.g. MAA – Chennai" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="fs-from-list" aria-autocomplete="list" />
+                <ul class="fs-ac-list" id="fs-from-list" role="listbox" aria-label="From airport suggestions" hidden></ul>
               </div>
               <div class="f-field fs-to">
                 <label for="fs-to">To</label>
-                <input id="fs-to" name="to" type="text" list="fs-airports" placeholder="e.g. DXB – Dubai" autocomplete="off" />
+                <input id="fs-to" name="to" type="text" placeholder="e.g. DXB – Dubai" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="fs-to-list" aria-autocomplete="list" />
+                <ul class="fs-ac-list" id="fs-to-list" role="listbox" aria-label="To airport suggestions" hidden></ul>
               </div>
               <div class="f-field fs-trip">
                 <label for="fs-trip-type">Trip type</label>
@@ -587,24 +607,6 @@
                 </select>
               </div>
             </div>
-            <datalist id="fs-airports">
-              <option value="MAA – Chennai"></option>
-              <option value="BLR – Bengaluru"></option>
-              <option value="HYD – Hyderabad"></option>
-              <option value="BOM – Mumbai"></option>
-              <option value="DEL – Delhi"></option>
-              <option value="COK – Kochi"></option>
-              <option value="TRZ – Tiruchirappalli"></option>
-              <option value="IXM – Madurai"></option>
-              <option value="DXB – Dubai"></option>
-              <option value="SIN – Singapore"></option>
-              <option value="CMB – Colombo"></option>
-              <option value="BKK – Bangkok"></option>
-              <option value="KUL – Kuala Lumpur"></option>
-              <option value="GOI – Goa"></option>
-              <option value="LHR – London"></option>
-              <option value="JFK – New York"></option>
-            </datalist>
             <p class="fs-error" id="fs-error" role="alert" hidden></p>
             <div class="fs-actions">
               <button type="submit" class="btn btn-accent">Search flights</button>
@@ -1484,6 +1486,121 @@
           if (CITY_CODES[v]) return CITY_CODES[v];
           return "";
         }
+
+        /* Custom airport autocomplete — replaces the native datalist,
+           which does not show suggestions on mobile Chrome/Android. */
+        var AIRPORTS = [
+          ["MAA", "Chennai"], ["BLR", "Bengaluru"], ["HYD", "Hyderabad"],
+          ["BOM", "Mumbai"], ["DEL", "Delhi"], ["COK", "Kochi"],
+          ["TRZ", "Tiruchirappalli"], ["IXM", "Madurai"], ["DXB", "Dubai"],
+          ["SIN", "Singapore"], ["CMB", "Colombo"], ["BKK", "Bangkok"],
+          ["KUL", "Kuala Lumpur"], ["GOI", "Goa"], ["LHR", "London"],
+          ["JFK", "New York"]
+        ];
+
+        function setupAutocomplete(input, listEl) {
+          if (!input || !listEl) return;
+          var active = -1;
+          var current = [];
+
+          function matchesFor(q) {
+            q = (q || "").trim().toLowerCase();
+            if (!q) return AIRPORTS.slice();
+            return AIRPORTS.filter(function (a) {
+              var code = a[0].toLowerCase();
+              var city = a[1].toLowerCase();
+              return code.indexOf(q) !== -1 || city.indexOf(q) !== -1 ||
+                q.indexOf(code) !== -1 || q.indexOf(city) !== -1;
+            });
+          }
+
+          function close() {
+            listEl.hidden = true;
+            input.setAttribute("aria-expanded", "false");
+            input.removeAttribute("aria-activedescendant");
+            active = -1;
+          }
+
+          function highlight(i) {
+            var kids = listEl.querySelectorAll(".fs-ac-item");
+            for (var k = 0; k < kids.length; k++) kids[k].classList.remove("active");
+            active = i;
+            if (i >= 0 && kids[i]) {
+              kids[i].classList.add("active");
+              input.setAttribute("aria-activedescendant", kids[i].id);
+              if (kids[i].scrollIntoView) kids[i].scrollIntoView({ block: "nearest" });
+            } else {
+              input.removeAttribute("aria-activedescendant");
+            }
+          }
+
+          function pick(i) {
+            var a = current[i];
+            if (!a) return;
+            input.value = a[0] + " \u2013 " + a[1];
+            close();
+          }
+
+          function open() {
+            current = matchesFor(input.value);
+            listEl.innerHTML = "";
+            if (!current.length) {
+              var empty = document.createElement("li");
+              empty.className = "fs-ac-empty";
+              empty.textContent = "No airport matches — try the city name or the 3-letter code, like MAA.";
+              listEl.appendChild(empty);
+            } else {
+              current.forEach(function (a, i) {
+                var li = document.createElement("li");
+                li.className = "fs-ac-item";
+                li.id = listEl.id + "-opt-" + i;
+                li.setAttribute("role", "option");
+                var code = document.createElement("span");
+                code.className = "fs-ac-code";
+                code.textContent = a[0];
+                var city = document.createElement("span");
+                city.className = "fs-ac-city";
+                city.textContent = a[1];
+                li.appendChild(code);
+                li.appendChild(city);
+                li.addEventListener("pointerdown", function (e) {
+                  e.preventDefault();
+                  pick(i);
+                });
+                listEl.appendChild(li);
+              });
+            }
+            active = -1;
+            listEl.hidden = false;
+            input.setAttribute("aria-expanded", "true");
+          }
+
+          input.addEventListener("focus", open);
+          input.addEventListener("input", open);
+          input.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") { close(); return; }
+            if (listEl.hidden) {
+              if (e.key === "ArrowDown") { e.preventDefault(); open(); }
+              return;
+            }
+            if (e.key === "ArrowDown") {
+              e.preventDefault();
+              highlight(Math.min(active + 1, current.length - 1));
+            } else if (e.key === "ArrowUp") {
+              e.preventDefault();
+              highlight(Math.max(active - 1, -1));
+            } else if (e.key === "Enter" && active >= 0) {
+              e.preventDefault();
+              pick(active);
+            }
+          });
+          document.addEventListener("pointerdown", function (e) {
+            if (!listEl.hidden && input.parentNode && !input.parentNode.contains(e.target)) close();
+          });
+        }
+
+        setupAutocomplete(fromInput, document.getElementById("fs-from-list"));
+        setupAutocomplete(toInput, document.getElementById("fs-to-list"));
 
         function ddmm(value) {
           /* date input gives YYYY-MM-DD; White Label wants DDMM */
