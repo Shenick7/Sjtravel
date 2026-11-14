@@ -3,7 +3,7 @@
 Website for **SJ Tours and Travels, Ambur, Tamil Nadu, India** — live at
 https://www.sjtravel.in/
 
-Holiday packages, flights, visa help and travel kits (₹499 each) for Indian
+Holiday packages, flights, visa help and travel kits (₹999 each) for Indian
 travellers. Enquiries come in through the Plan My Trip forms on the site,
 which hand off to WhatsApp.
 

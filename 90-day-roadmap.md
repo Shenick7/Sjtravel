@@ -53,7 +53,7 @@
 
 - **Paid ads** — no budget, and the site first needs enquiries measured organically. Revisit after the Day 90 review if enquiries convert.
 - **Cars / corporate travel** — not offered. Services are Flights, hotels, visa, tours only.
-- **5-kit price cap** — owner said NO. 5 kits stay ₹1,997; all 6 stay ₹1,899; the site discloses this.
+- **5-kit price cap** — owner said NO. 5 kits cost ₹3,997; all 6 cost ₹3,999; the site states this plainly.
 - **Visa prices on the site** — not invented. Visa help stays "priced per country — ask on WhatsApp".
 - **Reviews, awards, years in business, customer numbers** — not published until real ones are supplied with permission.
 - **Instagram link in the footer** — handle not confirmed by the owner. Add it when confirmed.
