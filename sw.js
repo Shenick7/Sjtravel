@@ -3,6 +3,7 @@
    data-URIs in the HTML, so they are not separate files and are NOT
    precached here (cache.addAll would fail on a missing file). Only
    files that actually exist on the site are precached.
+   Icons keep the IMG_xxxx.png names iOS gave them when saved from email; the manifest and precache point at those names.
    Strategy: HTML pages are ALWAYS fetched live from the network first,
    so the homepage and flight prices are never stale. Static files
    (photos, icons, the manifest) are served from cache for speed and
@@ -21,10 +22,10 @@ function rootUrl() {
 self.addEventListener("install", function (event) {
   var root = rootUrl();
   var shell = [
-    "assets/icon-192.png",
-    "assets/icon-512.png",
-    "assets/icon-maskable-512.png",
-    "assets/apple-touch-icon.png",
+    "assets/IMG_1541.png",
+    "assets/IMG_1542.png",
+    "assets/IMG_1544.png",
+    "assets/IMG_1541.png",
     "assets/manifest.webmanifest",
   ].map(function (path) { return root + path; });
   event.waitUntil(

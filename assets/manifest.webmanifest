@@ -6,19 +6,19 @@
     {
       "purpose": "any",
       "sizes": "192x192",
-      "src": "icon-192.png",
+      "src": "IMG_1541.png",
       "type": "image/png"
     },
     {
       "purpose": "any",
       "sizes": "512x512",
-      "src": "icon-512.png",
+      "src": "IMG_1542.png",
       "type": "image/png"
     },
     {
       "purpose": "maskable",
       "sizes": "512x512",
-      "src": "icon-maskable-512.png",
+      "src": "IMG_1544.png",
       "type": "image/png"
     }
   ],
