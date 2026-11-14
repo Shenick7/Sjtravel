@@ -356,7 +356,8 @@
         min-height: 2.75rem; font-size: 0.97rem; color: var(--ink);
       }
       .fs-ac-item .fs-ac-code { font-weight: 800; color: var(--accent); letter-spacing: 0.04em; flex: 0 0 auto; }
-      .fs-ac-item .fs-ac-city { font-weight: 600; }
+      .fs-ac-item .fs-ac-city { font-weight: 600; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .fs-ac-item .fs-ac-where { color: var(--muted); font-size: 0.86rem; font-weight: 600; flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
       .fs-ac-item.active, .fs-ac-item:active { background: var(--accent-soft); }
       .fs-ac-empty { padding: 11px 12px; font-size: 0.92rem; color: var(--muted); }
       .fs-error {
@@ -1487,14 +1488,19 @@
           if (!v) return "";
           var paren = v.match(/\(([A-Z]{3})\)/);
           if (paren) return paren[1];
+          if (CITY_CODES[v]) return CITY_CODES[v];
           var lead = v.match(/^([A-Z]{3})(?![A-Z])/);
           if (lead) return lead[1];
-          if (CITY_CODES[v]) return CITY_CODES[v];
           return "";
         }
 
-        /* Custom airport autocomplete — replaces the native datalist,
-           which does not show suggestions on mobile Chrome/Android. */
+        /* Worldwide airport autocomplete — a custom dropdown (the native
+           datalist does not show suggestions on mobile Chrome/Android).
+           Empty field: the popular list below, Indian airports first.
+           Typing 2+ characters: after a ~300ms pause, worldwide
+           suggestions are fetched from /api/airports. If that lookup
+           fails or finds nothing, the popular list is filtered locally
+           instead, so the box never comes up empty for a real city. */
         var AIRPORTS = [
           ["MAA", "Chennai"], ["BLR", "Bengaluru"], ["HYD", "Hyderabad"],
           ["BOM", "Mumbai"], ["DEL", "Delhi"], ["COK", "Kochi"],
@@ -1508,19 +1514,40 @@
           if (!input || !listEl) return;
           var active = -1;
           var current = [];
+          var isOpen = false;
+          var debounce = null;
+          var requestSeq = 0;
 
-          function matchesFor(q) {
+          function localMatches(q) {
             q = (q || "").trim().toLowerCase();
-            if (!q) return AIRPORTS.slice();
-            return AIRPORTS.filter(function (a) {
+            var src = !q ? AIRPORTS.slice() : AIRPORTS.filter(function (a) {
               var code = a[0].toLowerCase();
               var city = a[1].toLowerCase();
               return code.indexOf(q) !== -1 || city.indexOf(q) !== -1 ||
                 q.indexOf(code) !== -1 || q.indexOf(city) !== -1;
             });
+            return src.map(function (a) {
+              return { code: a[0], name: a[1], where: "" };
+            });
+          }
+
+          function remoteItem(it) {
+            if (!it || typeof it !== "object") return null;
+            var code = String(it.code || it.iata || it.iata_code || "").trim().toUpperCase();
+            var name = String(it.name || it.airport_name || it.city || it.city_name || "").trim();
+            if (!/^[A-Z]{3}$/.test(code) || !name) return null;
+            var city = String(it.city || it.city_name || "").trim();
+            var country = String(it.country || it.country_name || "").trim();
+            var parts = [];
+            if (city && city.toLowerCase() !== name.toLowerCase()) parts.push(city);
+            if (country) parts.push(country);
+            return { code: code, name: name, where: parts.join(", ") };
           }
 
           function close() {
+            isOpen = false;
+            requestSeq++;
+            if (debounce) { clearTimeout(debounce); debounce = null; }
             listEl.hidden = true;
             input.setAttribute("aria-expanded", "false");
             input.removeAttribute("aria-activedescendant");
@@ -1543,17 +1570,16 @@
           function pick(i) {
             var a = current[i];
             if (!a) return;
-            input.value = a[0] + " \u2013 " + a[1];
+            input.value = a.code + " \u2013 " + a.name;
             close();
           }
 
-          function open() {
-            current = matchesFor(input.value);
+          function render() {
             listEl.innerHTML = "";
             if (!current.length) {
               var empty = document.createElement("li");
               empty.className = "fs-ac-empty";
-              empty.textContent = "No airport matches — try the city name or the 3-letter code, like MAA.";
+              empty.textContent = "No match in the quick list — keep typing the full city name, or use its 3-letter code, like LHR for London.";
               listEl.appendChild(empty);
             } else {
               current.forEach(function (a, i) {
@@ -1563,12 +1589,18 @@
                 li.setAttribute("role", "option");
                 var code = document.createElement("span");
                 code.className = "fs-ac-code";
-                code.textContent = a[0];
-                var city = document.createElement("span");
-                city.className = "fs-ac-city";
-                city.textContent = a[1];
+                code.textContent = a.code;
+                var name = document.createElement("span");
+                name.className = "fs-ac-city";
+                name.textContent = a.name;
                 li.appendChild(code);
-                li.appendChild(city);
+                li.appendChild(name);
+                if (a.where) {
+                  var where = document.createElement("span");
+                  where.className = "fs-ac-where";
+                  where.textContent = a.where;
+                  li.appendChild(where);
+                }
                 li.addEventListener("pointerdown", function (e) {
                   e.preventDefault();
                   pick(i);
@@ -1577,8 +1609,51 @@
               });
             }
             active = -1;
+            isOpen = true;
             listEl.hidden = false;
             input.setAttribute("aria-expanded", "true");
+          }
+
+          function fetchRemote() {
+            var term = input.value.trim();
+            if (term.length < 2 || typeof fetch !== "function") return;
+            var seq = ++requestSeq;
+            fetch("/api/airports?term=" + encodeURIComponent(term))
+              .then(function (r) {
+                if (!r.ok) throw new Error("airport lookup failed");
+                return r.json();
+              })
+              .then(function (data) {
+                if (seq !== requestSeq || !isOpen) return;
+                var arr = [];
+                if (Array.isArray(data)) arr = data;
+                else if (data && Array.isArray(data.results)) arr = data.results;
+                else if (data && Array.isArray(data.airports)) arr = data.airports;
+                else if (data && Array.isArray(data.data)) arr = data.data;
+                else if (data && Array.isArray(data.suggestions)) arr = data.suggestions;
+                var seen = {};
+                var items = [];
+                arr.forEach(function (it) {
+                  var m = remoteItem(it);
+                  if (m && !seen[m.code]) { seen[m.code] = true; items.push(m); }
+                });
+                if (!items.length) return; /* nothing worldwide — local matches stay on screen */
+                current = items.slice(0, 12);
+                render();
+              })
+              .catch(function () { /* lookup failed — local matches stay on screen */ });
+          }
+
+          function scheduleRemote() {
+            if (input.value.trim().length < 2) return;
+            if (debounce) clearTimeout(debounce);
+            debounce = setTimeout(fetchRemote, 300);
+          }
+
+          function open() {
+            current = localMatches(input.value);
+            render();
+            scheduleRemote();
           }
 
           input.addEventListener("focus", open);

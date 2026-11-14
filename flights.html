@@ -745,6 +745,7 @@
         var CITY_CODES = {};
         AIRPORTS.forEach(function (a) { CITY_CODES[a[1].toUpperCase()] = a[0]; });
         CITY_CODES["BANGALORE"] = "BLR"; CITY_CODES["NEW DELHI"] = "DEL"; CITY_CODES["COCHIN"] = "COK"; CITY_CODES["TRICHY"] = "TRZ";
+        var REMOTE_CODES = {}; // city/airport name -> code, filled from /api/airports
         function codeFrom(value) {
           if (!value) return "";
           var v = value.trim().toUpperCase();
@@ -754,17 +755,19 @@
           var lead = v.match(/^([A-Z]{3})(?![A-Z])/);
           if (lead) return lead[1];
           if (CITY_CODES[v]) return CITY_CODES[v];
+          if (REMOTE_CODES[v]) return REMOTE_CODES[v];
           return "";
         }
         function setupAutocomplete(input, listEl) {
           if (!input || !listEl) return;
-          var active = -1, current = [];
-          function matchesFor(q) {
+          var active = -1, current = [], timer = null, seq = 0;
+          function toObj(a) { return { code: a[0], name: a[1], country: "" }; }
+          function localMatches(q) {
             q = (q || "").trim().toLowerCase();
-            if (!q) return AIRPORTS.slice();
+            if (!q) return AIRPORTS.slice().map(toObj);
             return AIRPORTS.filter(function (a) {
               return a[0].toLowerCase().indexOf(q) !== -1 || a[1].toLowerCase().indexOf(q) !== -1;
-            });
+            }).map(toObj);
           }
           function close() { listEl.hidden = true; input.setAttribute("aria-expanded", "false"); active = -1; }
           function highlight(i) {
@@ -773,9 +776,9 @@
             active = i;
             if (i >= 0 && kids[i]) { kids[i].classList.add("active"); if (kids[i].scrollIntoView) kids[i].scrollIntoView({ block: "nearest" }); }
           }
-          function pick(i) { var a = current[i]; if (!a) return; input.value = a[0] + " \u2013 " + a[1]; close(); }
-          function open() {
-            current = matchesFor(input.value);
+          function pick(i) { var a = current[i]; if (!a) return; input.value = a.code + " \u2013 " + a.name; close(); }
+          function render(items) {
+            current = items;
             listEl.innerHTML = "";
             if (!current.length) {
               var empty = document.createElement("li"); empty.className = "ac-empty";
@@ -784,14 +787,36 @@
             } else {
               current.forEach(function (a, i) {
                 var li = document.createElement("li"); li.className = "ac-item"; li.setAttribute("role", "option");
-                var code = document.createElement("b"); code.textContent = a[0];
-                var city = document.createElement("span"); city.textContent = a[1];
+                var code = document.createElement("b"); code.textContent = a.code;
+                var city = document.createElement("span");
+                city.textContent = a.name + (a.country ? ", " + a.country : "");
                 li.appendChild(code); li.appendChild(city);
                 li.addEventListener("pointerdown", function (e) { e.preventDefault(); pick(i); });
                 listEl.appendChild(li);
               });
             }
             active = -1; listEl.hidden = false; input.setAttribute("aria-expanded", "true");
+          }
+          function fetchWorldwide(q, mySeq) {
+            fetch("/api/airports?term=" + encodeURIComponent(q))
+              .then(function (r) { return r.json(); })
+              .then(function (data) {
+                if (mySeq !== seq || !data || !data.ok || !Array.isArray(data.results) || !data.results.length) return;
+                data.results.forEach(function (r) {
+                  if (r.name) REMOTE_CODES[r.name.toUpperCase()] = r.code;
+                  if (r.city) REMOTE_CODES[r.city.toUpperCase()] = r.code;
+                });
+                render(data.results);
+              })
+              .catch(function () { /* keep the local list already shown */ });
+          }
+          function open() {
+            var q = (input.value || "").trim();
+            render(localMatches(q)); // instant local results first, never empty
+            if (q.length < 2) return;
+            if (timer) clearTimeout(timer);
+            var mySeq = ++seq;
+            timer = setTimeout(function () { fetchWorldwide(q, mySeq); }, 300);
           }
           input.addEventListener("focus", open);
           input.addEventListener("input", open);
