@@ -1566,7 +1566,22 @@
           "IMPHAL": "IMF",
           "SHIRDI": "SAG",
           "AURANGABAD": "IXU",
-          "GOA (MOPA)": "GOX", "MOPA": "GOX"
+          "GOA (MOPA)": "GOX", "MOPA": "GOX",
+          "DOHA": "DOH",
+          "ABU DHABI": "AUH",
+          "MUSCAT": "MCT",
+          "MALE": "MLE", "MALDIVES": "MLE",
+          "KATHMANDU": "KTM",
+          "DHAKA": "DAC",
+          "BALI": "DPS", "DENPASAR": "DPS", "BALI DENPASAR": "DPS",
+          "JAKARTA": "CGK",
+          "HONG KONG": "HKG",
+          "TOKYO": "NRT",
+          "SEOUL": "ICN",
+          "PARIS": "CDG",
+          "TORONTO": "YYZ",
+          "SYDNEY": "SYD",
+          "MELBOURNE": "MEL"
         };
 
         function codeFrom(value) {
@@ -1622,7 +1637,16 @@
           ["ATQ", "Amritsar"], ["SXR", "Srinagar"], ["IXJ", "Jammu"],
           ["IXL", "Leh"], ["DED", "Dehradun"], ["IXA", "Agartala"],
           ["IMF", "Imphal"], ["SAG", "Shirdi"], ["IXU", "Aurangabad"],
-          ["GOX", "Goa (Mopa)"]
+          ["GOX", "Goa (Mopa)"],
+          /* Popular international airports beyond the first group above,
+             so they also appear in the quick list without the lookup. */
+          ["DOH", "Doha"], ["AUH", "Abu Dhabi"], ["MCT", "Muscat"],
+          ["MLE", "Malé (Maldives)"], ["KTM", "Kathmandu"],
+          ["DAC", "Dhaka"], ["DPS", "Bali (Denpasar)"],
+          ["CGK", "Jakarta"], ["HKG", "Hong Kong"],
+          ["NRT", "Tokyo (Narita)"], ["ICN", "Seoul (Incheon)"],
+          ["CDG", "Paris"], ["YYZ", "Toronto"], ["SYD", "Sydney"],
+          ["MEL", "Melbourne"]
         ];
 
         function setupAutocomplete(input, listEl) {
