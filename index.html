@@ -32,6 +32,13 @@
       }
     </script>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23034694'/%3E%3Ctext x='32' y='44' font-family='Georgia, serif' font-size='30' font-weight='600' fill='%23ffffff' text-anchor='middle'%3ESJ%3C/text%3E%3C/svg%3E" />
+    <link rel="manifest" href="assets/manifest.webmanifest" />
+    <meta name="theme-color" content="#034694" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="SJ Tours" />
     <title>SJ Tours and Travels | Holidays, Flights, Visa &amp; Travel Kits</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -385,6 +392,16 @@
       footer a { color: var(--ink); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 7px; min-height: 2rem; }
       footer a:hover { color: var(--accent); }
       footer a .ig-icon { width: 16px; height: 16px; flex: 0 0 auto; color: var(--accent); }
+      .install-btn {
+        display: inline-flex; align-items: center; gap: 7px; margin-top: 14px;
+        font-family: inherit; font-size: 0.85rem; font-weight: 700; color: var(--accent);
+        background: var(--accent-soft); border: 1px solid var(--line); border-radius: 999px;
+        padding: 8px 16px; min-height: 2.25rem; cursor: pointer;
+      }
+      .install-btn:hover { border-color: var(--accent); }
+      .install-btn:active { transform: scale(0.98); }
+      .install-btn svg { width: 15px; height: 15px; flex: 0 0 auto; }
+      .install-btn[hidden] { display: none; }
       .foot-note { grid-column: 1 / -1; border-top: 1px solid var(--line); padding-top: 16px; font-size: 0.83rem; color: var(--muted); }
 
       .wa-float {
@@ -1266,6 +1283,7 @@
           <h4>SJ Tours and Travels</h4>
           <p>Travel kits, holiday packages, flight finding, visa help and RTI drafts — from Ambur, for travellers everywhere in India.</p>
           <p><strong>sjtravel.in</strong> — no S at the end. sjtravels.in (with an S) is a different company.</p>
+          <button type="button" class="install-btn" id="installAppBtn" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Install app</button>
         </div>
         <div>
           <h4>Shop</h4>
@@ -1957,6 +1975,59 @@
           requestAnimationFrame(frame);
         }
         requestAnimationFrame(frame);
+      })();
+    </script>
+    <script>
+      (function () {
+        /* Installable web app (PWA) — the "Install app" button stays
+           hidden unless the visitor's browser offers installation
+           (beforeinstallprompt). iPhones never fire that event, so the
+           button simply never appears there; iOS users can still use
+           Share → Add to Home Screen thanks to the Apple tags in the head. */
+        var btn = document.getElementById("installAppBtn");
+        var deferredEvent = null;
+
+        window.addEventListener("beforeinstallprompt", function (e) {
+          e.preventDefault();
+          deferredEvent = e;
+          if (btn) btn.hidden = false;
+        });
+
+        if (btn) {
+          btn.addEventListener("click", function () {
+            if (!deferredEvent) { btn.hidden = true; return; }
+            var evt = deferredEvent;
+            deferredEvent = null;
+            btn.hidden = true;
+            /* Show the browser's own install dialog for the saved event. */
+            var showDialog = evt.prompt;
+            showDialog.call(evt);
+            if (evt.userChoice) {
+              evt.userChoice.then(function () {}, function () {});
+            }
+          });
+        }
+
+        window.addEventListener("appinstalled", function () {
+          deferredEvent = null;
+          if (btn) btn.hidden = true;
+        });
+
+        /* Service worker: caches the site shell (photos, icons) so the
+           site loads fast and the install prompt works. Pages themselves
+           are always fetched live inside the worker — see assets/sw.js.
+           Registration tries the site-root copy first (full scope on the
+           live sjtravel.in deployment), then the copy in assets/. */
+        if ("serviceWorker" in navigator) {
+          window.addEventListener("load", function () {
+            var prod = /(^|\.)sjtravel\.in$/.test(window.location.hostname);
+            var urls = prod ? ["sw.js", "assets/sw.js"] : ["assets/sw.js"];
+            (function attempt(i) {
+              if (i >= urls.length) return;
+              navigator.serviceWorker.register(urls[i]).then(function () {}, function () { attempt(i + 1); });
+            })(0);
+          });
+        }
       })();
     </script>
   </body>

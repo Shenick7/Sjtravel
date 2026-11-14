@@ -1,0 +1,32 @@
+{
+  "background_color": "#034694",
+  "description": "SJ Tours and Travels, Ambur \u2014 holiday packages, flight search, visa help and ready-made travel kits for Dubai, Thailand, Singapore and more.",
+  "display": "standalone",
+  "icons": [
+    {
+      "purpose": "any",
+      "sizes": "192x192",
+      "src": "icon-192.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "512x512",
+      "src": "icon-512.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "maskable",
+      "sizes": "512x512",
+      "src": "icon-maskable-512.png",
+      "type": "image/png"
+    }
+  ],
+  "lang": "en-IN",
+  "name": "SJ Tours and Travels",
+  "orientation": "portrait",
+  "scope": "https://www.sjtravel.in/",
+  "short_name": "SJ Tours",
+  "start_url": "https://www.sjtravel.in/",
+  "theme_color": "#034694"
+}

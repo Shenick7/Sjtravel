@@ -23,6 +23,12 @@
       }
     </script>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23034694'/%3E%3Ctext x='32' y='44' font-family='Georgia, serif' font-size='30' font-weight='600' fill='%23ffffff' text-anchor='middle'%3ESJ%3C/text%3E%3C/svg%3E" />
+    <link rel="manifest" href="assets/manifest.webmanifest" />
+    <meta name="theme-color" content="#034694" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="SJ Tours" />
     <title>Search Flights | SJ Tours and Travels</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1091,6 +1097,21 @@
 
         /* Load the calendar for the default route on page load */
         loadCalendar();
+      })();
+    </script>
+
+    <script>
+      /* Installable web app (PWA) — service worker (see /sw.js).
+         Pages are always fetched live inside the worker; the
+         worker only caches static assets. */
+      (function () {
+        if ("serviceWorker" in navigator) {
+          window.addEventListener("load", function () {
+            navigator.serviceWorker.register("sw.js").then(function () {}, function () {
+              navigator.serviceWorker.register("assets/sw.js").then(function () {}, function () {});
+            });
+          });
+        }
       })();
     </script>
 
