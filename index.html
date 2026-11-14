@@ -325,6 +325,22 @@
       }
       .plan-alt { margin-top: 22px; font-size: 0.95rem; color: var(--muted); }
 
+      /* ---------- Flight search (homepage) ---------- */
+      .flight-search { padding: 52px 0 0; }
+      .fs-card { margin-top: 28px; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+      @media (min-width: 720px) { .fs-card { padding: 30px; } }
+      .fs-grid { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
+      @media (min-width: 720px) { .fs-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; } }
+      .fs-from, .fs-to, .fs-trip { grid-column: span 2; }
+      #fs-return-field[hidden] { display: none; }
+      .fs-actions { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; margin-top: 22px; }
+      .fs-more { font-weight: 700; font-size: 0.92rem; text-decoration: none; display: inline-flex; align-items: center; min-height: 2.25rem; }
+      .fs-more:hover { text-decoration: underline; }
+      .fs-error {
+        margin: 18px 0 0; border: 1px solid #b3261e; background: #fdf1f0; color: #8a1c14;
+        border-radius: 10px; padding: 12px 16px; font-size: 0.92rem; font-weight: 700;
+      }
+
       /* ---------- Policies ---------- */
       .policy-body { max-width: 44rem; color: var(--muted); display: grid; gap: 12px; margin-top: 20px; font-size: 0.97rem; }
       .policy-body p { margin: 0; }
@@ -449,6 +465,7 @@
       <div class="title-bar" role="note">Holiday Packages<span class="sep">·</span>Flights<span class="sep">·</span>Visa Help<span class="sep">·</span>Travel Kits</div>
       <div class="wrap nav-row">
         <nav aria-label="Main">
+          <a href="/flights">Flights</a>
           <a href="#kits">Travel Kits</a>
           <a href="#bundles">Bundles</a>
           <a href="#packages">Packages</a>
@@ -484,6 +501,118 @@
           </div>
         </div>
       </div>
+
+      <!-- ================= FLIGHT SEARCH ================= -->
+      <section class="flight-search" id="flights" aria-labelledby="flights-heading">
+        <div class="wrap">
+          <div class="sec-head">
+            <h2 id="flights-heading">Search flights</h2>
+            <p>Search any route in rupees — you pay on the airline or booking site, we take no payment.</p>
+          </div>
+
+          <form class="fs-card" id="flightSearchForm" novalidate>
+            <div class="fs-grid">
+              <div class="f-field fs-from">
+                <label for="fs-from">From</label>
+                <input id="fs-from" name="from" type="text" list="fs-airports" placeholder="e.g. MAA – Chennai" autocomplete="off" />
+              </div>
+              <div class="f-field fs-to">
+                <label for="fs-to">To</label>
+                <input id="fs-to" name="to" type="text" list="fs-airports" placeholder="e.g. DXB – Dubai" autocomplete="off" />
+              </div>
+              <div class="f-field fs-trip">
+                <label for="fs-trip-type">Trip type</label>
+                <select id="fs-trip-type" name="tripType">
+                  <option value="return" selected>Return</option>
+                  <option value="oneway">One-way</option>
+                </select>
+              </div>
+              <div class="f-field">
+                <label for="fs-depart">Depart date</label>
+                <input id="fs-depart" name="depart" type="date" />
+              </div>
+              <div class="f-field" id="fs-return-field">
+                <label for="fs-return">Return date</label>
+                <input id="fs-return" name="return" type="date" />
+              </div>
+              <div class="f-field">
+                <label for="fs-adults">Adults</label>
+                <select id="fs-adults" name="adults">
+                  <option value="1" selected>1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                </select>
+              </div>
+              <div class="f-field">
+                <label for="fs-children">Children</label>
+                <select id="fs-children" name="children">
+                  <option value="0" selected>0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                </select>
+              </div>
+              <div class="f-field">
+                <label for="fs-infants">Infants</label>
+                <select id="fs-infants" name="infants">
+                  <option value="0" selected>0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                </select>
+              </div>
+              <div class="f-field">
+                <label for="fs-cabin">Cabin</label>
+                <select id="fs-cabin" name="cabin">
+                  <option value="economy" selected>Economy</option>
+                  <option value="premium">Premium Economy</option>
+                  <option value="business">Business</option>
+                  <option value="first">First</option>
+                </select>
+              </div>
+            </div>
+            <datalist id="fs-airports">
+              <option value="MAA – Chennai"></option>
+              <option value="BLR – Bengaluru"></option>
+              <option value="HYD – Hyderabad"></option>
+              <option value="BOM – Mumbai"></option>
+              <option value="DEL – Delhi"></option>
+              <option value="COK – Kochi"></option>
+              <option value="TRZ – Tiruchirappalli"></option>
+              <option value="IXM – Madurai"></option>
+              <option value="DXB – Dubai"></option>
+              <option value="SIN – Singapore"></option>
+              <option value="CMB – Colombo"></option>
+              <option value="BKK – Bangkok"></option>
+              <option value="KUL – Kuala Lumpur"></option>
+              <option value="GOI – Goa"></option>
+              <option value="LHR – London"></option>
+              <option value="JFK – New York"></option>
+            </datalist>
+            <p class="fs-error" id="fs-error" role="alert" hidden></p>
+            <div class="fs-actions">
+              <button type="submit" class="btn btn-accent">Search flights</button>
+              <a class="fs-more" href="/flights">See cheapest dates &amp; popular routes →</a>
+            </div>
+          </form>
+        </div>
+      </section>
 
       <div class="trust-strip">
         <div class="wrap">
@@ -1306,6 +1435,100 @@
           window.addEventListener("scroll", onScroll, { passive: true });
           onScroll();
         }
+      })();
+    </script>
+    <script>
+      (function () {
+        /* Homepage flight search — builds a Travelpayouts White Label link */
+        var form = document.getElementById("flightSearchForm");
+        if (!form) return;
+        var fromInput = document.getElementById("fs-from");
+        var toInput = document.getElementById("fs-to");
+        var tripSel = document.getElementById("fs-trip-type");
+        var departInput = document.getElementById("fs-depart");
+        var returnInput = document.getElementById("fs-return");
+        var returnField = document.getElementById("fs-return-field");
+        var adultsSel = document.getElementById("fs-adults");
+        var childrenSel = document.getElementById("fs-children");
+        var infantsSel = document.getElementById("fs-infants");
+        var cabinSel = document.getElementById("fs-cabin");
+        var errorEl = document.getElementById("fs-error");
+
+        var CITY_CODES = {
+          "CHENNAI": "MAA",
+          "BENGALURU": "BLR", "BANGALORE": "BLR",
+          "HYDERABAD": "HYD",
+          "MUMBAI": "BOM",
+          "DELHI": "DEL", "NEW DELHI": "DEL",
+          "KOCHI": "COK", "COCHIN": "COK",
+          "TIRUCHIRAPPALLI": "TRZ", "TRICHY": "TRZ",
+          "MADURAI": "IXM",
+          "DUBAI": "DXB",
+          "SINGAPORE": "SIN",
+          "COLOMBO": "CMB",
+          "BANGKOK": "BKK",
+          "KUALA LUMPUR": "KUL",
+          "GOA": "GOI",
+          "LONDON": "LHR",
+          "NEW YORK": "JFK"
+        };
+
+        function codeFrom(value) {
+          if (!value) return "";
+          var v = value.trim().toUpperCase();
+          if (!v) return "";
+          var paren = v.match(/\(([A-Z]{3})\)/);
+          if (paren) return paren[1];
+          var lead = v.match(/^([A-Z]{3})(?![A-Z])/);
+          if (lead) return lead[1];
+          if (CITY_CODES[v]) return CITY_CODES[v];
+          return "";
+        }
+
+        function ddmm(value) {
+          /* date input gives YYYY-MM-DD; White Label wants DDMM */
+          var parts = (value || "").split("-");
+          if (parts.length !== 3) return "";
+          return parts[2] + parts[1];
+        }
+
+        function syncReturn() {
+          var oneway = tripSel.value === "oneway";
+          returnInput.disabled = oneway;
+          if (returnField) returnField.hidden = oneway;
+        }
+        tripSel.addEventListener("change", syncReturn);
+        syncReturn();
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var origin = codeFrom(fromInput.value);
+          var dest = codeFrom(toInput.value);
+          var depart = departInput.value;
+          var msg = "";
+          if (!origin || !dest || origin === dest) {
+            msg = "Please pick different From and To airports — use the 3-letter code, like MAA for Chennai.";
+          } else if (!depart) {
+            msg = "Please choose a depart date.";
+          }
+          if (msg) {
+            errorEl.textContent = msg;
+            errorEl.hidden = false;
+            return;
+          }
+          errorEl.hidden = true;
+          errorEl.textContent = "";
+
+          var cabinLetters = { economy: "", premium: "w", business: "c", first: "f" };
+          var params = origin + ddmm(depart) + dest;
+          if (tripSel.value === "return" && returnInput.value) params += ddmm(returnInput.value);
+          params += cabinLetters[cabinSel.value] || "";
+          params += adultsSel.value;
+          if (parseInt(childrenSel.value, 10) > 0) params += childrenSel.value;
+          if (parseInt(infantsSel.value, 10) > 0) params += infantsSel.value;
+
+          window.open("https://flights.sjtravel.in/flights/" + params + "?marker=600744", "_blank", "noopener");
+        });
       })();
     </script>
   </body>
