@@ -74,15 +74,17 @@
 
       /* ---------- Header / Masthead ---------- */
       header.site {
-        background: var(--bg);
+        background: var(--accent-soft);
         border-bottom: 1px solid var(--line);
       }
       .masthead {
         text-align: center;
-        padding: 76px 24px 64px;
+        padding: 34px 24px 28px;
       }
-      @media (min-width: 860px) { .masthead { padding: 96px 24px 76px; } }
-      .brand { text-decoration: none; color: var(--ink); display: block; }
+      @media (min-width: 860px) { .masthead { padding: 56px 24px 44px; } }
+      .brand { text-decoration: none; color: var(--ink); display: block; -webkit-tap-highlight-color: transparent; transition: transform 0.25s ease; }
+      .brand:active { transform: scale(0.98); }
+      .brand:active .bname { text-shadow: 0 0 26px rgba(212, 175, 55, 0.6); }
       .brand .bname {
         font-family: "Cormorant Garamond", "Newsreader", Georgia, serif; font-weight: 300;
         font-size: clamp(1.9rem, 8.6vw, 5.25rem);
@@ -92,7 +94,7 @@
       }
       .brand .btag {
         display: block; margin-top: 26px;
-        font-family: "Manrope", sans-serif; font-style: normal; font-weight: 600;
+        font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif; font-style: normal; font-weight: 600;
         font-size: clamp(0.8rem, 2.6vw, 0.98rem); line-height: 1.4; color: var(--muted);
         letter-spacing: 0.32em; text-transform: uppercase;
       }
@@ -101,6 +103,7 @@
         font-size: 0.78rem; font-weight: 700; letter-spacing: 0.22em;
         text-transform: uppercase; color: var(--muted);
       }
+      .brand .bnote { display: block; margin-top: 8px; font-size: 0.82rem; font-weight: 700; color: var(--muted); letter-spacing: 0.02em; }
       .brand .bsub b { color: var(--accent); font-weight: 800; }
       .brand .bsub .dot { color: var(--accent); margin: 0 8px; }
       .nav-row {
@@ -135,8 +138,10 @@
         text-align: center;
         padding: 13px 16px;
         font-size: 0.92rem; font-weight: 700; letter-spacing: 0.06em;
-        line-height: 1.4; text-transform: uppercase;
-      }
+        line-height: 1.4; text-transform: uppercase; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+      .title-bar::-webkit-scrollbar { display: none; }
+      .title-bar a { color: #fff; text-decoration: none; }
+      .title-bar a:active { opacity: 0.7; }
       .title-bar .sep { opacity: 0.55; margin: 0 10px; font-weight: 400; }
 
       /* ---------- Food note (small, on request) ---------- */
@@ -213,14 +218,14 @@
         font-size: 0.74rem; font-weight: 800; padding: 5px 11px; border-radius: 999px;
       }
       .kit .body { padding: 22px 2px 0; display: flex; flex-direction: column; gap: 12px; flex: 1; }
-      .kit h3 { font-size: 1.6rem; }
+      .kit h3 { font-size: 1.5rem; }
       .kit .route { font-weight: 700; color: var(--accent); font-size: 0.9rem; margin-top: -8px; }
       .kit ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 0.94rem; display: grid; gap: 5px; }
       .kit .budget { background: var(--soft); border-radius: 10px; padding: 12px 14px; font-size: 0.89rem; font-weight: 600; color: var(--muted); }
       .kit .budget b { color: var(--ink); }
       .kit .foot { margin-top: auto; display: flex; align-items: center; gap: 14px; padding-top: 8px; }
-      .kit .price { font-size: 1.55rem; font-weight: 600; font-family: "Newsreader", Georgia, serif; }
-      .kit .price small { font-size: 0.75rem; font-family: "Manrope", sans-serif; color: var(--muted); font-weight: 700; display: block; line-height: 1.2; letter-spacing: 0.06em; text-transform: uppercase; }
+      .kit .price { font-size: 1.5rem; font-weight: 600; font-family: "Newsreader", Georgia, serif; }
+      .kit .price small { font-size: 0.75rem; font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--muted); font-weight: 700; display: block; line-height: 1.2; letter-spacing: 0.06em; text-transform: uppercase; }
       .kit .foot .btn { flex: 1; }
       .kit details { font-size: 0.9rem; }
       .kit summary { cursor: pointer; font-weight: 700; color: var(--accent); padding: 4px 0; }
@@ -234,7 +239,7 @@
       .price-option span { display: block; color: var(--muted); font-size: 0.92rem; margin-top: 4px; }
       .price-option .tag { display: inline-block; background: var(--accent-soft); color: var(--accent-dark); font-weight: 800; font-size: 0.75rem; padding: 3px 10px; border-radius: 999px; margin-left: 8px; vertical-align: 3px; }
       .bundle { margin-top: 24px; border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; }
-      .bundle h3 { font-size: 1.55rem; }
+      .bundle h3 { font-size: 1.5rem; }
       .bundle p.sub { color: var(--muted); margin: 8px 0 0; }
       .pick-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
       .pick {
@@ -262,7 +267,7 @@
       .from-shenick blockquote { margin: 20px 0 0; padding: 0; font-family: "Newsreader", Georgia, serif; font-size: 1.18rem; line-height: 1.55; font-style: italic; color: var(--ink); }
       .from-shenick .story p { margin: 16px 0 0; color: var(--muted); font-size: 1rem; }
       .from-shenick .sign { margin-top: 26px; font-family: "Newsreader", Georgia, serif; font-size: 1.3rem; font-style: italic; }
-      .from-shenick .sign small { display: block; font-family: "Manrope", sans-serif; font-style: normal; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+      .from-shenick .sign small { display: block; font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif; font-style: normal; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
       .shenick-facts { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; align-content: start; }
       .shenick-facts li { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; font-weight: 600; font-size: 0.94rem; }
       .shenick-facts li b { color: var(--accent); display: block; font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 2px; }
@@ -271,13 +276,13 @@
       .svc-grid { display: grid; gap: 36px 32px; margin-top: 48px; }
       @media (min-width: 820px) { .svc-grid { grid-template-columns: 1fr 1fr 1fr; } }
       .svc { border-top: 2px solid var(--ink); padding-top: 22px; display: flex; flex-direction: column; gap: 12px; }
-      .svc h3 { font-size: 1.45rem; }
+      .svc h3 { font-size: 1.5rem; }
       .svc p { margin: 0; color: var(--muted); font-size: 0.96rem; }
       .svc ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 0.93rem; display: grid; gap: 5px; }
       .svc .svc-note { font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin: 0; }
       .svc .svc-note strong { color: var(--ink); }
       .svc .svc-price { font-family: "Newsreader", Georgia, serif; font-size: 1.5rem; font-weight: 600; color: var(--accent); }
-      .svc .svc-price small { font-family: "Manrope", sans-serif; font-size: 0.8rem; color: var(--muted); font-weight: 600; }
+      .svc .svc-price small { font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 0.8rem; color: var(--muted); font-weight: 600; }
       .svc .btn { margin-top: auto; align-self: flex-start; }
 
       /* ---------- Steps ---------- */
@@ -296,7 +301,7 @@
       .faq details p { margin: 0 0 20px; color: var(--muted); max-width: 44rem; }
       .about-box { margin-top: 64px; border-top: 1px solid var(--line); padding-top: 44px; display: grid; gap: 24px; }
       @media (min-width: 820px) { .about-box { grid-template-columns: 1.4fr 1fr; gap: 48px; } }
-      .about-box h3 { font-size: 1.55rem; }
+      .about-box h3 { font-size: 1.5rem; }
       .about-box p { margin: 10px 0 0; color: var(--muted); }
       .about-facts { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-weight: 600; font-size: 0.95rem; align-content: start; }
       .about-facts li { border-bottom: 1px solid var(--line); padding: 10px 2px; }
@@ -517,6 +522,19 @@
         #glitter-canvas { display: none !important; }
         body.glitter-on .brand .bname, body.glitter-on .fs-card { animation: none !important; }
       }
+
+      /* ---------- Mobile tightening (tester feedback, Nov 2026) ---------- */
+      @media (max-width: 640px) {
+        section.block { padding-top: 56px; }
+        .hero { padding-top: 36px; }
+        .kit-grid { margin-top: 28px; gap: 28px 20px; }
+        .svc-grid { margin-top: 28px; gap: 28px 20px; }
+        .title-bar { font-size: 0.85rem; letter-spacing: 0.04em; }
+      }
+      /* ---------- Prices in plain words ---------- */
+      .price-plain-list { list-style: none; margin: 24px 0 0; padding: 0; display: grid; max-width: 42rem; }
+      .price-plain-list li { border-bottom: 1px solid var(--line); padding: 12px 2px; }
+      .price-plain-list li:first-child { border-top: 1px solid var(--line); }
     </style>
   </head>
   <body>
@@ -527,9 +545,10 @@
           <span class="bname">SJ Tours and Travels</span>
           <span class="btag">Journeys Made Simple.</span>
           <span class="bsub"><b>sjtravel.in</b></span>
+          <span class="bnote">No S at the end — sjtravels.in is a different company</span>
         </a>
       </div>
-      <div class="title-bar" role="note">Holiday Packages<span class="sep">·</span>Flights<span class="sep">·</span>Visa Help<span class="sep">·</span>Travel Kits</div>
+      <nav class="title-bar" aria-label="Quick links"><a href="#packages">Holiday Packages</a><span class="sep">·</span><a href="/flights">Flights</a><span class="sep">·</span><a href="#services">Visa Help</a><span class="sep">·</span><a href="#kits">Travel Kits</a><span class="sep">·</span><a href="#about-shenick">About</a></nav>
       <div class="wrap nav-row">
         <nav aria-label="Main">
           <a href="/flights">Flights</a>
@@ -539,6 +558,7 @@
           <a href="#services">More Services</a>
           <a href="#plan">Plan My Trip</a>
           <a href="#faq">FAQ</a>
+          <a href="#about-shenick">About</a>
         </nav>
         <a class="btn btn-wa btn-sm" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20trip." target="_blank" rel="noopener">WhatsApp Us</a>
       </div>
@@ -687,7 +707,7 @@
         <div class="wrap">
           <div class="sec-head">
             <h2>Travel Kits — ₹999 per country</h2>
-            <p>Each kit is a complete PDF guide for one country, written for Indian travellers. Order on WhatsApp, pay by UPI, and the PDF comes to your phone — ready to plan from the same evening.</p>
+            <p>Each kit is a complete PDF guide for one country, written for Indian travellers. Order on WhatsApp, pay by UPI, and the PDF comes to your phone — ready to plan from the same evening. ₹999 is the full price — no GST or anything else added on top.</p>
           </div>
 
           <div class="kit-grid">
@@ -893,6 +913,21 @@
       </section>
 
       <!-- ================= FROM SHENICK ================= -->
+      <section class="block price-plain" id="prices" aria-labelledby="prices-heading">
+        <div class="wrap">
+          <div class="sec-head">
+            <h2 id="prices-heading">Prices, in plain words</h2>
+            <p>Every price on this page is the net price — the full amount you pay. <strong>No GST, no TCS, nothing added later.</strong></p>
+          </div>
+          <ul class="price-plain-list">
+            <li><strong>Travel kits — ₹999 each.</strong> Any 3 for ₹1,999, all 6 for ₹3,999. PDF on WhatsApp after UPI payment.</li>
+            <li><strong>Flight Finder — ₹199</strong> per search.</li>
+            <li><strong>Holiday packages — one flat, all-inclusive price</strong> in your quote, land costs broken down line by line. Airfares are live and can change until ticketed.</li>
+            <li><strong>Visa help — priced per country</strong> on WhatsApp. No hidden fees.</li>
+          </ul>
+        </div>
+      </section>
+
       <section class="block" id="about-shenick">
         <div class="wrap">
           <div class="from-shenick">
@@ -960,7 +995,7 @@
         <div class="wrap">
           <div class="sec-head">
             <h2>More ways we can help</h2>
-            <p>Small, fixed-price services — order any of them on WhatsApp, the same way as the kits.</p>
+            <p>Order any of these on WhatsApp, the same way as the kits.</p>
           </div>
           <div class="svc-grid">
             <div class="svc">
@@ -975,6 +1010,12 @@
               <div class="svc-price">Ask on WhatsApp <small>priced per country</small></div>
               <p class="svc-note"><strong>Last verified: 14 November 2026.</strong> Visa rules change often — before you apply, please check the latest rules on the official government website for your destination (our kits link only to official sites).</p>
               <a class="btn btn-wa" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20need%20visa%20help.%20Country%3A%20%20%7C%20Travel%20month%3A%20" target="_blank" rel="noopener">Ask about a visa</a>
+            </div>
+            <div class="svc">
+              <h3>Hotels</h3>
+              <p>Stays are part of your holiday package. Tell us the city and your dates — we pick stays that fit your budget, near the food and places you want, and include them in your quote.</p>
+              <div class="svc-price">In your package quote <small>no separate fee</small></div>
+              <a class="btn btn-wa" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20need%20hotels%20for%20my%20trip.%20City%3A%20%20%7C%20Dates%3A%20%20%7C%20People%3A%20" target="_blank" rel="noopener">Ask about hotels</a>
             </div>
             <div class="svc">
               <h3>RTI &amp; complaint drafts</h3>

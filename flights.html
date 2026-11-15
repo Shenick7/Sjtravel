@@ -64,15 +64,17 @@
 
       /* ---------- Header / Masthead ---------- */
       header.site {
-        background: var(--bg);
+        background: var(--accent-soft);
         border-bottom: 1px solid var(--line);
       }
       .masthead {
         text-align: center;
-        padding: 76px 24px 64px;
+        padding: 34px 24px 28px;
       }
-      @media (min-width: 860px) { .masthead { padding: 96px 24px 76px; } }
-      .brand { text-decoration: none; color: var(--ink); display: block; }
+      @media (min-width: 860px) { .masthead { padding: 56px 24px 44px; } }
+      .brand { text-decoration: none; color: var(--ink); display: block; -webkit-tap-highlight-color: transparent; transition: transform 0.25s ease; }
+      .brand:active { transform: scale(0.98); }
+      .brand:active .bname { text-shadow: 0 0 26px rgba(212, 175, 55, 0.6); }
       .brand .bname {
         font-family: "Cormorant Garamond", "Newsreader", Georgia, serif; font-weight: 300;
         font-size: clamp(1.9rem, 8.6vw, 5.25rem);
@@ -91,6 +93,7 @@
         font-size: 0.78rem; font-weight: 700; letter-spacing: 0.22em;
         text-transform: uppercase; color: var(--muted);
       }
+      .brand .bnote { display: block; margin-top: 8px; font-size: 0.82rem; font-weight: 700; color: var(--muted); letter-spacing: 0.02em; }
       .brand .bsub b { color: var(--accent); font-weight: 800; }
       .brand .bsub .dot { color: var(--accent); margin: 0 8px; }
       .nav-row {
@@ -125,8 +128,10 @@
         text-align: center;
         padding: 13px 16px;
         font-size: 0.92rem; font-weight: 700; letter-spacing: 0.06em;
-        line-height: 1.4; text-transform: uppercase;
-      }
+        line-height: 1.4; text-transform: uppercase; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+      .title-bar::-webkit-scrollbar { display: none; }
+      .title-bar a { color: #fff; text-decoration: none; }
+      .title-bar a:active { opacity: 0.7; }
       .title-bar .sep { opacity: 0.55; margin: 0 10px; font-weight: 400; }
 
       /* ---------- Food note (small, on request) ---------- */
@@ -480,6 +485,12 @@
       .route-card .btn { margin-top: auto; align-self: flex-start; }
       @media (max-width: 360px) { .cal-grid { gap: 5px; } .cal-day { padding: 8px 5px; min-height: 56px; } }
 
+
+      /* ---------- Mobile tightening (tester feedback, Nov 2026) ---------- */
+      @media (max-width: 640px) {
+        section.block { padding-top: 56px; }
+        .title-bar { font-size: 0.85rem; letter-spacing: 0.04em; }
+      }
     </style>
   </head>
   <body>
@@ -489,9 +500,10 @@
           <span class="bname">SJ Tours and Travels</span>
           <span class="btag">Journeys Made Simple.</span>
           <span class="bsub"><b>sjtravel.in</b></span>
+          <span class="bnote">No S at the end — sjtravels.in is a different company</span>
         </a>
       </div>
-      <div class="title-bar" role="note">Holiday Packages<span class="sep">·</span>Flights<span class="sep">·</span>Visa Help<span class="sep">·</span>Travel Kits</div>
+      <nav class="title-bar" aria-label="Quick links"><a href="/#packages">Holiday Packages</a><span class="sep">·</span><a href="/flights">Flights</a><span class="sep">·</span><a href="/#services">Visa Help</a><span class="sep">·</span><a href="/#kits">Travel Kits</a><span class="sep">·</span><a href="/#about-shenick">About</a></nav>
       <div class="wrap nav-row">
         <nav aria-label="Main">
           <a href="/flights">Flights</a>
@@ -501,6 +513,7 @@
           <a href="/#services">More Services</a>
           <a href="/#plan">Plan My Trip</a>
           <a href="/#faq">FAQ</a>
+          <a href="/#about-shenick">About</a>
         </nav>
         <a class="btn btn-wa btn-sm" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20trip." target="_blank" rel="noopener">WhatsApp Us</a>
       </div>
