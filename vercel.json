@@ -1,1 +1,60 @@
-{"rewrites":[{"destination":"/flights.html","source":"/flights"}]}
+{
+  "rewrites": [
+    {
+      "destination": "/flights.html",
+      "source": "/flights"
+    },
+    {
+      "destination": "/dubai-travel-kit.html",
+      "source": "/dubai-travel-kit"
+    },
+    {
+      "destination": "/thailand-travel-kit.html",
+      "source": "/thailand-travel-kit"
+    },
+    {
+      "destination": "/singapore-travel-kit.html",
+      "source": "/singapore-travel-kit"
+    },
+    {
+      "destination": "/malaysia-travel-kit.html",
+      "source": "/malaysia-travel-kit"
+    },
+    {
+      "destination": "/sri-lanka-travel-kit.html",
+      "source": "/sri-lanka-travel-kit"
+    },
+    {
+      "destination": "/vietnam-travel-kit.html",
+      "source": "/vietnam-travel-kit"
+    },
+    {
+      "destination": "/holiday-packages.html",
+      "source": "/holiday-packages"
+    },
+    {
+      "destination": "/visa-help.html",
+      "source": "/visa-help"
+    },
+    {
+      "destination": "/flight-finder.html",
+      "source": "/flight-finder"
+    },
+    {
+      "destination": "/about.html",
+      "source": "/about"
+    },
+    {
+      "destination": "/privacy.html",
+      "source": "/privacy"
+    },
+    {
+      "destination": "/terms.html",
+      "source": "/terms"
+    },
+    {
+      "destination": "/cancellation.html",
+      "source": "/cancellation"
+    }
+  ]
+}
