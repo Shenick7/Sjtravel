@@ -1098,7 +1098,7 @@
         /* Step 4 — save every enquiry to a Google Sheet first, then open WhatsApp.
            Paste the Apps Script web app URL for the "SJ Tours Enquiries" sheet here.
            While this is empty, the forms just open WhatsApp as before. */
-        var ENQUIRY_SHEET_URL = "";
+        var ENQUIRY_SHEET_URL = "https://script.google.com/macros/s/AKfycbymqupIMIaqo7pJl2pEGQGilPqHSSdPfrhvD5qxBAnCB6B1VS36Xgs-n08xV1orAbuzzQ/exec";
         function validPhone(v) {
           var digits = String(v || "").replace(/[\s\-()]/g, "");
           return /^\+?\d{10,15}$/.test(digits);
