@@ -152,6 +152,20 @@
       .title-bar a:active { opacity: 0.7; }
       .title-bar a.home-link { display: inline-flex; align-items: center; }
       .title-bar .sep { opacity: 0.55; margin: 0 10px; font-weight: 400; }
+      /* Hamburger menu: the title bar becomes a bar with a menu button under 1100px. */
+      .menu-toggle { display: none; background: none; border: 0; color: #fff; font-size: 1.35rem; line-height: 1; cursor: pointer; padding: 4px 10px; }
+      .mobile-menu { background: var(--accent); }
+      .mobile-menu[hidden] { display: none; }
+      .mobile-menu a { display: block; color: #fff; text-decoration: none; font-weight: 700; padding: 13px 20px; border-top: 1px solid rgba(255, 255, 255, 0.18); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.05em; }
+      .mobile-menu a:hover, .mobile-menu a:active { background: var(--accent-dark); }
+      @media (max-width: 1099px) {
+        .title-bar { display: flex; align-items: center; justify-content: space-between; overflow: visible; text-align: left; }
+        .title-bar a:not(.home-link), .title-bar .sep { display: none; }
+        .menu-toggle { display: inline-flex; align-items: center; }
+      }
+      @media (min-width: 1100px) {
+        .menu-toggle, .mobile-menu { display: none !important; }
+      }
 
       /* ---------- Food note (small, on request) ---------- */
       .food-note {
@@ -382,6 +396,13 @@
         display: inline-flex; align-items: center; gap: 8px; min-height: 3rem;
       }
       .wa-float:hover { background: var(--accent-dark); }
+      /* WhatsApp float: icon-only on small screens; lift while a form field is focused. */
+      .wa-float svg { width: 20px; height: 20px; flex: 0 0 auto; }
+      @media (max-width: 720px) {
+        .wa-float span { display: none; }
+        .wa-float { padding: 0; width: 52px; height: 52px; border-radius: 50%; justify-content: center; }
+      }
+      body.field-focused .wa-float { bottom: 88px; transition: bottom 0.25s ease, background 0.25s ease, transform 0.3s ease; }
       /* On phones a fixed button can cover the hero buttons, so there it
          sits in the normal flow at the foot of the page instead. */
       @media (max-width: 640px) {
@@ -484,6 +505,8 @@
       .cal-day { border: 1px solid var(--line); border-radius: 10px; padding: 10px 8px; min-height: 64px; text-align: left; background: #fff; font: inherit; cursor: pointer; }
       .cal-day .dnum { display: block; font-weight: 800; font-size: 0.95rem; }
       .cal-day .dprice { display: block; font-size: 0.82rem; color: var(--accent); font-weight: 700; margin-top: 2px; }
+      .cal-day .dret { display: block; font-size: 0.72rem; color: var(--muted); margin-top: 1px; }
+      .cal-day.cheapest .dret { color: #fff; }
       .cal-day .dnone { display: block; font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
       .cal-day:hover { border-color: var(--accent); }
       .cal-day.cheapest { background: var(--accent); border-color: var(--accent); color: #fff; }
@@ -526,7 +549,18 @@
           <span class="bnote">No S at the end — sjtravels.in is a different company</span>
         </a>
       </div>
-      <nav class="title-bar" aria-label="Quick links"><a href="#top" class="home-link" aria-label="Home"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></a><span class="sep">·</span><a href="/#packages">Holiday Packages</a><span class="sep">·</span><a href="/flights">Flights</a><span class="sep">·</span><a href="/#services">Visa Help</a><span class="sep">·</span><a href="/#kits">Travel Kits</a><span class="sep">·</span><span class="sep">·</span><a href="/#bundles">Bundles</a><span class="sep">·</span><a href="/#plan">Plan My Trip</a><span class="sep">·</span><a href="/#faq">FAQ</a><span class="sep">·</span><a href="/#about-shenick">About</a><span class="sep">·</span><a class="wa-link" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20trip." target="_blank" rel="noopener">WhatsApp</a></nav>
+      <nav class="title-bar" aria-label="Quick links"><a href="/" class="home-link" aria-label="Home"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></a><span class="sep">·</span><a href="/#packages">Holiday Packages</a><span class="sep">·</span><a href="/flights">Flights</a><span class="sep">·</span><a href="/#services">Visa Help</a><span class="sep">·</span><a href="/#kits">Travel Kits</a><span class="sep">·</span><a href="/#bundles">Bundles</a><span class="sep">·</span><a href="/#plan">Plan My Trip</a><span class="sep">·</span><a href="/#faq">FAQ</a><span class="sep">·</span><a href="/#about-shenick">About</a><span class="sep">·</span><a class="wa-link" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20trip." target="_blank" rel="noopener">WhatsApp</a><button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menu">☰</button></nav>
+      <div class="mobile-menu" id="mobileMenu" hidden>
+        <a href="/#packages">Holiday Packages</a>
+        <a href="/flights">Flights</a>
+        <a href="/#services">Visa Help</a>
+        <a href="/#kits">Travel Kits</a>
+        <a href="/#bundles">Bundles</a>
+        <a href="/#plan">Plan My Trip</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/#about-shenick">About</a>
+        <a href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20trip." target="_blank" rel="noopener">WhatsApp</a>
+      </div>
       <div class="wrap nav-row">
         <nav aria-label="Main">
           <a href="/flights">Flights</a>
@@ -584,7 +618,7 @@
               </div>
               <div class="f-field">
                 <label for="infants">Infants (under 2 yrs)</label>
-                <select id="infants"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select>
+                <select id="infants"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select>
               </div>
               <div class="f-field">
                 <label for="cabin">Cabin</label>
@@ -640,7 +674,7 @@
               <button class="btn btn-accent" type="button" id="calBtn">Show cheapest dates</button>
               <p class="cal-status" id="calStatus">Loading recently found fares&hellip;</p>
               <div class="cal-grid" id="calGrid"></div>
-              <p class="cal-note">Prices found in the last 48 hours. Final fare is shown live before you pay. Fares shown are per adult, one-way, in INR, from recently found fares — they are not guaranteed prices.</p>
+              <p class="cal-note">Prices found in the last 48 hours. Final fare is shown live before you pay. Fares shown are per adult, one-way, in INR, from recently found fares — they are not guaranteed prices. A fare marked ‘return’ is a return fare.</p>
             </div>
           </section>
 
@@ -654,49 +688,49 @@
             <h3>Chennai &rarr; Dubai</h3>
             <p class="route-codes">MAA &rarr; DXB</p>
             <p class="route-price" data-price>Checking fares&hellip;</p>
-            <a class="btn btn-accent btn-sm route-go" href="https://flights.sjtravel.in/?params=MAADXB1" target="_blank" rel="noopener">Search this route</a>
+            <a class="btn btn-accent btn-sm route-go" href="https://flights.sjtravel.in/?flightSearch=MAA1611DXB1&amp;marker=600744" target="_blank" rel="noopener">Search this route</a>
           </article>
           <article class="route-card" data-origin="MAA" data-destination="SIN">
             <h3>Chennai &rarr; Singapore</h3>
             <p class="route-codes">MAA &rarr; SIN</p>
             <p class="route-price" data-price>Checking fares&hellip;</p>
-            <a class="btn btn-accent btn-sm route-go" href="https://flights.sjtravel.in/?params=MAASIN1" target="_blank" rel="noopener">Search this route</a>
+            <a class="btn btn-accent btn-sm route-go" href="https://flights.sjtravel.in/?flightSearch=MAA1611SIN1&amp;marker=600744" target="_blank" rel="noopener">Search this route</a>
           </article>
           <article class="route-card" data-origin="MAA" data-destination="CMB">
             <h3>Chennai &rarr; Colombo</h3>
             <p class="route-codes">MAA &rarr; CMB</p>
             <p class="route-price" data-price>Checking fares&hellip;</p>
-            <a class="btn btn-accent btn-sm route-go" href="https://flights.sjtravel.in/?params=MAACMB1" target="_blank" rel="noopener">Search this route</a>
+            <a class="btn btn-accent btn-sm route-go" href="https://flights.sjtravel.in/?flightSearch=MAA1611CMB1&amp;marker=600744" target="_blank" rel="noopener">Search this route</a>
           </article>
           <article class="route-card" data-origin="BLR" data-destination="BKK">
             <h3>Bengaluru &rarr; Bangkok</h3>
             <p class="route-codes">BLR &rarr; BKK</p>
             <p class="route-price" data-price>Checking fares&hellip;</p>
-            <a class="btn btn-accent btn-sm route-go" href="https://flights.sjtravel.in/?params=BLRBKK1" target="_blank" rel="noopener">Search this route</a>
+            <a class="btn btn-accent btn-sm route-go" href="https://flights.sjtravel.in/?flightSearch=BLR1611BKK1&amp;marker=600744" target="_blank" rel="noopener">Search this route</a>
           </article>
           <article class="route-card" data-origin="MAA" data-destination="KUL">
             <h3>Chennai &rarr; Kuala Lumpur</h3>
             <p class="route-codes">MAA &rarr; KUL</p>
             <p class="route-price" data-price>Checking fares&hellip;</p>
-            <a class="btn btn-accent btn-sm route-go" href="https://flights.sjtravel.in/?params=MAAKUL1" target="_blank" rel="noopener">Search this route</a>
+            <a class="btn btn-accent btn-sm route-go" href="https://flights.sjtravel.in/?flightSearch=MAA1611KUL1&amp;marker=600744" target="_blank" rel="noopener">Search this route</a>
           </article>
           <article class="route-card" data-origin="HYD" data-destination="DXB">
             <h3>Hyderabad &rarr; Dubai</h3>
             <p class="route-codes">HYD &rarr; DXB</p>
             <p class="route-price" data-price>Checking fares&hellip;</p>
-            <a class="btn btn-accent btn-sm route-go" href="https://flights.sjtravel.in/?params=HYDDXB1" target="_blank" rel="noopener">Search this route</a>
+            <a class="btn btn-accent btn-sm route-go" href="https://flights.sjtravel.in/?flightSearch=HYD1611DXB1&amp;marker=600744" target="_blank" rel="noopener">Search this route</a>
           </article>
           <article class="route-card" data-origin="BLR" data-destination="GOI">
             <h3>Bengaluru &rarr; Goa</h3>
             <p class="route-codes">BLR &rarr; GOI</p>
             <p class="route-price" data-price>Checking fares&hellip;</p>
-            <a class="btn btn-accent btn-sm route-go" href="https://flights.sjtravel.in/?params=BLRGOI1" target="_blank" rel="noopener">Search this route</a>
+            <a class="btn btn-accent btn-sm route-go" href="https://flights.sjtravel.in/?flightSearch=BLR1611GOI1&amp;marker=600744" target="_blank" rel="noopener">Search this route</a>
           </article>
           <article class="route-card" data-origin="MAA" data-destination="DEL">
             <h3>Chennai &rarr; Delhi</h3>
             <p class="route-codes">MAA &rarr; DEL</p>
             <p class="route-price" data-price>Checking fares&hellip;</p>
-            <a class="btn btn-accent btn-sm route-go" href="https://flights.sjtravel.in/?params=MAADEL1" target="_blank" rel="noopener">Search this route</a>
+            <a class="btn btn-accent btn-sm route-go" href="https://flights.sjtravel.in/?flightSearch=MAA1611DEL1&amp;marker=600744" target="_blank" rel="noopener">Search this route</a>
           </article>
             </div>
             <p class="cal-note">If a route shows &ldquo;Check live fares&rdquo;, no recently found fare was available for it — the live search will still show today&rsquo;s fares. Final fare is shown live before you pay.</p>
@@ -744,293 +778,20 @@
       </div>
     </footer>
 
-    <a class="wa-float" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20need%20help%20with%20a%20flight." target="_blank" rel="noopener">WhatsApp Us</a>
+    <a class="wa-float" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20need%20help%20with%20a%20flight." target="_blank" rel="noopener" aria-label="Chat with SJ Tours on WhatsApp"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg><span>WhatsApp Us</span></a>
 
+    <script src="assets/flight-search.js"></script>
+    <script src="assets/site.js"></script>
     <script>
       (function () {
         "use strict";
-        var WL = "https://flights.sjtravel.in";
-        var MARKER = "600744";
-        var WA = "https://wa.me/919566977211?text=" + encodeURIComponent("Hi SJ Tours, I need help booking a flight / a group fare / Jain meals on a flight.");
-        var cabinLetter = { economy: "", premium: "w", business: "c", first: "f" };
-        function ddmm(iso) { var p = iso.split("-"); return p[2] + p[1]; }
-        function buildParams(o, d, dep, ret, cabin, ad, ch, inf) {
-          var s = o + (dep ? ddmm(dep) : "") + d + (ret ? ddmm(ret) : "");
-          s += cabinLetter[cabin] || "";
-          s += String(ad);
-          if (ch) s += String(ch);
-          if (inf) s += String(inf);
-          return s;
-        }
-        function wlSearch(o, d, dep, ret, cabin, ad, ch, inf) {
-          return WL + "/flights/" + buildParams(o, d, dep, ret, cabin, ad, ch, inf) + "?marker=" + MARKER;
-        }
-        function wlForm(o, d) {
-          return WL + "/?params=" + o + d + "1&marker=" + MARKER;
-        }
-        function inr(n) { return "\u20B9" + Number(n).toLocaleString("en-IN"); }
-
-        /* ---- Airport autocomplete (custom dropdown; native datalist does not open on mobile Chrome/Android) ---- */
-        var AIRPORTS = [
-          ["MAA", "Chennai"], ["BLR", "Bengaluru"], ["HYD", "Hyderabad"],
-          ["BOM", "Mumbai"], ["DEL", "Delhi"], ["COK", "Kochi"],
-          ["TRZ", "Tiruchirappalli"], ["IXM", "Madurai"], ["DXB", "Dubai"],
-          ["SIN", "Singapore"], ["CMB", "Colombo"], ["BKK", "Bangkok"],
-          ["KUL", "Kuala Lumpur"], ["GOI", "Goa"], ["LHR", "London"],
-          ["JFK", "New York"],
-          /* The rest of India's main domestic airports, so typing a city
-             name works from this local list alone even when the worldwide
-             lookup is slow or fails. Tamil Nadu & the South first, then
-             Rajasthan, Gujarat, Uttar Pradesh and the rest of India. */
-          ["CJB", "Coimbatore"], ["TIR", "Tirupati"], ["TCR", "Tuticorin"],
-          ["SXV", "Salem"], ["PNY", "Pondicherry"],
-          ["TRV", "Thiruvananthapuram"], ["CCJ", "Kozhikode"],
-          ["CNN", "Kannur"], ["IXE", "Mangaluru"],
-          ["VGA", "Vijayawada"], ["VTZ", "Visakhapatnam"],
-          ["RJA", "Rajahmundry"], ["IXZ", "Port Blair"],
-          ["JAI", "Jaipur"], ["JDH", "Jodhpur"], ["UDR", "Udaipur"],
-          ["BKB", "Bikaner"], ["JSA", "Jaisalmer"], ["KTU", "Kota"],
-          ["KQH", "Kishangarh (Ajmer)"],
-          ["AMD", "Ahmedabad"], ["STV", "Surat"], ["BDQ", "Vadodara"],
-          ["HSR", "Rajkot"], ["JGA", "Jamnagar"], ["BHJ", "Bhuj"],
-          ["BHU", "Bhavnagar"], ["PBD", "Porbandar"], ["DIU", "Diu"],
-          ["LKO", "Lucknow"], ["VNS", "Varanasi"], ["IXD", "Prayagraj"],
-          ["AGR", "Agra"], ["KNU", "Kanpur"], ["GOR", "Gorakhpur"],
-          ["AYJ", "Ayodhya"], ["GAY", "Gaya"], ["KBK", "Kushinagar"],
-          ["BEK", "Bareilly"],
-          ["CCU", "Kolkata"], ["PNQ", "Pune"], ["NAG", "Nagpur"],
-          ["IDR", "Indore"], ["BHO", "Bhopal"], ["RPR", "Raipur"],
-          ["PAT", "Patna"], ["IXR", "Ranchi"], ["BBI", "Bhubaneswar"],
-          ["GAU", "Guwahati"], ["IXB", "Bagdogra"], ["IXC", "Chandigarh"],
-          ["ATQ", "Amritsar"], ["SXR", "Srinagar"], ["IXJ", "Jammu"],
-          ["IXL", "Leh"], ["DED", "Dehradun"], ["IXA", "Agartala"],
-          ["IMF", "Imphal"], ["SAG", "Shirdi"], ["IXU", "Aurangabad"],
-          ["GOX", "Goa (Mopa)"],
-          /* Popular international airports beyond the first group above,
-             so they also appear in the quick list without the lookup. */
-          ["DOH", "Doha"], ["AUH", "Abu Dhabi"], ["MCT", "Muscat"],
-          ["MLE", "Malé (Maldives)"], ["KTM", "Kathmandu"],
-          ["DAC", "Dhaka"], ["DPS", "Bali (Denpasar)"],
-          ["CGK", "Jakarta"], ["HKG", "Hong Kong"],
-          ["NRT", "Tokyo (Narita)"], ["ICN", "Seoul (Incheon)"],
-          ["CDG", "Paris"], ["YYZ", "Toronto"], ["SYD", "Sydney"],
-          ["MEL", "Melbourne"]
-        ];
-        var CITY_CODES = {
-          "CHENNAI": "MAA",
-          "BENGALURU": "BLR", "BANGALORE": "BLR",
-          "HYDERABAD": "HYD",
-          "MUMBAI": "BOM",
-          "DELHI": "DEL", "NEW DELHI": "DEL",
-          "KOCHI": "COK", "COCHIN": "COK",
-          "TIRUCHIRAPPALLI": "TRZ", "TRICHY": "TRZ",
-          "MADURAI": "IXM",
-          "DUBAI": "DXB",
-          "SINGAPORE": "SIN",
-          "COLOMBO": "CMB",
-          "BANGKOK": "BKK",
-          "KUALA LUMPUR": "KUL",
-          "GOA": "GOI",
-          "LONDON": "LHR",
-          "NEW YORK": "JFK",
-          "COIMBATORE": "CJB",
-          "TIRUPATI": "TIR",
-          "TUTICORIN": "TCR", "THOOTHUKUDI": "TCR",
-          "SALEM": "SXV",
-          "PONDICHERRY": "PNY", "PUDUCHERRY": "PNY",
-          "THIRUVANANTHAPURAM": "TRV", "TRIVANDRUM": "TRV",
-          "KOZHIKODE": "CCJ", "CALICUT": "CCJ",
-          "KANNUR": "CNN",
-          "MANGALURU": "IXE", "MANGALORE": "IXE",
-          "VIJAYAWADA": "VGA",
-          "VISAKHAPATNAM": "VTZ", "VIZAG": "VTZ",
-          "RAJAHMUNDRY": "RJA",
-          "PORT BLAIR": "IXZ",
-          "JAIPUR": "JAI",
-          "JODHPUR": "JDH",
-          "UDAIPUR": "UDR",
-          "BIKANER": "BKB",
-          "JAISALMER": "JSA",
-          "KOTA": "KTU",
-          "KISHANGARH": "KQH", "AJMER": "KQH",
-          "AHMEDABAD": "AMD",
-          "SURAT": "STV",
-          "VADODARA": "BDQ", "BARODA": "BDQ",
-          "RAJKOT": "HSR",
-          "JAMNAGAR": "JGA",
-          "BHUJ": "BHJ",
-          "BHAVNAGAR": "BHU",
-          "PORBANDAR": "PBD",
-          "DIU": "DIU",
-          "LUCKNOW": "LKO",
-          "VARANASI": "VNS",
-          "PRAYAGRAJ": "IXD", "ALLAHABAD": "IXD",
-          "AGRA": "AGR",
-          "KANPUR": "KNU",
-          "GORAKHPUR": "GOR",
-          "AYODHYA": "AYJ",
-          "GAYA": "GAY",
-          "KUSHINAGAR": "KBK",
-          "BAREILLY": "BEK",
-          "KOLKATA": "CCU",
-          "PUNE": "PNQ",
-          "NAGPUR": "NAG",
-          "INDORE": "IDR",
-          "BHOPAL": "BHO",
-          "RAIPUR": "RPR",
-          "PATNA": "PAT",
-          "RANCHI": "IXR",
-          "BHUBANESWAR": "BBI",
-          "GUWAHATI": "GAU",
-          "BAGDOGRA": "IXB", "SILIGURI": "IXB",
-          "CHANDIGARH": "IXC",
-          "AMRITSAR": "ATQ",
-          "SRINAGAR": "SXR",
-          "JAMMU": "IXJ",
-          "LEH": "IXL",
-          "DEHRADUN": "DED",
-          "AGARTALA": "IXA",
-          "IMPHAL": "IMF",
-          "SHIRDI": "SAG",
-          "AURANGABAD": "IXU",
-          "GOA (MOPA)": "GOX", "MOPA": "GOX",
-          "DOHA": "DOH",
-          "ABU DHABI": "AUH",
-          "MUSCAT": "MCT",
-          "MALE": "MLE", "MALDIVES": "MLE",
-          "KATHMANDU": "KTM",
-          "DHAKA": "DAC",
-          "BALI": "DPS", "DENPASAR": "DPS", "BALI DENPASAR": "DPS",
-          "JAKARTA": "CGK",
-          "HONG KONG": "HKG",
-          "TOKYO": "NRT",
-          "SEOUL": "ICN",
-          "PARIS": "CDG",
-          "TORONTO": "YYZ",
-          "SYDNEY": "SYD",
-          "MELBOURNE": "MEL"
-        };
-        var REMOTE_CODES = {}; // city/airport name -> code, filled from /api/airports
-        function codeFrom(value) {
-          if (!value) return "";
-          var v = value.trim().toUpperCase();
-          if (!v) return "";
-          var paren = v.match(/\(([A-Z]{3})\)/);
-          if (paren) return paren[1];
-          var lead = v.match(/^([A-Z]{3})(?![A-Z])/);
-          if (lead) return lead[1];
-          if (CITY_CODES[v]) return CITY_CODES[v];
-          if (REMOTE_CODES[v]) return REMOTE_CODES[v];
-          return "";
-        }
-        function setupAutocomplete(input, listEl) {
-          if (!input || !listEl) return;
-          var active = -1, current = [], timer = null, seq = 0;
-          function toObj(a) { return { code: a[0], name: a[1], country: "" }; }
-          function localMatches(q) {
-            q = (q || "").trim().toLowerCase();
-            if (!q) return AIRPORTS.slice().map(toObj);
-            return AIRPORTS.filter(function (a) {
-              return a[0].toLowerCase().indexOf(q) !== -1 || a[1].toLowerCase().indexOf(q) !== -1;
-            }).map(toObj);
-          }
-          function close() { listEl.hidden = true; input.setAttribute("aria-expanded", "false"); active = -1; }
-          function highlight(i) {
-            var kids = listEl.querySelectorAll(".ac-item");
-            for (var k = 0; k < kids.length; k++) kids[k].classList.remove("active");
-            active = i;
-            if (i >= 0 && kids[i]) { kids[i].classList.add("active"); if (kids[i].scrollIntoView) kids[i].scrollIntoView({ block: "nearest" }); }
-          }
-          function pick(i) { var a = current[i]; if (!a) return; input.value = a.code + " \u2013 " + a.name; close(); }
-          function render(items) {
-            current = items;
-            listEl.innerHTML = "";
-            if (!current.length) {
-              var empty = document.createElement("li"); empty.className = "ac-empty";
-              empty.textContent = "No airport matches \u2014 try the city name or the 3-letter code, like MAA.";
-              listEl.appendChild(empty);
-            } else {
-              current.forEach(function (a, i) {
-                var li = document.createElement("li"); li.className = "ac-item"; li.setAttribute("role", "option");
-                var code = document.createElement("b"); code.textContent = a.code;
-                var city = document.createElement("span");
-                city.textContent = a.name + (a.country ? ", " + a.country : "");
-                li.appendChild(code); li.appendChild(city);
-                li.addEventListener("pointerdown", function (e) { e.preventDefault(); pick(i); });
-                listEl.appendChild(li);
-              });
-            }
-            active = -1; listEl.hidden = false; input.setAttribute("aria-expanded", "true");
-          }
-          function fetchWorldwide(q, mySeq) {
-            fetch("/api/airports?term=" + encodeURIComponent(q))
-              .then(function (r) { return r.json(); })
-              .then(function (data) {
-                if (mySeq !== seq || !data || !data.ok || !Array.isArray(data.results) || !data.results.length) return;
-                data.results.forEach(function (r) {
-                  if (r.name) REMOTE_CODES[r.name.toUpperCase()] = r.code;
-                  if (r.city) REMOTE_CODES[r.city.toUpperCase()] = r.code;
-                });
-                render(data.results);
-              })
-              .catch(function () { /* keep the local list already shown */ });
-          }
-          function open() {
-            var q = (input.value || "").trim();
-            render(localMatches(q)); // instant local results first, never empty
-            if (q.length < 2) return;
-            if (timer) clearTimeout(timer);
-            var mySeq = ++seq;
-            timer = setTimeout(function () { fetchWorldwide(q, mySeq); }, 300);
-          }
-          input.addEventListener("focus", open);
-          input.addEventListener("input", open);
-          input.addEventListener("keydown", function (e) {
-            if (e.key === "Escape") { close(); return; }
-            if (listEl.hidden) { if (e.key === "ArrowDown") { e.preventDefault(); open(); } return; }
-            if (e.key === "ArrowDown") { e.preventDefault(); highlight(Math.min(active + 1, current.length - 1)); }
-            else if (e.key === "ArrowUp") { e.preventDefault(); highlight(Math.max(active - 1, -1)); }
-            else if (e.key === "Enter" && active >= 0) { e.preventDefault(); pick(active); }
-          });
-          document.addEventListener("pointerdown", function (e) {
-            if (!listEl.hidden && input.parentNode && !input.parentNode.contains(e.target)) close();
-          });
-        }
-        setupAutocomplete(document.getElementById("fromCode"), document.getElementById("fromCode-list"));
-        setupAutocomplete(document.getElementById("toCode"), document.getElementById("toCode-list"));
-
-        /* ---- Search form ---- */
-        var form = document.getElementById("flightSearch");
-        var msg = document.getElementById("flightMsg");
-        var retField = document.getElementById("retField");
-        var retInput = document.getElementById("returnDate");
-        form.addEventListener("change", function (e) {
-          if (e.target.name === "trip") {
-            var oneway = form.trip.value === "oneway";
-            retField.style.display = oneway ? "none" : "";
-            retInput.required = !oneway;
-            if (oneway) retInput.value = "";
-          }
-        });
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-          var o = codeFrom(document.getElementById("fromCode").value);
-          var d = codeFrom(document.getElementById("toCode").value);
-          var dep = document.getElementById("departDate").value;
-          var ret = form.trip.value === "return" ? retInput.value : "";
-          var ad = parseInt(document.getElementById("adults").value, 10) || 1;
-          var ch = parseInt(document.getElementById("children").value, 10) || 0;
-          var inf = parseInt(document.getElementById("infants").value, 10) || 0;
-          var cabin = document.getElementById("cabin").value;
-          function fail(t) { msg.textContent = t; msg.hidden = false; }
-          msg.hidden = true;
-          if (!/^[A-Z]{3}$/.test(o) || !/^[A-Z]{3}$/.test(d)) return fail("Please pick a From and a To airport (3-letter code, e.g. MAA, DXB).");
-          if (o === d) return fail("From and To cannot be the same airport.");
-          if (!dep) return fail("Please choose a depart date.");
-          if (form.trip.value === "return" && !ret) return fail("Please choose a return date, or pick One-way.");
-          if (ret && ret < dep) return fail("Return date must be after the depart date.");
-          window.open(wlSearch(o, d, dep, ret, cabin, ad, ch, inf), "_blank", "noopener");
-        });
+        /* The flight form and its autocomplete are wired by the shared
+           assets/flight-search.js (same script as the homepage form).
+           This script keeps the cheapest-dates calendar and the popular
+           routes. Both draw from the same cached-fare source
+           (/api/cheapest-dates), so they cannot disagree. */
+        var inr = window.SJFlights.inr;
+        var buildUrl = window.SJFlights.buildUrl;
 
         /* ---- Cheapest dates calendar ---- */
         var calStatus = document.getElementById("calStatus");
@@ -1053,8 +814,9 @@
           var first = new Date(y, m, 1);
           var dim = new Date(y, m + 1, 0).getDate();
           var byDate = {};
-          days.forEach(function (x) { byDate[x.date] = x.price; });
+          days.forEach(function (x) { byDate[x.date] = x; });
           var cheapest = days.length ? Math.min.apply(null, days.map(function (x) { return x.price; })) : null;
+          var today = window.SJFlights.todayIST();
           for (var i = 0; i < first.getDay(); i++) {
             var pad = document.createElement("div"); calGrid.appendChild(pad);
           }
@@ -1065,17 +827,27 @@
               b.type = "button"; b.className = "cal-day";
               var num = document.createElement("span"); num.className = "dnum"; num.textContent = day;
               b.appendChild(num);
-              var price = byDate[iso];
-              if (price != null) {
-                var p = document.createElement("span"); p.className = "dprice"; p.textContent = inr(price);
-                b.appendChild(p);
-                if (price === cheapest) b.classList.add("cheapest");
-                b.addEventListener("click", function () {
-                  window.open(wlSearch(origin, destination, iso, "", "economy", 1, 0, 0), "_blank", "noopener");
-                });
+              var entry = byDate[iso];
+              if (iso < today) {
+                /* Only past dates are disabled. */
+                b.disabled = true;
               } else {
-                var n = document.createElement("span"); n.className = "dnone"; n.textContent = "No fare found";
-                b.appendChild(n); b.disabled = true;
+                if (entry != null) {
+                  var p = document.createElement("span"); p.className = "dprice"; p.textContent = inr(entry.price);
+                  b.appendChild(p);
+                  if (entry.return_at) {
+                    var r = document.createElement("span"); r.className = "dret"; r.textContent = "return";
+                    b.appendChild(r);
+                  }
+                  if (entry.price === cheapest) b.classList.add("cheapest");
+                } else {
+                  /* No cached fare: still tappable, says "Check live". */
+                  var n = document.createElement("span"); n.className = "dnone"; n.textContent = "Check live";
+                  b.appendChild(n);
+                }
+                b.addEventListener("click", function () {
+                  window.open(buildUrl(origin, destination, iso, "", "economy", 1, 0, 0), "_blank", "noopener");
+                });
               }
               calGrid.appendChild(b);
             })(day);
@@ -1096,13 +868,16 @@
                 calStatus.textContent = "Live fares are shown on our flight search (flights.sjtravel.in). Open the search above to see today's fares for this route.";
                 return;
               }
-              if (!data.ok || !data.days || !data.days.length) {
-                calStatus.textContent = "No recently found fares for this route and month. Open the search above to see live fares.";
+              /* Days with no cached fare still render and stay tappable. */
+              var days = (data.days && data.days.length) ? data.days : [];
+              if (!days.length) {
+                calStatus.textContent = "No recently found fares for this route and month \u2014 tap any day to check live fares.";
+                renderCalendar([], o, d, month);
                 return;
               }
-              var cheapest = data.days.reduce(function (a, b) { return b.price < a.price ? b : a; });
-              calStatus.textContent = "Cheapest day this month: " + cheapest.date + " at " + inr(cheapest.price) + " (recently found, per adult, one-way). Tap a day to search it.";
-              renderCalendar(data.days, o, d, month);
+              var cheapest = days.reduce(function (a, b) { return b.price < a.price ? b : a; });
+              calStatus.textContent = "Cheapest day this month: " + cheapest.date + " at " + inr(cheapest.price) + " (recently found, per adult, " + (cheapest.return_at ? "return fare" : "one-way") + "). Tap a day to search it.";
+              renderCalendar(days, o, d, month);
             })
             .catch(function () {
               calStatus.textContent = "Could not load cached fares just now. Open the search above to see live fares.";
@@ -1115,14 +890,15 @@
           var o = card.getAttribute("data-origin"), d = card.getAttribute("data-destination");
           var priceEl = card.querySelector("[data-price]");
           var go = card.querySelector(".route-go");
-          go.href = wlForm(o, d);
+          /* Same link format as the search form and the calendar, dated today. */
+          go.href = buildUrl(o, d, window.SJFlights.todayIST(), "", "economy", 1, 0, 0);
           fetch("/api/cheapest-dates?mode=cheap&origin=" + o + "&destination=" + d)
             .then(function (r) { return r.json(); })
             .then(function (data) {
               if (data && data.ok && data.price) {
-                priceEl.innerHTML = "from " + inr(data.price) + " <small>recently found, per adult</small>";
+                priceEl.innerHTML = "from " + inr(data.price) + (data.return_at ? " return" : "") + " <small>recently found, per adult" + (data.return_at ? " \u00b7 return fare" : "") + "</small>";
                 if (data.departure_at) {
-                  go.href = wlSearch(o, d, data.departure_at.slice(0, 10), "", "economy", 1, 0, 0);
+                  go.href = buildUrl(o, d, data.departure_at.slice(0, 10), "", "economy", 1, 0, 0);
                 }
               } else {
                 priceEl.innerHTML = "Check live fares";
