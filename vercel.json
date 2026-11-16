@@ -79,6 +79,22 @@
     {
       "destination": "/sri-lanka-entry-steps.html",
       "source": "/sri-lanka-entry-steps"
+    },
+    {
+      "destination": "/read.html",
+      "source": "/read"
+    },
+    {
+      "destination": "/about-shenick-jain.html",
+      "source": "/about/shenick-jain"
+    },
+    {
+      "destination": "/read/best-time-to-visit-thailand-family.html",
+      "source": "/read/best-time-to-visit-thailand-family"
+    },
+    {
+      "destination": "/read/feed.xml",
+      "source": "/read/feed.xml"
     }
   ]
 }

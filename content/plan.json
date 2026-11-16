@@ -1,0 +1,422 @@
+[
+  {
+    "keyword": "best time to visit Dubai with family from Chennai",
+    "intent": "informational",
+    "pillar": "when-to-go",
+    "best_publish_month": "September",
+    "status": "idea"
+  },
+  {
+    "keyword": "best time to visit Singapore with kids from Bengaluru",
+    "intent": "informational",
+    "pillar": "when-to-go",
+    "best_publish_month": "October",
+    "status": "idea"
+  },
+  {
+    "keyword": "best time to visit Malaysia with parents",
+    "intent": "informational",
+    "pillar": "when-to-go",
+    "best_publish_month": "October",
+    "status": "idea"
+  },
+  {
+    "keyword": "best time to visit Sri Lanka from Chennai",
+    "intent": "informational",
+    "pillar": "when-to-go",
+    "best_publish_month": "November",
+    "status": "idea"
+  },
+  {
+    "keyword": "best time to visit Vietnam with family",
+    "intent": "informational",
+    "pillar": "when-to-go",
+    "best_publish_month": "December",
+    "status": "idea"
+  },
+  {
+    "keyword": "Dubai in December with family is it worth it",
+    "intent": "informational",
+    "pillar": "when-to-go",
+    "best_publish_month": "October",
+    "status": "idea"
+  },
+  {
+    "keyword": "Thailand in June with kids is monsoon ok",
+    "intent": "informational",
+    "pillar": "when-to-go",
+    "best_publish_month": "April",
+    "status": "idea"
+  },
+  {
+    "keyword": "Singapore in May with family",
+    "intent": "informational",
+    "pillar": "when-to-go",
+    "best_publish_month": "March",
+    "status": "idea"
+  },
+  {
+    "keyword": "Sri Lanka in August with family",
+    "intent": "informational",
+    "pillar": "when-to-go",
+    "best_publish_month": "June",
+    "status": "idea"
+  },
+  {
+    "keyword": "best time to visit Bali with family from Chennai",
+    "intent": "informational",
+    "pillar": "when-to-go",
+    "best_publish_month": "January",
+    "status": "idea"
+  },
+  {
+    "keyword": "Dubai visa for Indians documents and cost",
+    "intent": "informational",
+    "pillar": "visa-entry",
+    "best_publish_month": "January",
+    "status": "idea"
+  },
+  {
+    "keyword": "Singapore visa for Indian family how to apply",
+    "intent": "informational",
+    "pillar": "visa-entry",
+    "best_publish_month": "February",
+    "status": "idea"
+  },
+  {
+    "keyword": "Malaysia evisa for Indians steps",
+    "intent": "informational",
+    "pillar": "visa-entry",
+    "best_publish_month": "March",
+    "status": "idea"
+  },
+  {
+    "keyword": "Vietnam e-visa for Indians how long it takes",
+    "intent": "informational",
+    "pillar": "visa-entry",
+    "best_publish_month": "April",
+    "status": "idea"
+  },
+  {
+    "keyword": "Thailand TDAC for children do kids need the form",
+    "intent": "informational",
+    "pillar": "visa-entry",
+    "best_publish_month": "May",
+    "status": "idea"
+  },
+  {
+    "keyword": "Dubai transit visa for Indians do you need one",
+    "intent": "informational",
+    "pillar": "visa-entry",
+    "best_publish_month": "June",
+    "status": "idea"
+  },
+  {
+    "keyword": "Thailand visa for senior citizens from India",
+    "intent": "informational",
+    "pillar": "visa-entry",
+    "best_publish_month": "July",
+    "status": "idea"
+  },
+  {
+    "keyword": "Singapore visa rejection reasons for Indians",
+    "intent": "informational",
+    "pillar": "visa-entry",
+    "best_publish_month": "August",
+    "status": "idea"
+  },
+  {
+    "keyword": "Malaysia visa photo requirements for Indians",
+    "intent": "informational",
+    "pillar": "visa-entry",
+    "best_publish_month": "September",
+    "status": "idea"
+  },
+  {
+    "keyword": "Vietnam visa for Indian passport e-visa vs visa on arrival",
+    "intent": "informational",
+    "pillar": "visa-entry",
+    "best_publish_month": "October",
+    "status": "idea"
+  },
+  {
+    "keyword": "cheapest month to fly Chennai to Singapore",
+    "intent": "commercial",
+    "pillar": "flight-money",
+    "best_publish_month": "November",
+    "status": "idea"
+  },
+  {
+    "keyword": "cheapest month to fly Bengaluru to Dubai",
+    "intent": "commercial",
+    "pillar": "flight-money",
+    "best_publish_month": "December",
+    "status": "idea"
+  },
+  {
+    "keyword": "Chennai to Bangkok flights best day to book",
+    "intent": "commercial",
+    "pillar": "flight-money",
+    "best_publish_month": "January",
+    "status": "idea"
+  },
+  {
+    "keyword": "how much cash to carry to Thailand from India",
+    "intent": "informational",
+    "pillar": "flight-money",
+    "best_publish_month": "February",
+    "status": "idea"
+  },
+  {
+    "keyword": "UPI in Dubai where it works for Indian travellers",
+    "intent": "informational",
+    "pillar": "flight-money",
+    "best_publish_month": "March",
+    "status": "idea"
+  },
+  {
+    "keyword": "UPI in Singapore where it works",
+    "intent": "informational",
+    "pillar": "flight-money",
+    "best_publish_month": "April",
+    "status": "idea"
+  },
+  {
+    "keyword": "forex card vs cash for Thailand family trip",
+    "intent": "commercial",
+    "pillar": "flight-money",
+    "best_publish_month": "May",
+    "status": "idea"
+  },
+  {
+    "keyword": "Dubai trip cost from Chennai for family of 4",
+    "intent": "commercial",
+    "pillar": "flight-money",
+    "best_publish_month": "June",
+    "status": "idea"
+  },
+  {
+    "keyword": "Singapore trip cost for family of 4 from Bengaluru",
+    "intent": "commercial",
+    "pillar": "flight-money",
+    "best_publish_month": "July",
+    "status": "idea"
+  },
+  {
+    "keyword": "how to save on flights to Vietnam from Chennai",
+    "intent": "commercial",
+    "pillar": "flight-money",
+    "best_publish_month": "August",
+    "status": "idea"
+  },
+  {
+    "keyword": "Jain food in Singapore where to eat",
+    "intent": "informational",
+    "pillar": "food",
+    "best_publish_month": "September",
+    "status": "idea"
+  },
+  {
+    "keyword": "Jain food in Bangkok pure veg restaurants",
+    "intent": "informational",
+    "pillar": "food",
+    "best_publish_month": "October",
+    "status": "idea"
+  },
+  {
+    "keyword": "Jain food in Phuket where to eat",
+    "intent": "informational",
+    "pillar": "food",
+    "best_publish_month": "November",
+    "status": "idea"
+  },
+  {
+    "keyword": "Jain food in Kuala Lumpur",
+    "intent": "informational",
+    "pillar": "food",
+    "best_publish_month": "December",
+    "status": "idea"
+  },
+  {
+    "keyword": "Jain food in Colombo",
+    "intent": "informational",
+    "pillar": "food",
+    "best_publish_month": "January",
+    "status": "idea"
+  },
+  {
+    "keyword": "Jain food in Vietnam is it possible",
+    "intent": "informational",
+    "pillar": "food",
+    "best_publish_month": "February",
+    "status": "idea"
+  },
+  {
+    "keyword": "Jain food on flights to Dubai what to order",
+    "intent": "informational",
+    "pillar": "food",
+    "best_publish_month": "March",
+    "status": "idea"
+  },
+  {
+    "keyword": "pure veg restaurants near Dubai Mall",
+    "intent": "informational",
+    "pillar": "food",
+    "best_publish_month": "April",
+    "status": "idea"
+  },
+  {
+    "keyword": "Thailand honeymoon itinerary 6 days with budget",
+    "intent": "commercial",
+    "pillar": "itineraries",
+    "best_publish_month": "May",
+    "status": "idea"
+  },
+  {
+    "keyword": "Dubai with parents slow 5-day itinerary for seniors",
+    "intent": "informational",
+    "pillar": "itineraries",
+    "best_publish_month": "June",
+    "status": "idea"
+  },
+  {
+    "keyword": "Singapore with toddlers 4-day easy itinerary",
+    "intent": "informational",
+    "pillar": "itineraries",
+    "best_publish_month": "July",
+    "status": "idea"
+  },
+  {
+    "keyword": "Malaysia honeymoon 5 days Kuala Lumpur and Langkawi",
+    "intent": "commercial",
+    "pillar": "itineraries",
+    "best_publish_month": "August",
+    "status": "idea"
+  },
+  {
+    "keyword": "Sri Lanka with kids 5-day Colombo and Galle itinerary",
+    "intent": "informational",
+    "pillar": "itineraries",
+    "best_publish_month": "September",
+    "status": "idea"
+  },
+  {
+    "keyword": "Vietnam with parents 6-day easy pace itinerary",
+    "intent": "informational",
+    "pillar": "itineraries",
+    "best_publish_month": "October",
+    "status": "idea"
+  },
+  {
+    "keyword": "Bangkok and Pattaya 5 days family itinerary",
+    "intent": "commercial",
+    "pillar": "itineraries",
+    "best_publish_month": "November",
+    "status": "idea"
+  },
+  {
+    "keyword": "Singapore and Malaysia combined 7 days family itinerary",
+    "intent": "commercial",
+    "pillar": "itineraries",
+    "best_publish_month": "December",
+    "status": "idea"
+  },
+  {
+    "keyword": "Dubai 3 days first trip from Chennai on a budget",
+    "intent": "commercial",
+    "pillar": "itineraries",
+    "best_publish_month": "January",
+    "status": "idea"
+  },
+  {
+    "keyword": "Tirumala darshan booking for first-timers from Tamil Nadu",
+    "intent": "informational",
+    "pillar": "pilgrimage",
+    "best_publish_month": "February",
+    "status": "idea"
+  },
+  {
+    "keyword": "Tirumala one-day trip from Chennai timings and budget",
+    "intent": "informational",
+    "pillar": "pilgrimage",
+    "best_publish_month": "March",
+    "status": "idea"
+  },
+  {
+    "keyword": "Tirumala with parents senior citizen darshan steps",
+    "intent": "informational",
+    "pillar": "pilgrimage",
+    "best_publish_month": "April",
+    "status": "idea"
+  },
+  {
+    "keyword": "Tirumala with kids what to carry",
+    "intent": "informational",
+    "pillar": "pilgrimage",
+    "best_publish_month": "May",
+    "status": "idea"
+  },
+  {
+    "keyword": "Sabarimala Virtual-Q booking steps for first-timers",
+    "intent": "informational",
+    "pillar": "pilgrimage",
+    "best_publish_month": "June",
+    "status": "idea"
+  },
+  {
+    "keyword": "Rameswaram one-day trip from Madurai",
+    "intent": "informational",
+    "pillar": "pilgrimage",
+    "best_publish_month": "July",
+    "status": "idea"
+  },
+  {
+    "keyword": "Kashi Vishwanath darshan booking for Tamil Nadu families",
+    "intent": "informational",
+    "pillar": "pilgrimage",
+    "best_publish_month": "August",
+    "status": "idea"
+  },
+  {
+    "keyword": "first international trip from Chennai documents checklist",
+    "intent": "informational",
+    "pillar": "tips",
+    "best_publish_month": "September",
+    "status": "idea"
+  },
+  {
+    "keyword": "travel insurance for Thailand family trip what to check",
+    "intent": "informational",
+    "pillar": "tips",
+    "best_publish_month": "October",
+    "status": "idea"
+  },
+  {
+    "keyword": "SIM card for Thailand which to buy at Bangkok airport",
+    "intent": "informational",
+    "pillar": "tips",
+    "best_publish_month": "November",
+    "status": "idea"
+  },
+  {
+    "keyword": "what to pack for Tirumala one-day trip",
+    "intent": "informational",
+    "pillar": "tips",
+    "best_publish_month": "December",
+    "status": "idea"
+  },
+  {
+    "keyword": "Dubai with kids 7 things to know before you go",
+    "intent": "informational",
+    "pillar": "tips",
+    "best_publish_month": "January",
+    "status": "idea"
+  },
+  {
+    "keyword": "how to keep kids happy on a long flight from Chennai",
+    "intent": "informational",
+    "pillar": "tips",
+    "best_publish_month": "February",
+    "status": "idea"
+  }
+]
