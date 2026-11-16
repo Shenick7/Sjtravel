@@ -55,6 +55,30 @@
     {
       "destination": "/cancellation.html",
       "source": "/cancellation"
+    },
+    {
+      "destination": "/guides.html",
+      "source": "/guides"
+    },
+    {
+      "destination": "/jain-food-dubai.html",
+      "source": "/jain-food-dubai"
+    },
+    {
+      "destination": "/thailand-30-day-visa-free.html",
+      "source": "/thailand-30-day-visa-free"
+    },
+    {
+      "destination": "/cheapest-months-chennai-dubai.html",
+      "source": "/cheapest-months-chennai-dubai"
+    },
+    {
+      "destination": "/singapore-5-days-family.html",
+      "source": "/singapore-5-days-family"
+    },
+    {
+      "destination": "/sri-lanka-entry-steps.html",
+      "source": "/sri-lanka-entry-steps"
     }
   ]
 }
