@@ -587,7 +587,11 @@
     var errorEl = cfg.errorEl;
 
     function showError(msg) {
-      if (errorEl) errorEl.textContent = msg || "";
+      if (!errorEl) return;
+      errorEl.textContent = msg || "";
+      // The <p> starts with a `hidden` attribute; toggle it so the message
+      // is actually visible when set and hidden again once cleared.
+      errorEl.hidden = !msg;
     }
 
     setupAutocomplete(cfg.fromInput, cfg.fromList, cfg);
