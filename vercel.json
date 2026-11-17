@@ -111,6 +111,66 @@
     {
       "destination": "/read/feed.xml",
       "source": "/read/feed.xml"
+    },
+    {
+      "destination": "/tirumala-darshan-booking.html",
+      "source": "/tirumala-darshan-booking"
+    },
+    {
+      "destination": "/tirupati-from-chennai-bengaluru-vellore.html",
+      "source": "/tirupati-from-chennai-bengaluru-vellore"
+    },
+    {
+      "destination": "/irctc-tatkal-booking.html",
+      "source": "/irctc-tatkal-booking"
+    },
+    {
+      "destination": "/tatkal-booking-window.html",
+      "source": "/tatkal-booking-window"
+    },
+    {
+      "destination": "/irctc-waitlist-confirmation.html",
+      "source": "/irctc-waitlist-confirmation"
+    },
+    {
+      "destination": "/jain-food-bangkok.html",
+      "source": "/jain-food-bangkok"
+    },
+    {
+      "destination": "/jain-food-singapore.html",
+      "source": "/jain-food-singapore"
+    },
+    {
+      "destination": "/jain-food-kuala-lumpur.html",
+      "source": "/jain-food-kuala-lumpur"
+    },
+    {
+      "destination": "/jain-food-colombo.html",
+      "source": "/jain-food-colombo"
+    },
+    {
+      "destination": "/visa-free-countries-indian-passport.html",
+      "source": "/visa-free-countries-indian-passport"
+    },
+    {
+      "destination": "/visa-free-finder.html",
+      "source": "/visa-free-finder"
+    },
+    {
+      "destination": "/family-trip-budget.html",
+      "source": "/family-trip-budget"
+    },
+    {
+      "destination": "/dubai-budget-from-chennai.html",
+      "source": "/dubai-budget-from-chennai"
+    },
+    {
+      "destination": "/thailand-budget-from-chennai.html",
+      "source": "/thailand-budget-from-chennai"
+    },
+    {
+      "destination": "/malaysia-visa-free-for-indians.html",
+      "source": "/malaysia-visa-free-for-indians"
     }
   ]
 }

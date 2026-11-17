@@ -683,7 +683,17 @@
               <div class="budget">Budget for 4 travellers: <b>₹1,24,000–₹1,95,000</b> for 7 days, international flights extra</div>
           <p>The full 7-day plan, food guide, e-visa steps and budget worksheet are in the kit — ₹999 on WhatsApp.</p>
           <div class="buy-row">
-            <a data-track="kit_buy_click" data-kit="Vietnam" class="btn btn-wa" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20want%20the%20Vietnam%20Travel%20Kit%20(%E2%82%B9999)." target="_blank" rel="noopener" aria-label="Buy the Vietnam kit on WhatsApp">Buy on WhatsApp — ₹999</a>
+            <a data-track="kit_buy_click" data-kit="Vietnam" class="btn btn-wa" href="https://wa.me/919566977211?text=Hi%2C%20I%20want%20the%20Vietnam%20kit%20%28from%20/vietnam-travel-kit%29" target="_blank" rel="noopener" aria-label="Buy the Vietnam kit on WhatsApp">Buy on WhatsApp — ₹999</a><div class="upi-box" data-product="Vietnam Travel Kit" data-amount="999" data-page="/vietnam-travel-kit">
+      <p class="upi-kicker">Pay by UPI</p>
+      <p><b data-upi-amt>₹999</b> to <span data-upi-name>SJ Tours and Travels</span> · <span data-upi-id>9566977211@upi</span></p>
+      <p>Payment note: <b data-upi-note>Vietnam Travel Kit</b></p>
+      <div class="upi-actions">
+        <a class="btn btn-accent" data-upi-link data-track="kit_cta_click" data-kit="Vietnam Travel Kit" href="upi://pay?pa=9566977211%40upi&amp;pn=SJ%20Tours%20and%20Travels&amp;am=999.00&amp;cu=INR&amp;tn=Vietnam%20Travel%20Kit">Pay ₹999 by UPI</a>
+        <a class="btn btn-wa" data-upi-shot data-track="whatsapp_click" data-kit="Vietnam Travel Kit" target="_blank" rel="noopener" href="https://wa.me/919566977211?text=Hi%2C%20I%20paid%20by%20UPI%20for%20the%20Vietnam%20Travel%20Kit%20%28%E2%82%B9999%2C%20from%20/vietnam-travel-kit%29.%20Sending%20the%20payment%20screenshot.">I've paid — send the screenshot on WhatsApp</a>
+      </div>
+      <div class="upi-qr" data-upi-qr></div>
+      <p>Scan the QR or tap Pay by UPI. Then send the payment screenshot on WhatsApp so we can match it to this product and send what you bought.</p>
+    </div>
             <a class="btn btn-ghost" href="/#bundles">Build a bundle — any 3 kits ₹1,999</a>
             <a class="btn btn-ghost" href="/#plan">Plan My Trip</a>
           </div>
@@ -890,6 +900,9 @@
         }
       })();
     </script>
-      <script src="assets/site.js"></script>
+      <script src="assets/payment-config.js" defer></script>
+    <script src="assets/qrcode.js" defer></script>
+    <script src="assets/pay.js" defer></script>
+    <script src="assets/site.js"></script>
   </body>
 </html>
