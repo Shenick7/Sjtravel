@@ -3,7 +3,7 @@
    Core pages and the new guides are cached so they open offline.
    If a page was never opened and the network is down, /offline.html is shown.
    Cache name bumps when the shell changes so old copies are dropped. */
-var CACHE = "sj-shell-v3";
+var CACHE = "sj-shell-v4";
 var CORE = [
   "/",
   "/offline.html",
