@@ -9,7 +9,7 @@
    (photos, icons, the manifest) are served from cache for speed and
    refreshed in the background. Cross-origin requests (the flight
    search on flights.sjtravel.in, fonts, WhatsApp) are never touched. */
-var CACHE = "sj-shell-v1";
+var CACHE = "sj-shell-v2";
 
 /* The shell: only static assets, never any HTML page. Paths are
    resolved against the site root (this file lives in /assets/,
@@ -71,6 +71,12 @@ self.addEventListener("fetch", function (event) {
         return caches.match(req);
       })
     );
+    return;
+  }
+
+  /* JSON such as testimonials must not stick on an empty cached copy. */
+  if (url.pathname.endsWith(".json")) {
+    event.respondWith(fetch(req).catch(function () { return caches.match(req); }));
     return;
   }
 

@@ -113,64 +113,133 @@
       "source": "/read/feed.xml"
     },
     {
-      "destination": "/tirumala-darshan-booking.html",
-      "source": "/tirumala-darshan-booking"
+      "source": "/contact",
+      "destination": "/contact.html"
     },
     {
-      "destination": "/tirupati-from-chennai-bengaluru-vellore.html",
-      "source": "/tirupati-from-chennai-bengaluru-vellore"
+      "source": "/jain-tirth-yatra-packages",
+      "destination": "/jain-tirth-yatra-packages.html"
     },
     {
-      "destination": "/irctc-tatkal-booking.html",
-      "source": "/irctc-tatkal-booking"
+      "source": "/nakoda-ji-tour-from-chennai",
+      "destination": "/nakoda-ji-tour-from-chennai.html"
     },
     {
-      "destination": "/tatkal-booking-window.html",
-      "source": "/tatkal-booking-window"
+      "source": "/tirumala-darshan-package-from-ambur",
+      "destination": "/tirumala-darshan-package-from-ambur.html"
     },
     {
-      "destination": "/irctc-waitlist-confirmation.html",
-      "source": "/irctc-waitlist-confirmation"
+      "source": "/jain-pilgrimage-india-for-nri",
+      "destination": "/jain-pilgrimage-india-for-nri.html"
     },
     {
-      "destination": "/jain-food-bangkok.html",
-      "source": "/jain-food-bangkok"
+      "source": "/dubai-tour-package-from-chennai",
+      "destination": "/dubai-tour-package-from-chennai.html"
     },
     {
-      "destination": "/jain-food-singapore.html",
-      "source": "/jain-food-singapore"
+      "source": "/tirumala-darshan-booking",
+      "destination": "/tirumala-darshan-booking.html"
     },
     {
-      "destination": "/jain-food-kuala-lumpur.html",
-      "source": "/jain-food-kuala-lumpur"
+      "source": "/tirupati-from-chennai-bengaluru-vellore",
+      "destination": "/tirupati-from-chennai-bengaluru-vellore.html"
     },
     {
-      "destination": "/jain-food-colombo.html",
-      "source": "/jain-food-colombo"
+      "source": "/irctc-tatkal-booking",
+      "destination": "/irctc-tatkal-booking.html"
     },
     {
-      "destination": "/visa-free-countries-indian-passport.html",
-      "source": "/visa-free-countries-indian-passport"
+      "source": "/tatkal-booking-window",
+      "destination": "/tatkal-booking-window.html"
     },
     {
-      "destination": "/visa-free-finder.html",
-      "source": "/visa-free-finder"
+      "source": "/irctc-waitlist-confirmation",
+      "destination": "/irctc-waitlist-confirmation.html"
     },
     {
-      "destination": "/family-trip-budget.html",
-      "source": "/family-trip-budget"
+      "source": "/jain-food-bangkok",
+      "destination": "/jain-food-bangkok.html"
     },
     {
-      "destination": "/dubai-budget-from-chennai.html",
-      "source": "/dubai-budget-from-chennai"
+      "source": "/jain-food-singapore",
+      "destination": "/jain-food-singapore.html"
     },
     {
-      "destination": "/thailand-budget-from-chennai.html",
-      "source": "/thailand-budget-from-chennai"
+      "source": "/jain-food-kuala-lumpur",
+      "destination": "/jain-food-kuala-lumpur.html"
     },
     {
-      "destination": "/malaysia-visa-free-for-indians.html",
-      "source": "/malaysia-visa-free-for-indians"
+      "source": "/jain-food-colombo",
+      "destination": "/jain-food-colombo.html"
+    },
+    {
+      "source": "/visa-free-countries-indian-passport",
+      "destination": "/visa-free-countries-indian-passport.html"
+    },
+    {
+      "source": "/visa-free-finder",
+      "destination": "/visa-free-finder.html"
+    },
+    {
+      "source": "/family-trip-budget",
+      "destination": "/family-trip-budget.html"
+    },
+    {
+      "source": "/dubai-budget-from-chennai",
+      "destination": "/dubai-budget-from-chennai.html"
+    },
+    {
+      "source": "/thailand-budget-from-chennai",
+      "destination": "/thailand-budget-from-chennai.html"
+    },
+    {
+      "source": "/malaysia-visa-free-for-indians",
+      "destination": "/malaysia-visa-free-for-indians.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/assets/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains"
+        }
+      ]
     }
   ]
 }

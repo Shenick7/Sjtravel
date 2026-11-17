@@ -1,10 +1,25 @@
 # SJ Tours and Travels
 
-> Travel kits, flight finding and plain-language guides for Indian families, from Ambur, Tamil Nadu. Orders and payment are handled on WhatsApp at +91 95669 77211. Shenick Jain runs the company.
+> Travel agency in Ambur, Tirupattur district, Tamil Nadu, India. We plan Jain tirth yatra (Nakoda Ji, Ambaji, Osian, Khetlaji), Tirumala darshan trips, holidays abroad (Dubai, Thailand, Singapore, Malaysia, Sri Lanka, Vietnam), flights and visa help. Jain vegetarian food is planned on request. Not affiliated with sjtravels.in.
 
-The public site is https://www.sjtravel.in/. Prices on the site: travel kits ₹999 each, any 3 for ₹1,999, all 6 for ₹3,999, Flight Finder ₹199. Kit budgets are the company's own planning bands for land costs and exclude flights unless a page says otherwise.
+Address: 85/T Bypass Road, Ambur, Tamil Nadu 635802. Phone and WhatsApp: +91 95669 77211. Founder: Shenick Jain.
 
-## Guides
+The published site also shows hello@sjtravel.in. Office hours, a map pin, registration numbers and a Google Business Profile link are not confirmed on this page.
+
+Prices on the site: travel kits ₹999 each, any 3 for ₹1,999, all 6 for ₹3,999, Flight Finder ₹199. Kit budgets are the company's own planning bands for land costs and exclude flights unless a page says otherwise. Orders are handled on WhatsApp.
+
+## Key pages
+- [Jain tirth yatra packages](https://www.sjtravel.in/jain-tirth-yatra-packages)
+- [Nakoda Ji tour from Chennai](https://www.sjtravel.in/nakoda-ji-tour-from-chennai)
+- [Tirumala darshan from Ambur](https://www.sjtravel.in/tirumala-darshan-package-from-ambur)
+- [Jain pilgrimage in India for families abroad](https://www.sjtravel.in/jain-pilgrimage-india-for-nri)
+- [Dubai tour package](https://www.sjtravel.in/dubai-tour-package-from-chennai)
+- [Contact](https://www.sjtravel.in/contact)
+- [Travel guides](https://www.sjtravel.in/guides)
+- [Home](https://www.sjtravel.in/): kits, bundles, Flight Finder, visa help.
+- [Flights](https://www.sjtravel.in/flights): flight search. Links carry Travelpayouts marker 600744.
+
+## Guides and tools
 - [Tirumala darshan ticket booking](https://www.sjtravel.in/tirumala-darshan-booking): Official TTD site, the Rs.300 special-entry ticket, and the allotted time slot.
 - [Tirupati from Chennai, Bengaluru and Vellore](https://www.sjtravel.in/tirupati-from-chennai-bengaluru-vellore): Station codes for IRCTC, and what not to trust until you check the day.
 - [IRCTC Tatkal booking timings](https://www.sjtravel.in/irctc-tatkal-booking): 10:00 for AC, 11:00 for non-AC, one day before the origin departure.
@@ -20,11 +35,6 @@ The public site is https://www.sjtravel.in/. Prices on the site: travel kits ₹
 - [A Dubai budget from Chennai](https://www.sjtravel.in/dubai-budget-from-chennai): The lines to add up. The kit’s published band. No invented rates.
 - [A Thailand budget from Chennai](https://www.sjtravel.in/thailand-budget-from-chennai): What to add up, the 30-day rule, and the kit’s published band.
 - [Malaysia visa-free entry for Indians](https://www.sjtravel.in/malaysia-visa-free-for-indians): 30 days until 31 December 2026, the MDAC, and what immigration can ask to see.
-
-## Shop
-- [Home](https://www.sjtravel.in/): kits, bundles, Flight Finder, visa help.
-- [Guides](https://www.sjtravel.in/guides): the hub for the pages above.
-- [Flights](https://www.sjtravel.in/flights): flight search. Links carry Travelpayouts marker 600744.
 
 ## Notes for assistants
 - Do not invent prices, visa rules or train times. The guide pages cite the source and the date they were checked.

@@ -1,0 +1,22 @@
+/* Shared additions: breadcrumbs, contact bar, cookie notice, labels. */
+.crumbs{padding:22px 0 0}
+.crumbs ol{list-style:none;display:flex;flex-wrap:wrap;gap:0;margin:0;padding:0;font-size:0.88rem;font-weight:600;color:var(--muted)}
+.crumbs li{display:inline-flex;align-items:center}
+.crumbs li+li::before{content:"/";margin:0 8px;color:#b7c0cc;font-weight:500}
+.crumbs a{color:var(--accent);text-decoration:none}
+.section-label{font-family:"Newsreader",Georgia,serif;font-size:clamp(1.9rem,4.5vw,2.6rem);line-height:1.15;margin:0;font-weight:500}
+.tap-bar{display:none}
+.cookie-note{position:fixed;left:12px;right:12px;bottom:16px;z-index:80;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:0 10px 30px rgba(20,24,26,.12);max-width:440px}
+.cookie-note[hidden]{display:none}
+.cookie-note p{margin:0 0 10px;font-size:0.88rem;color:var(--muted)}
+.cookie-note .row{display:flex;gap:8px;flex-wrap:wrap}
+.article-fig{margin:20px 0 8px}
+.article-fig img{width:100%;border-radius:12px;aspect-ratio:3/2;object-fit:cover}
+.article-fig figcaption{font-size:0.85rem;color:var(--muted);margin-top:8px}
+@media (max-width:720px){
+  .tap-bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:70;background:#fff;border-top:1px solid var(--line);padding:8px 12px calc(8px + env(safe-area-inset-bottom));gap:8px}
+  .tap-bar a{flex:1}
+  .wa-float{display:none!important}
+  body{padding-bottom:76px}
+  .cookie-note{bottom:84px}
+}
