@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YPM6XLXTVQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YPM6XLXTVQ');
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light" />
@@ -244,6 +252,9 @@
       .kit .route { font-weight: 700; color: var(--accent); font-size: 0.9rem; margin-top: -8px; }
       .kit ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 0.94rem; display: grid; gap: 5px; }
       .kit .budget { background: var(--soft); border-radius: 10px; padding: 12px 14px; font-size: 0.89rem; font-weight: 600; color: var(--muted); }
+      .covers { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; background: #fff; }
+      .covers h2 { font-size: 1.4rem; margin: 0 0 12px; }
+      .covers .budget { margin-top: 16px; }
       .kit .budget b { color: var(--ink); }
       .kit .foot { margin-top: auto; display: flex; align-items: center; gap: 14px; padding-top: 8px; }
       .kit .price { font-size: 1.5rem; font-weight: 600; font-family: "Newsreader", Georgia, serif; }
@@ -463,8 +474,8 @@
       /* ---------- Motion & polish ---------- */
       ::selection { background: var(--accent-soft); }
       :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
-      @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-      @keyframes fadeDown { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: translateY(0); } }
+      @keyframes fadeUp { from { opacity: 1; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+      @keyframes fadeDown { from { opacity: 1; transform: translateY(-18px); } to { opacity: 1; transform: translateY(0); } }
       @keyframes kenburns { from { transform: scale(1.01) translateY(0); } to { transform: scale(1.1) translateY(-1.4%); } }
       @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
       @keyframes waPulse {
@@ -487,7 +498,7 @@
       .hero-badge { animation: floaty 6s ease-in-out 1.6s infinite; }
 
       /* Scroll reveal (JS adds .rv, then .in in view) */
-      .rv { opacity: 0; transform: translateY(30px); transition: opacity 0.85s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.85s cubic-bezier(0.22, 0.61, 0.36, 1); will-change: opacity, transform; }
+      .rv { opacity: 1; transform: translateY(30px); transition: transform 0.85s cubic-bezier(0.22, 0.61, 0.36, 1); will-change: transform; }
       .rv.in { opacity: 1; transform: translateY(0); }
 
       /* Buttons */
@@ -576,7 +587,7 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "zee487ap4w");
 </script>
-</head>
+<noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript></head>
   <body>
     <header class="site" id="top">
       <div class="wrap masthead">
@@ -621,6 +632,22 @@
             <p class="kicker">Travel Kit · ₹999</p>
             <h1>Thailand Travel Kit — ₹999</h1>
             <p class="lede">Bangkok 3N + Phuket 3N · 6 days · 11 pages · PDF, delivered on WhatsApp the same evening you pay.</p>
+          </div>
+        </div>
+      </section>      <section class="block">
+        <div class="wrap">
+          <div class="covers">
+            <h2>What your ₹999 covers</h2>
+            <p>11 pages · PDF, delivered on WhatsApp the same evening you pay.</p>
+            <ul class="page-list">
+            <li>Day-by-day plan — 6 days, Bangkok + Phuket, with a Pattaya option</li>
+            <li>Jain food guide — exact phrases to say, area by area</li>
+            <li>Visa for Indian passports + documents checklist — visa-free up to 30 days, free TDAC form on the official site only</li>
+            <li>Where to stay, transport, SIM, forex and UPI</li>
+            <li>Budget planner in INR for a family of 4, plus scams to avoid and a packing list</li>
+            <li>Flights are not included.</li>
+            </ul>
+            <p class="budget">Budget for 4 travellers: <b>₹1.1–1.7 lakh</b> land costs, international flights extra</p>
           </div>
         </div>
       </section>      <section class="block">
