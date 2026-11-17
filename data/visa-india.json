@@ -1,0 +1,903 @@
+{
+  "checked": "2026-11-17",
+  "audience": "Indian ordinary passport",
+  "mea": "https://www.mea.gov.in/VFFIN.htm",
+  "note": "Rows are copied from the Ministry of External Affairs visa-free and visa-on-arrival tables, then corrected where a destination government page checked the same day said something newer. The MEA e-visa table is not included. Empty cells are left empty.",
+  "corrections": [
+    {
+      "country": "Thailand",
+      "change": "MEA visa-free stay of 60 days replaced with 30 days tourism, from the Thai revision effective 15 September 2026."
+    },
+    {
+      "country": "Thailand",
+      "dropped": "visa-on-arrival",
+      "why": "MEA's visa-on-arrival table lists Thailand with an empty remarks cell. The Royal Thai Embassy in New Delhi says that from 15 September 2026 visa on arrival is not the rule for Indian ordinary passports; the 30-day tourist exemption is. The row is left out of the finder so it is not offered as a way in."
+    }
+  ],
+  "countries": [
+    {
+      "name": "Angola",
+      "kind": "visa-free",
+      "stay": "30 Days",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Barbados",
+      "kind": "visa-free",
+      "stay": "90 Days",
+      "notes": "Tourist & Business. No extension in normal case.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Belarus",
+      "kind": "visa-free",
+      "stay": "30 Days",
+      "notes": "30 days visa-free facility is there for Indian nationals to enter Belarus with following conditions: - a valid passport or another substituting document for traveling abroad; - financial means (at least two base amounts* denominated in dollars or Belarusian rubles for each day of stay, or 50 base amounts if the period of stay is 30 days); - medical travel insurance valid across Belarus with a minimum medical coverage of €10,000; - a valid multiple visa of the EU member states or Schengen zone with a mark in passport on crossing the border of these states and ticket with confirmation of departure from the National Airport \"Minsk” within 30 days from the date of entry. -Visa-free cannot be from Moscow airport since there is no passport control.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Bhutan",
+      "kind": "visa-free",
+      "stay": "No limit",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Commonwealth of Dominica",
+      "kind": "visa-free",
+      "stay": "180 Days",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Cook Islands",
+      "kind": "visa-free",
+      "stay": "31 Days",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Dominican Republic",
+      "kind": "visa-free",
+      "stay": "",
+      "notes": "All Indian nationals who are able to legally enter the European Union, United States of America, Canada and Great Britain can enter Dominican Republic, without the need of a Dominican visa. However, it is expected that the visitors need to buy Tourist Card for Dominican Republic which is usually purchased with air tickets.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Grenada",
+      "kind": "visa-free",
+      "stay": "90 Days",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Haiti",
+      "kind": "visa-free",
+      "stay": "90 Days",
+      "notes": "There is no bilateral agreement with Haiti for visa free entry. As Haiti is political unstable, Mission has not received any written confirmation from the Government of Haiti so far. As confirmed by our Honorary Consul General, this practice is followed by Haiti for Indian Passport holders.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Jamaica",
+      "kind": "visa-free",
+      "stay": "30 Days",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Kazakhstan",
+      "kind": "visa-free",
+      "stay": "14 Days (non-extendable)",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Kyrgyzstan",
+      "kind": "visa-free",
+      "stay": "7 days",
+      "notes": "For Indians who hold long-term multiple-entry visas from countries such as the USA, Great Britain and the Schengen Zone will be extended with visa-free facility for a period of up to 7 days in the Kyrgyz Republic with a right to re-enter after 21 days from the date of departure from the Kyrgyz Republic. The visa-free facility to the above category of Indian citizens is subject to the following conditions: 1. Only Indian nationals entering Kyrgyzstan by air through Manas International Airport would be granted visa free regime and not to those entering Kyrgyzstan through other ports or means. 2. The US/UK / Schengen Zone visa must be on the Current and valid Passport of the visitor and not on Old and cancelled Passport.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Malaysia",
+      "kind": "visa-free",
+      "stay": "30 Days (Till 31.12.2026)",
+      "notes": "As per the website of Malaysian High Commission in New Delhi Malaysia's Ministry of Foreign Affairs in New Delhi says the waiver runs until 31 December 2026, for up to 30 days, for business, tourism, social visits or transit — not for taking a job. They ask for a passport valid at least six months, a confirmed return ticket, a confirmed hotel booking, and the Malaysia Digital Arrival Card submitted online within three days before arrival at https://imigresen-online.imi.gov.my/mdac/main. Immigration's own country list marks India as visa-exempt until 31 December 2026.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        },
+        {
+          "title": "Ministry of Foreign Affairs, Malaysia (New Delhi) — Indian passport holders",
+          "url": "https://www.kln.gov.my/web/ind_new-delhi/requirement_foreigner"
+        },
+        {
+          "title": "Immigration Department of Malaysia — visa requirement by country",
+          "url": "https://www.imi.gov.my/index.php/en/main-services/visa/visa-requirement-by-country/"
+        }
+      ]
+    },
+    {
+      "name": "Maldives",
+      "kind": "visa-free",
+      "stay": "90 Days",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Montserrat",
+      "kind": "visa-free",
+      "stay": "180 Days",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Nepal",
+      "kind": "visa-free",
+      "stay": "No limit",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Niue Island",
+      "kind": "visa-free",
+      "stay": "30 Days",
+      "notes": "Provided that traveler holds a return ticket.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Rwanda",
+      "kind": "visa-free",
+      "stay": "30 Days",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Saint Lucia",
+      "kind": "visa-free",
+      "stay": "6 Weeks",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Saint Vincent and Grenadines",
+      "kind": "visa-free",
+      "stay": "30 Days",
+      "notes": "For maximum stay of one month. Tourist & Business. No extension in normal case. Visitor must have a passport valid for at least six months from the date of entry and must show proof of accommodation, sufficient funds, and a return ticket. The maximum permitted stay is determined by immigration officials upon arrival, often up to one month.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Samoa",
+      "kind": "visa-free",
+      "stay": "60 Days",
+      "notes": "Not required to obtain an entry permit / visa for stays less than 60 days on fulfillment of prescribed general conditions. May refer- https://www.mfat.gov.ws/wp-content/uploads/2013/10/Entry-requirements-into-Samoa.pdf?utm_source=chatgpt.com 792 KB",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Senegal",
+      "kind": "visa-free",
+      "stay": "90 Days",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Seychelles",
+      "kind": "visa-free",
+      "stay": "90 Days",
+      "notes": "Yes, but an amount of Euros 10-70 per person is charged for giving the Seychelles Travel Authorization (STA)",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Thailand",
+      "kind": "visa-free",
+      "stay": "30 days",
+      "notes": "Tourism only, for an ordinary Indian passport, from 15 September 2026. Register on the Thailand Digital Arrival Card (https://tdac.immigration.go.th), preferably 3 days before arrival. The published exemption scheme also says travellers should carry the equivalent of 20,000 baht per person or 40,000 baht per family. India's MEA page still showed 60 days for tourism and short business when we read it on 17 Nov 2026. The Thai government's later announcement is the one to follow. Visa on arrival is not the Indian-passport rule under that announcement.",
+      "sources": [
+        {
+          "title": "Royal Thai Embassy, New Delhi — exemption revised from 15 September 2026",
+          "url": "https://newdelhi.thaiembassy.org/en/content/the-revision-of-thailand-s-visa-exemption-and-voa?cate=614489aad04d1e09fa498c92&menu=614493e28d99e8319f20bc93"
+        },
+        {
+          "title": "Thailand Government PRD — Royal Gazette publication of the revision",
+          "url": "https://thailand.prd.go.th/en/content/category/detail/id/48/iid/538547"
+        },
+        {
+          "title": "Royal Thai Embassy, Doha — 30-day list, including India, and the cash condition",
+          "url": "https://doha.thaiembassy.org/en/publicservice/tourist-visa-exemption-visa-on-arrival"
+        },
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Trinidad and Tobago",
+      "kind": "visa-free",
+      "stay": "90 Days",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Vanuatu",
+      "kind": "visa-free",
+      "stay": "30 Days",
+      "notes": "India is listed under ‘Countries not requiring a visitor visa to enter Vanuatu (exempted countries)’ on fulfillment of prescribed general conditions. (Maximum stay 120 days, with no further extension permissible on Tourist Visa, and 30 days on a Visitor Visa). May refer the website of Department of Immigration & Passport Services, Government of Vanuatu https://immigration.gov.vu/visa-exempted-countries",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Angola",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Antigua & Barbuda",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "Yes, if the person has US/UK VISA.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Armenia",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "At the border of Armenia, if Indians provide a valid residence permit or valid visa issued by the EU and Schengen member states, the USA, Australia, New Zealand, the Republic of Korea, the UK, Canada, the Russian Federation, or Japan or a valid residence permit (physical card or sticker) issued by the United Arab Emirates, Saudi Arabia, Kuwait, Qatar, Bahrain or Oman.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Bahrain",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "Indian nationals holding valid UAE, UK, USA, KSA (Except Hajj & Umrah visas), Schengen visit visas or holding USA Green Card are eligible for visa-on-arrival visas (Visit Visa-2 Weeks Single Entry/ Visit Visa – Three Months Multiple Entry).",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Burundi",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Cabo Verde",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "30-day tourist visa is granted at the time of entry into Cabo Verde, subject to pre-registration on the online platform EASE [Efficient, Automatic and Safe Entry of Travellers https://www.ease.gov.cv ] and payment of the applicable fee.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Cambodia",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "Tourists Visa & Business Visa On-Arrival for Indian nationals: Single Entry/ one month, extendable by one more month, subject to following documents: Confirmed hotel booking or accommodation details in Cambodia and Return flight Tickets. Cambodian Immigration Police may ask to show some cash in USD (minimum USD 500$ for each passenger)",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Central African Republic",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Comoros",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "Visa on Arrival facility if provided for 45 days, subject to payment of Euro 30. Proof of accommodation and return air ticket are also required.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Cooks Island",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "In terms of Cook Islands Regulations 2023 Schedule 5 Pg 60-61, international visa permit is available to all nationals including Indian for no longer than 31 days. This can be obtained onshore after arriving Cook Islands at no fee.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Democratic Republic of Congo (DRC)",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Djibouti",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Egypt",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "Indian nationals holding valid US, Schengen, UK and GCC countries visa and having travelled on such a visa at least once are eligible for visa-on-arrival.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Eritrea",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "For a group of 4 to 5 persons, individual case not entertained",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Ethiopia",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "Visa on Arrival (at Bole International Airport, Addis Ababa) with validity of one month for purpose of Tourism is available to Indian Nationals",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Fiji",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Gabon",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Ghana",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Guinea Bissau",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "For Indian Nationals, Guinea Bissau has visa on arrival facility, which is valid for 90 days, at a fee of 100 US $. However it is always advisable to get an authorisation to enter Guinea Bissau, issued by the Ministry of Interior, issued on the request / application of the Host or Employer.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Haiti",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "Upon entry to Haiti, the visa may be renewed by one year for specific purpose.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Indonesia",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "For 30 days (single entry); extendable one time for 30 days.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Jamaica",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Jordan",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Kiribati",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Laos",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Macau",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "Visa upon arrival at the Immigration checkpoint valid for 30 days.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Madagascar",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "Visa on Arrival facility is provided for 60 days, subject to payment of US$ 37. Proof of accommodation and return air ticket are also required.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Marshall Island (RMI)",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Mauritius",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Mongolia",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Myanmar",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "Only for tourists; valid up to 29.08.2026.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Oman",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "Visa-on-arrival facility is provided to passport holders having UK or US or Australia or Japan, or Canada visa and GCC nationals",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Qatar",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "Tourist Visa-on-arrival period depends upon the hotel booking through Discover Qatar website visa fee gratis.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Saint Denis (Reunion Islands)",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "Term and Conditions apply such as Visit must be planned through a licensed agency",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Saint Lucia",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "6 weeks Starting from the date of entry. Tourist & Business. No extension in normal case. All visitors are required to have a return ticket. Visitors who require non immigrant visas to visit to Saint Lucia but are visiting Saint Lucia via cruises that will be docking in Saint Lucia for less than 24 hours will be exempt from visa requirements normally in effect for longer stays.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Saudi Arabia",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "Indian nationals holding valid US, Schengen and UK visas (either Business or Tourist visa) and having travelled on such a visa at least once are eligible for visa-on-arrival. The visa stamp should be clearly visible. Digital stamp will not be accepted.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Sierra Leone",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "South Sudan",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "One month visa is issued on arrival for Business, Entry, Employment & Tourism purposes. The validity of visa is for one month from the date of arrival/issuing, which can be extended for 1 to 12 months",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Sri Lanka",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "Only for Tourism for 30 days (with valid return ticket), can be extended (on payment basis) up to 90 days",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "St. Kitts & Nevis",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "Visitor Visa, Extension with reason",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Tajikistan",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Tanzania",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Timor Leste",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "One month visa is issued on arrival for tourism purpose. It is valid for a single entry, 30 days stay and may be extended once for the same period. The fee for one month tourist visa is USD 30.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Tuvalu",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "United Arab Emirates",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "UAE extends Visa on Arrival facility to Indian passport holders at all UAE international airports and other official entry points, who has valid and unexpired visa or residence permit from one of the countries/regions viz. United States, United Kingdom, European Union/Schengen area, Canada, Australia, New Zealand, Japan, Singapore, or South Korea and must hold passport with at least six months’ validity at the time of entering UAE.",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    },
+    {
+      "name": "Zimbabwe",
+      "kind": "visa-on-arrival",
+      "stay": "",
+      "notes": "",
+      "sources": [
+        {
+          "title": "Ministry of External Affairs — visa facility for Indian nationals (ordinary passport)",
+          "url": "https://www.mea.gov.in/VFFIN.htm"
+        }
+      ]
+    }
+  ]
+}

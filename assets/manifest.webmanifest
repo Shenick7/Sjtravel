@@ -1,32 +1,38 @@
 {
-  "background_color": "#034694",
-  "description": "SJ Tours and Travels, Ambur, Tirupattur district \u2014 Jain tirth yatra, Tirumala darshan, holidays, flights, visa help and travel kits.",
+  "name": "SJ Tours and Travels",
+  "short_name": "SJ Travel",
+  "description": "SJ Tours and Travels, Ambur. Jain tirth yatra, Tirumala darshan, holidays, flights, visa help and travel kits.",
+  "lang": "en-IN",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#034694",
+  "theme_color": "#034694",
   "icons": [
     {
-      "purpose": "any",
+      "src": "/assets/IMG_1541.png",
       "sizes": "192x192",
-      "src": "IMG_1541.png",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "purpose": "any",
+      "src": "/assets/IMG_1542.png",
       "sizes": "512x512",
-      "src": "IMG_1542.png",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "purpose": "maskable",
+      "src": "/assets/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/icon-maskable-512.png",
       "sizes": "512x512",
-      "src": "IMG_1544.png",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable"
     }
-  ],
-  "lang": "en-IN",
-  "name": "SJ Tours and Travels",
-  "orientation": "portrait",
-  "scope": "https://www.sjtravel.in/",
-  "short_name": "SJ Tours",
-  "start_url": "https://www.sjtravel.in/",
-  "theme_color": "#034694"
+  ]
 }
