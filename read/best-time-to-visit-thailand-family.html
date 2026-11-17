@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YPM6XLXTVQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YPM6XLXTVQ');
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light" />
@@ -502,8 +510,8 @@
       /* ---------- Motion & polish ---------- */
       ::selection { background: var(--accent-soft); }
       :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
-      @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-      @keyframes fadeDown { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: translateY(0); } }
+      @keyframes fadeUp { from { opacity: 1; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+      @keyframes fadeDown { from { opacity: 1; transform: translateY(-18px); } to { opacity: 1; transform: translateY(0); } }
       @keyframes kenburns { from { transform: scale(1.01) translateY(0); } to { transform: scale(1.1) translateY(-1.4%); } }
       @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
       @keyframes waPulse {
@@ -526,7 +534,7 @@
       .hero-badge { animation: floaty 6s ease-in-out 1.6s infinite; }
 
       /* Scroll reveal (JS adds .rv, then .in in view) */
-      .rv { opacity: 0; transform: translateY(30px); transition: opacity 0.85s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.85s cubic-bezier(0.22, 0.61, 0.36, 1); will-change: opacity, transform; }
+      .rv { opacity: 1; transform: translateY(30px); transition: transform 0.85s cubic-bezier(0.22, 0.61, 0.36, 1); will-change: transform; }
       .rv.in { opacity: 1; transform: translateY(0); }
 
       /* Buttons */
@@ -660,7 +668,7 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "zee487ap4w");
 </script>
-</head>
+<noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript></head>
   <body>
     <header class="site" id="top">
       <div class="wrap masthead">
@@ -916,6 +924,7 @@
             <h2>Keep exploring</h2>
           </div>
           <div class="related">
+            <a href="/read/dubai-visa-for-indians-documents-cost">Dubai Visa for Indians: Documents and Cost<span>Documents, official fees in rupees, and the visa-on-arrival shortcut</span></a>
             <a href="/thailand-30-day-visa-free">Thailand&rsquo;s 30-Day Visa-Free Rule for Indians<span>30 days, the free TDAC form, and what immigration can ask for</span></a>
             <a href="/thailand-travel-kit">Thailand Travel Kit — ₹999<span>Bangkok 3N + Phuket 3N · 6 days · 11 pages</span></a>
             <a href="/read">Read — all articles<span>One useful travel article a day, from SJ Tours and Travels.</span></a>
