@@ -97,6 +97,14 @@
       "source": "/read/dubai-visa-for-indians-documents-cost"
     },
     {
+      "destination": "/waitlist-tirumala.html",
+      "source": "/waitlist-tirumala"
+    },
+    {
+      "destination": "/waitlist-visa-check.html",
+      "source": "/waitlist-visa-check"
+    },
+    {
       "destination": "/read/feed.xml",
       "source": "/read/feed.xml"
     }
