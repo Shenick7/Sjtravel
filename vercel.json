@@ -111,6 +111,75 @@
     {
       "destination": "/read/feed.xml",
       "source": "/read/feed.xml"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/jain-tirth-yatra-packages",
+      "destination": "/jain-tirth-yatra-packages.html"
+    },
+    {
+      "source": "/nakoda-ji-tour-from-chennai",
+      "destination": "/nakoda-ji-tour-from-chennai.html"
+    },
+    {
+      "source": "/tirumala-darshan-package-from-ambur",
+      "destination": "/tirumala-darshan-package-from-ambur.html"
+    },
+    {
+      "source": "/jain-pilgrimage-india-for-nri",
+      "destination": "/jain-pilgrimage-india-for-nri.html"
+    },
+    {
+      "source": "/dubai-tour-package-from-chennai",
+      "destination": "/dubai-tour-package-from-chennai.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/assets/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains"
+        }
+      ]
     }
   ]
 }
