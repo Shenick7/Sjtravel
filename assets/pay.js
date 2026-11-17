@@ -9,7 +9,7 @@
   if (!document.getElementById("sj-upi-style")) {
     var style = document.createElement("style");
     style.id = "sj-upi-style";
-    style.textContent = ".upi-box{margin-top:14px;border:1px solid #e3e7ee;border-radius:12px;padding:16px 18px;display:grid;gap:10px;background:#fff}.upi-box[hidden]{display:none}.upi-kicker{margin:0;font-size:.74rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#034694}.upi-box p{margin:0;color:#5a6573;font-size:.92rem}.upi-box b{color:#14181a}.upi-qr svg{width:168px;height:168px;display:block}.upi-actions{display:flex;flex-wrap:wrap;gap:10px}.foot{flex-wrap:wrap}.buy-row{flex-wrap:wrap}.foot .upi-box,.buy-row .upi-box,.svc .upi-box{flex:1 0 100%}";
+    style.textContent = ".upi-box{margin-top:14px;border:1px solid #e3e7ee;border-radius:12px;padding:16px 18px;display:grid;gap:10px;background:#fff;max-width:100%}.upi-box[hidden]{display:none}.upi-kicker{margin:0;font-size:.74rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#034694}.upi-box p{margin:0;color:#5a6573;font-size:1rem}.upi-box b{color:#14181a}.upi-qr svg{width:168px;height:168px;max-width:70vw;height:auto;display:block}.upi-actions{display:flex;flex-wrap:wrap;gap:10px}.upi-actions .btn{min-height:48px;flex:1 1 100%}.foot{flex-wrap:wrap}.buy-row{flex-wrap:wrap}.foot .upi-box,.buy-row .upi-box,.svc .upi-box{flex:1 0 100%;max-width:100%}";
     document.head.appendChild(style);
   }
 
@@ -31,16 +31,34 @@
     return "https://wa.me/919566977211?text=" + encodeURIComponent(msg);
   }
 
-  function drawQr(el, text) {
-    if (!el || typeof qrcode !== "function") return;
-    try {
-      var qr = qrcode(0, "M");
-      qr.addData(text);
-      qr.make();
-      el.innerHTML = qr.createSvgTag({ cellSize: 4, margin: 2, scalable: true, alt: "UPI QR code", title: "UPI QR code" });
-    } catch (err) {
-      el.textContent = "";
+  var qrLoading = null;
+  function ensureQr(cb) {
+    if (typeof qrcode === "function") { cb(); return; }
+    if (!qrLoading) {
+      qrLoading = new Promise(function (resolve) {
+        var s = document.createElement("script");
+        s.src = "/assets/qrcode.js";
+        s.onload = function () { resolve(); };
+        s.onerror = function () { resolve(); };
+        document.head.appendChild(s);
+      });
     }
+    qrLoading.then(cb);
+  }
+
+  function drawQr(el, text) {
+    if (!el) return;
+    ensureQr(function () {
+      if (typeof qrcode !== "function") return;
+      try {
+        var qr = qrcode(0, "M");
+        qr.addData(text);
+        qr.make();
+        el.innerHTML = qr.createSvgTag({ cellSize: 4, margin: 2, scalable: true, alt: "UPI QR code", title: "UPI QR code" });
+      } catch (err) {
+        el.textContent = "";
+      }
+    });
   }
 
   function fill(box) {

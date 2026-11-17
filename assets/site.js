@@ -37,3 +37,9 @@ document.addEventListener("DOMContentLoaded", function () {
   var msg = "Hi SJ Tours, I am on this page: " + document.title;
   wa.href = "https://wa.me/919566977211?text=" + encodeURIComponent(msg);
 });
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("/sw.js").catch(function () {});
+  });
+}

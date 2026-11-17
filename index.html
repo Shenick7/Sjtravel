@@ -74,7 +74,7 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="SJ Tours" />
+    <meta name="apple-mobile-web-app-title" content="SJ Travel" />
     <title>SJ Tours &amp; Travels Ambur | Jain Yatra, Tirumala, Dubai</title>
     <link rel="preload" href="assets/masthead-landmarks.jpg" as="image" fetchpriority="high" media="(min-width: 860px)" />
     <link rel="preload" href="assets/masthead-landmarks-mobile.jpg" as="image" fetchpriority="high" media="(max-width: 859px)" />
@@ -1502,7 +1502,6 @@
     </script>
     <script src="assets/flight-search.js?v=20261117-1" defer></script>
     <script src="assets/payment-config.js" defer></script>
-    <script src="assets/qrcode.js" defer></script>
     <script src="assets/pay.js" defer></script>
     <script src="assets/site.js?v=20261117-1" defer></script>
     <script>
@@ -1513,7 +1512,7 @@
            Nothing plays at all when reduced motion is preferred. */
         var canvas = document.getElementById("glitter-canvas");
         if (!canvas) return;
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || window.matchMedia("(max-width: 859px)").matches) {
           canvas.remove();
           return;
         }

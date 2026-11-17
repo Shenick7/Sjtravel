@@ -1,39 +1,51 @@
 /* SJ Tours and Travels — service worker.
-   NOTE (live deployment): the six destination photos are inlined as
-   data-URIs in the HTML, so they are not separate files and are NOT
-   precached here (cache.addAll would fail on a missing file). Only
-   files that actually exist on the site are precached.
-   Icons keep the IMG_xxxx.png names iOS gave them when saved from email; the manifest and precache point at those names.
-   Strategy: HTML pages are ALWAYS fetched live from the network first,
-   so the homepage and flight prices are never stale. Static files
-   (photos, icons, the manifest) are served from cache for speed and
-   refreshed in the background. Cross-origin requests (the flight
-   search on flights.sjtravel.in, fonts, WhatsApp) are never touched. */
-var CACHE = "sj-shell-v2";
-
-/* The shell: only static assets, never any HTML page. Paths are
-   resolved against the site root (this file lives in /assets/,
-   so the root is one level up from its own scope when deployed). */
-function rootUrl() {
-  var scope = self.registration.scope;
-  return scope.replace(/assets\/$/, "");
-}
+   Network-first for pages, so live prices stay fresh.
+   Core pages and the new guides are cached so they open offline.
+   If a page was never opened and the network is down, /offline.html is shown.
+   Cache name bumps when the shell changes so old copies are dropped. */
+var CACHE = "sj-shell-v3";
+var CORE = [
+  "/",
+  "/offline.html",
+  "/guides",
+  "/contact",
+  "/flights",
+  "/flight-finder",
+  "/tirumala-darshan-booking",
+  "/tirupati-from-chennai-bengaluru-vellore",
+  "/irctc-tatkal-booking",
+  "/irctc-waitlist-confirmation",
+  "/tatkal-booking-window",
+  "/jain-food-bangkok",
+  "/jain-food-singapore",
+  "/jain-food-kuala-lumpur",
+  "/jain-food-colombo",
+  "/visa-free-countries-indian-passport",
+  "/visa-free-finder",
+  "/family-trip-budget",
+  "/dubai-budget-from-chennai",
+  "/thailand-budget-from-chennai",
+  "/malaysia-visa-free-for-indians",
+  "/assets/extras.css",
+  "/assets/fonts.css",
+  "/assets/guide.css",
+  "/assets/site.js",
+  "/assets/manifest.webmanifest",
+  "/assets/IMG_1541.png",
+  "/assets/IMG_1542.png",
+  "/assets/IMG_1544.png",
+  "/assets/icon-maskable-192.png",
+  "/assets/icon-maskable-512.png",
+  "/favicon.svg"
+];
 
 self.addEventListener("install", function (event) {
-  var root = rootUrl();
-  var shell = [
-    "assets/IMG_1541.png",
-    "assets/IMG_1542.png",
-    "assets/IMG_1544.png",
-    "assets/IMG_1541.png",
-    "assets/manifest.webmanifest",
-  ].map(function (path) { return root + path; });
   event.waitUntil(
     caches.open(CACHE).then(function (cache) {
-      return cache.addAll(shell);
-    }).then(function () {
-      return self.skipWaiting();
-    })
+      return Promise.all(CORE.map(function (url) {
+        return cache.add(url).catch(function () { return null; });
+      }));
+    }).then(function () { return self.skipWaiting(); })
   );
 });
 
@@ -43,44 +55,42 @@ self.addEventListener("activate", function (event) {
       return Promise.all(keys.map(function (key) {
         return key === CACHE ? null : caches.delete(key);
       }));
-    }).then(function () {
-      return self.clients.claim();
-    })
+    }).then(function () { return self.clients.claim(); })
   );
 });
 
 self.addEventListener("fetch", function (event) {
   var req = event.request;
   if (req.method !== "GET") return;
-
-  var url = new URL(req.url);
-  if (url.origin !== self.location.origin) return; /* live services pass through */
+  var url;
+  try { url = new URL(req.url); } catch (e) { return; }
+  if (url.origin !== self.location.origin) return;
 
   var isPage = req.mode === "navigate" ||
     (req.headers.get("accept") || "").indexOf("text/html") !== -1;
 
   if (isPage) {
-    /* Network-first: the live page always wins. A cached copy is kept
-       only as an offline fallback and is never served while online. */
     event.respondWith(
       fetch(req).then(function (res) {
-        var copy = res.clone();
-        caches.open(CACHE).then(function (cache) { cache.put(req, copy); });
+        if (res && res.ok) {
+          var copy = res.clone();
+          caches.open(CACHE).then(function (cache) { cache.put(req, copy); });
+        }
         return res;
       }).catch(function () {
-        return caches.match(req);
+        return caches.match(req).then(function (hit) {
+          return hit || caches.match("/offline.html");
+        });
       })
     );
     return;
   }
 
-  /* JSON such as testimonials must not stick on an empty cached copy. */
   if (url.pathname.endsWith(".json")) {
     event.respondWith(fetch(req).catch(function () { return caches.match(req); }));
     return;
   }
 
-  /* Static assets: cache-first for speed, refreshed in the background. */
   event.respondWith(
     caches.match(req).then(function (hit) {
       var network = fetch(req).then(function (res) {
