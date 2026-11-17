@@ -105,6 +105,10 @@
       "source": "/waitlist-visa-check"
     },
     {
+      "destination": "/sponsor.html",
+      "source": "/sponsor"
+    },
+    {
       "destination": "/read/feed.xml",
       "source": "/read/feed.xml"
     }
