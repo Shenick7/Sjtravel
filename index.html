@@ -1253,16 +1253,15 @@
               message: lines.join("\n")
             };
             var waUrl = WA + encodeURIComponent(lines.join("\n"));
-            /* Open the WhatsApp tab now (while this is still the user's tap)
-               when a sheet save is configured, so no popup blocker can stop it;
-               when no sheet is configured, saveEnquiry resolves at once. */
-            var waWin = null;
-            if (ENQUIRY_SHEET_URL) waWin = window.open("", "_blank", "noopener");
+            /* Open WhatsApp now, in this tap, so no popup blocker can stop it.
+               (An earlier version opened a blank tab first and navigated it
+               after the sheet save — the blank tab never navigated in some
+               browsers, so visitors saw an empty tab instead of WhatsApp.
+               The sheet save below still runs for every valid enquiry.) */
+            window.open(waUrl, "_blank", "noopener");
             var _save = saveEnquiry(row);
             if (window.sjTrack) { try { sjTrack("enquiry_submit", {trip_type: kind.split(" ")[0]}); } catch (e4) {} }
             _save.then(function () {
-              if (waWin) { try { waWin.location.href = waUrl; } catch (e3) { window.open(waUrl, "_blank", "noopener"); } }
-              else window.open(waUrl, "_blank", "noopener");
               var done = form.querySelector(".plan-done");
               if (done) {
                 done.textContent = "Thank you" + (nameVal ? ", " + nameVal : "") + " — WhatsApp should now open with your enquiry ready. Just press send there, and we will reply on that chat. If WhatsApp did not open, message us on +91 95669 77211 or email hello@sjtravel.in.";
