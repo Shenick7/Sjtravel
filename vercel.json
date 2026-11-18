@@ -49,6 +49,10 @@
       "source": "/about"
     },
     {
+      "destination": "/travel-agent-ambur.html",
+      "source": "/travel-agent-ambur"
+    },
+    {
       "destination": "/privacy.html",
       "source": "/privacy"
     },
