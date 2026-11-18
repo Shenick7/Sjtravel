@@ -5,6 +5,10 @@
       "source": "/flights"
     },
     {
+      "destination": "/deals.html",
+      "source": "/deals"
+    },
+    {
       "destination": "/dubai-travel-kit.html",
       "source": "/dubai-travel-kit"
     },

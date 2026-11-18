@@ -561,7 +561,7 @@
       .related a span { display: block; font-weight: 400; color: var(--muted); font-size: 0.92rem; margin-top: 4px; }
       .page-list { margin: 0; padding-left: 18px; color: var(--muted); font-size: 1rem; display: grid; gap: 8px; }
       .page-list li::marker { color: var(--accent); }
-    </style>
+    .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:24px}.cal-day{border:1px solid var(--line);border-radius:10px;padding:10px 8px;min-height:64px;text-align:left;background:#fff;font:inherit;cursor:pointer}.cal-day .dnum{display:block;font-weight:800;font-size:0.95rem}.cal-day .dprice{display:block;font-size:0.82rem;color:var(--accent);font-weight:700;margin-top:2px}.cal-day .dret{display:block;font-size:0.72rem;color:var(--muted);margin-top:1px}.cal-day.cheapest .dret{color:#fff}.cal-day .dnone{display:block;font-size:0.78rem;color:var(--muted);margin-top:2px}.cal-day:hover{border-color:var(--accent)}.cal-day.cheapest{background:var(--accent);border-color:var(--accent);color:#fff}.cal-day.cheapest .dprice{color:#fff}.cal-day.cheapest .dnum::after{content:" ★ cheapest";font-size:0.72rem;font-weight:700}.cal-day:disabled{cursor:default;opacity:0.55}.cal-head{font-size:0.78rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-align:center;padding:4px 0}.cal-note{margin-top:18px;font-size:0.92rem;color:var(--muted)}.cal-status{margin-top:16px;font-weight:600;color:var(--muted)}.cal-form{margin-top:28px;border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:#fff}@media (min-width:720px){.cal-form{padding:36px}}.cal-form label{font-weight:700;font-size:0.9rem;display:block;margin-bottom:6px}.cal-form input[type="month"]{font:inherit;font-size:1rem;color:var(--ink);width:100%;max-width:22rem;padding:11px 14px;border:1px solid var(--line);border-radius:10px;background:#fff}.cal-form input[type="month"]:focus{border-color:var(--accent);outline:2px solid var(--accent-soft);outline-offset:0}.cal-form .btn{margin-top:18px;min-height:2.75rem}@media (max-width:360px){.cal-grid{gap:5px}.cal-day{padding:8px 5px;min-height:56px}}@media (max-width:500px){.cal-grid{gap:4px}.cal-head{font-size:0.62rem;letter-spacing:0.02em}.cal-day{padding:6px 2px;min-height:52px;border-radius:8px;min-width:0;overflow:hidden}.cal-day .dnum{font-size:0.85rem}.cal-day .dprice,.cal-day .dnone{font-size:0.68rem}.cal-day .dret{font-size:0.62rem}.cal-day .dprice-full,.cal-day .dnone-full{display:none}.cal-day .dprice-short,.cal-day .dnone-short{display:block}}@media (min-width:501px){.cal-day .dprice-short,.cal-day .dnone-short{display:none}}</style>
 <noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>    <link rel="alternate" type="application/rss+xml" title="SJ Tours and Travels — Read" href="https://www.sjtravel.in/read/feed.xml">
     <link rel="stylesheet" href="/assets/fonts.css">
     <link rel="stylesheet" href="/assets/extras.css">
@@ -682,7 +682,23 @@
             <li><b>Live search</b> — search your exact dates on flights.sjtravel.in and you go straight to the airline or booking site to pay. We take no payment and add nothing to the fare.</li>
           </ul>
         </div>
-      </section>      <section class="block">
+      </section>            <section class="block" id="cheapest-dates">
+        <div class="wrap">
+          <div class="sec-head">
+            <h2>Cheapest dates: Chennai to Dubai</h2>
+            <p>Lowest recently found fare per day — per adult, one-way. Tap a day to search that date live; the live fare may differ.</p>
+          </div>
+          <div class="cal-form" style="margin-top: 28px;">
+            <label for="calMonth">Month</label>
+            <input id="calMonth" type="month" />
+            <button class="btn btn-accent" type="button" id="calBtn">Show cheapest dates</button>
+            <p class="cal-status" id="calStatus">Loading recently found fares&hellip;</p>
+            <div class="cal-grid" id="calGrid"></div>
+            <p class="cal-note">Prices found in the last 48 hours. Final fare is shown live before you pay. Fares shown are per adult, one-way, in INR, from recently found fares — they are not guaranteed prices. A fare marked &lsquo;return&rsquo; is a return fare.</p>
+          </div>
+        </div>
+      </section>
+<section class="block">
         <div class="wrap">
           <div class="sec-head">
             <h2>A practical way to pick dates</h2>
@@ -930,7 +946,134 @@
         }
       })();
     </script>
-      <script src="assets/site.js" defer></script>
+          <script src="/assets/flight-search.js?v=20261117-2" defer></script>
+<script src="assets/site.js" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        "use strict";
+        /* Cheapest-dates calendar for this route — same cached-fare
+           source as /flights (/api/cheapest-dates, 6h cache), so
+           this page and /flights cannot disagree. flight-search.js
+           is loaded with `defer`, so this runs on DOMContentLoaded,
+           after window.SJFlights exists. */
+        var ORIGIN = "MAA", DEST = "DXB";
+        var calStatus = document.getElementById("calStatus");
+        var calGrid = document.getElementById("calGrid");
+        var calBtn = document.getElementById("calBtn");
+        var monthInput = document.getElementById("calMonth");
+        if (!window.SJFlights) {
+          if (calStatus) calStatus.textContent = "Live fares are shown on our flight search (flights.sjtravel.in). Open the search there to see today's fares for this route.";
+          return;
+        }
+        var inr = window.SJFlights.inr;
+        var buildUrl = window.SJFlights.buildUrl;
+        (function () {
+          var now = new Date(); now.setMonth(now.getMonth() + 1);
+          monthInput.value = now.toISOString().slice(0, 7);
+          monthInput.min = new Date().toISOString().slice(0, 7);
+        })();
+        function fmtDate(iso) {
+          var p = String(iso || "").split("-");
+          if (p.length !== 3) return iso || "";
+          var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+          return (+p[2]) + " " + months[(+p[1]) - 1] + " " + p[0];
+        }
+
+        function shortInr(n) {
+          n = Number(n);
+          if (n >= 1000) {
+            var k = Math.round((n / 1000) * 10) / 10;
+            return "\u20b9" + (String(k).replace(/\.0$/, "")) + "k";
+          }
+          return inr(n);
+        }
+
+        function renderCalendar(days, origin, destination, month) {
+          calGrid.innerHTML = "";
+          var heads = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+          heads.forEach(function (h) {
+            var el = document.createElement("div");
+            el.className = "cal-head"; el.textContent = h; calGrid.appendChild(el);
+          });
+          var parts = month.split("-"); var y = +parts[0], m = +parts[1] - 1;
+          var first = new Date(y, m, 1);
+          var dim = new Date(y, m + 1, 0).getDate();
+          var byDate = {};
+          days.forEach(function (x) { byDate[x.date] = x; });
+          var cheapest = days.length ? Math.min.apply(null, days.map(function (x) { return x.price; })) : null;
+          var today = window.SJFlights.todayIST();
+          for (var i = 0; i < first.getDay(); i++) {
+            var pad = document.createElement("div"); calGrid.appendChild(pad);
+          }
+          for (var day = 1; day <= dim; day++) {
+            (function (day) {
+              var iso = month + "-" + String(day).padStart(2, "0");
+              var b = document.createElement("button");
+              b.type = "button"; b.className = "cal-day";
+              var num = document.createElement("span"); num.className = "dnum"; num.textContent = day;
+              b.appendChild(num);
+              var entry = byDate[iso];
+              if (iso < today) {
+                /* Only past dates are disabled. */
+                b.disabled = true;
+              } else {
+                if (entry != null) {
+                  var p = document.createElement("span"); p.className = "dprice dprice-full"; p.textContent = inr(entry.price) + " one-way";
+                  b.appendChild(p);
+                  var ps = document.createElement("span"); ps.className = "dprice dprice-short"; ps.textContent = shortInr(entry.price);
+                  b.appendChild(ps);
+                  if (entry.return_at) {
+                    var r = document.createElement("span"); r.className = "dret"; r.textContent = "return";
+                    b.appendChild(r);
+                  }
+                  if (entry.price === cheapest) b.classList.add("cheapest");
+                } else {
+                  /* No cached fare: still tappable, says "Check live". */
+                  var n = document.createElement("span"); n.className = "dnone dnone-full"; n.textContent = "Check live";
+                  b.appendChild(n);
+                  var ns = document.createElement("span"); ns.className = "dnone dnone-short"; ns.textContent = "Check";
+                  b.appendChild(ns);
+                }
+                b.addEventListener("click", function () {
+                  window.open(buildUrl(origin, destination, iso, "", "economy", 1, 0, 0), "_blank", "noopener");
+                });
+              }
+              calGrid.appendChild(b);
+            })(day);
+          }
+        }
+
+        function loadCalendar() {
+          var month = monthInput.value;
+          if (!month) { calStatus.textContent = "Please pick a month."; return; }
+          calStatus.textContent = "Checking recently found fares\u2026";
+          calGrid.innerHTML = "";
+          fetch("/api/cheapest-dates?origin=" + ORIGIN + "&destination=" + DEST + "&month=" + month)
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+              if (!data || data.configured === false) {
+                calStatus.textContent = "Live fares are shown on our flight search (flights.sjtravel.in). Open the search there to see today's fares for this route.";
+                return;
+              }
+              var days = (data.days && data.days.length) ? data.days : [];
+              if (!days.length) {
+                calStatus.textContent = "No recently found fares for this route and month \u2014 tap any day to check live fares.";
+                renderCalendar([], ORIGIN, DEST, month);
+                return;
+              }
+              var cheapest = days.reduce(function (a, b) { return b.price < a.price ? b : a; });
+              calStatus.textContent = "Cheapest day this month: " + fmtDate(cheapest.date) + " at " + inr(cheapest.price) + " (recently found, per adult, " + (cheapest.return_at ? "return fare" : "one-way") + "). Tap a day to search it.";
+              renderCalendar(days, ORIGIN, DEST, month);
+            })
+            .catch(function () {
+              calStatus.textContent = "Could not load cached fares just now. Open the search there to see live fares.";
+            });
+        }
+        calBtn.addEventListener("click", loadCalendar);
+        loadCalendar();
+      });
+    </script>
+
   <div class="cookie-note" id="cookieNote" hidden>
       <p>We use Google Analytics, Microsoft Clarity and, on some pages, Travelpayouts. They can set cookies. <a href="/privacy">How this works</a>.</p>
       <div class="row">
