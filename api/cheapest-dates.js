@@ -6,10 +6,18 @@
 // Both modes draw from the SAME source: Travelpayouts v3
 // prices_for_dates, currency INR, one_way=true. The calendar returns the
 // cheapest one-way fare per day; cheap mode takes the cheapest one-way
-// fare across the next 60 days, so the two can never disagree. If v3
-// returns nothing, cheap mode falls back to v1 prices/cheap, which can
-// return a return fare — the response then carries return_at and
-// one_way:false, and the frontend labels it "return" on the site.
+// fare across the next 60 days. The two can still disagree for a while:
+// the cache below is an in-memory Map inside this serverless function,
+// and Vercel runs several copies of it — each copy holds its own cache,
+// refreshed at different times. So two pages can show two different
+// "recently found" prices until every copy has refreshed. The frontend
+// also keeps a shared 6-hour copy in the visitor's browser
+// (localStorage key sj-cheap:<ORIGIN>-<DEST>) so both pages agree there,
+// and this endpoint sends CDN-Cache-Control so Vercel's edge cache can
+// share one copy across instances. If v3 returns nothing, cheap mode
+// falls back to v1 prices/cheap, which can return a return fare — the
+// response then carries return_at and one_way:false, and the frontend
+// labels it "return" on the site.
 //
 // Server-side only. The Travelpayouts API token is read ONLY from the
 // TRAVELPAYOUTS_API_TOKEN environment variable (set in Vercel, never in
@@ -150,36 +158,45 @@ async function cheapestPrice(origin, destination, token) {
   const end = new Date(today + "T00:00:00");
   end.setDate(end.getDate() + 60);
   const endISO = isoOf(end);
-  let best = null;
-  for (const month of monthsInWindow(60)) {
-    const q = new URLSearchParams({
-      origin,
-      destination,
-      departure_at: month,
-      currency: "inr",
-      one_way: "true",
-      sorting: "price",
-      limit: "1000",
-      token,
-    });
-    try {
-      const data = await fetchJson(
-        "https://api.travelpayouts.com/aviasales/v3/prices_for_dates?" + q
-      );
-      for (const item of Array.isArray(data.data) ? data.data : []) {
-        if (!item || typeof item.price !== "number" || !item.departure_at) continue;
-        const depDate = String(item.departure_at).slice(0, 10);
-        if (depDate < today || depDate > endISO) continue;
-        if (!best || item.price < best.price) {
-          best = {
-            price: item.price,
-            departure_at: item.departure_at,
-            return_at: item.return_at || null,
-          };
-        }
+  // Fetch all months in the 60-day window in parallel: the old code
+  // awaited one Travelpayouts call per month in turn, so a cold lookup
+  // did up to 3 slow upstream calls back to back (~20s for the slowest
+  // routes on /deals). Same queries, same cheapest-pick logic — just
+  // concurrent. A month that fails still does not fail the lookup.
+  const monthResults = await Promise.all(
+    monthsInWindow(60).map(async (month) => {
+      const q = new URLSearchParams({
+        origin,
+        destination,
+        departure_at: month,
+        currency: "inr",
+        one_way: "true",
+        sorting: "price",
+        limit: "1000",
+        token,
+      });
+      try {
+        return await fetchJson(
+          "https://api.travelpayouts.com/aviasales/v3/prices_for_dates?" + q
+        );
+      } catch (e) {
+        return null;
       }
-    } catch (e) {
-      // try the next month instead of failing the whole lookup
+    })
+  );
+  let best = null;
+  for (const data of monthResults) {
+    for (const item of Array.isArray(data && data.data) ? data.data : []) {
+      if (!item || typeof item.price !== "number" || !item.departure_at) continue;
+      const depDate = String(item.departure_at).slice(0, 10);
+      if (depDate < today || depDate > endISO) continue;
+      if (!best || item.price < best.price) {
+        best = {
+          price: item.price,
+          departure_at: item.departure_at,
+          return_at: item.return_at || null,
+        };
+      }
     }
   }
   if (best) return best;
@@ -244,6 +261,7 @@ module.exports = async function handler(req, res) {
       const hit = cached(key);
       if (hit) {
         res.setHeader("Cache-Control", "public, s-maxage=21600");
+      res.setHeader("CDN-Cache-Control", "public, s-maxage=21600");
         res.status(200).json(hit);
         return;
       }
@@ -264,6 +282,7 @@ module.exports = async function handler(req, res) {
         : { ok: false, configured: true, origin, destination, currency: "INR", error: "no_cached_fare" };
       store(key, body);
       res.setHeader("Cache-Control", "public, s-maxage=21600");
+      res.setHeader("CDN-Cache-Control", "public, s-maxage=21600");
       res.status(200).json(body);
       return;
     }
@@ -280,6 +299,7 @@ module.exports = async function handler(req, res) {
     const hit = cached(key);
     if (hit) {
       res.setHeader("Cache-Control", "public, s-maxage=21600");
+      res.setHeader("CDN-Cache-Control", "public, s-maxage=21600");
       res.status(200).json(hit);
       return;
     }
@@ -297,6 +317,7 @@ module.exports = async function handler(req, res) {
     };
     store(key, body);
     res.setHeader("Cache-Control", "public, s-maxage=21600");
+      res.setHeader("CDN-Cache-Control", "public, s-maxage=21600");
     res.status(200).json(body);
   } catch (e) {
     res.setHeader("Cache-Control", "no-store");
