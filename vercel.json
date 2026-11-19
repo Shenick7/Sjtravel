@@ -113,10 +113,6 @@
       "source": "/read/jain-food-in-phuket-where-to-eat"
     },
     {
-      "destination": "/waitlist-tirumala.html",
-      "source": "/waitlist-tirumala"
-    },
-    {
       "destination": "/waitlist-visa-check.html",
       "source": "/waitlist-visa-check"
     },
@@ -133,32 +129,12 @@
       "destination": "/contact.html"
     },
     {
-      "source": "/jain-tirth-yatra-packages",
-      "destination": "/jain-tirth-yatra-packages.html"
-    },
-    {
       "source": "/nakoda-ji-tour-from-chennai",
       "destination": "/nakoda-ji-tour-from-chennai.html"
     },
     {
-      "source": "/tirumala-darshan-package-from-ambur",
-      "destination": "/tirumala-darshan-package-from-ambur.html"
-    },
-    {
-      "source": "/jain-pilgrimage-india-for-nri",
-      "destination": "/jain-pilgrimage-india-for-nri.html"
-    },
-    {
       "source": "/dubai-tour-package-from-chennai",
       "destination": "/dubai-tour-package-from-chennai.html"
-    },
-    {
-      "source": "/tirumala-darshan-booking",
-      "destination": "/tirumala-darshan-booking.html"
-    },
-    {
-      "source": "/tirupati-from-chennai-bengaluru-vellore",
-      "destination": "/tirupati-from-chennai-bengaluru-vellore.html"
     },
     {
       "source": "/irctc-tatkal-booking",
@@ -211,6 +187,50 @@
     {
       "source": "/malaysia-visa-free-for-indians",
       "destination": "/malaysia-visa-free-for-indians.html"
+    },
+    {
+      "source": "/tirumala-darshan-tickets",
+      "destination": "/tirumala-darshan-tickets.html"
+    },
+    {
+      "source": "/travel-kits",
+      "destination": "/travel-kits.html"
+    },
+    {
+      "source": "/rti-drafts",
+      "destination": "/rti-drafts.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/tirumala-darshan-package-from-ambur",
+      "destination": "/tirumala-darshan-tickets",
+      "permanent": true
+    },
+    {
+      "source": "/tirumala-darshan-booking",
+      "destination": "/tirumala-darshan-tickets",
+      "permanent": true
+    },
+    {
+      "source": "/tirupati-from-chennai-bengaluru-vellore",
+      "destination": "/tirumala-darshan-tickets",
+      "permanent": true
+    },
+    {
+      "source": "/waitlist-tirumala",
+      "destination": "/tirumala-darshan-tickets",
+      "permanent": true
+    },
+    {
+      "source": "/jain-tirth-yatra-packages",
+      "destination": "/holiday-packages",
+      "permanent": true
+    },
+    {
+      "source": "/jain-pilgrimage-india-for-nri",
+      "destination": "/holiday-packages",
+      "permanent": true
     }
   ],
   "headers": [
