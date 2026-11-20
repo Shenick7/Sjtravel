@@ -1,33 +1,25 @@
-/* Loads Google Analytics, Microsoft Clarity and (where marked) Travelpayouts
-   after the first interaction or 3 seconds — not during first paint.
-   The Search Console meta tag stays in the page and is not a script.
-   Decline in the cookie notice stops these scripts on later loads. */
+/* Loads Google Analytics and Microsoft Clarity only after the visitor
+   accepts cookies (localStorage sj-cookies === "accepted").
+   Pointer, keyboard, touch and the 3 second timer do not load anything
+   otherwise. The Search Console meta tag stays in the page and is not a script. */
 (function () {
   var KEY = "sj-cookies";
   function choice() {
     try { return localStorage.getItem(KEY); } catch (e) { return null; }
   }
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
 
   function loadAll() {
     if (window.__sjAnalyticsLoaded) return;
-    if (choice() === "declined") return;
+    if (choice() !== "accepted") return;
     window.__sjAnalyticsLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
     window.gtag("js", new Date());
     window.gtag("config", "G-YPM6XLXTVQ");
     var g = document.createElement("script");
     g.async = true;
     g.src = "https://www.googletagmanager.com/gtag/js?id=G-YPM6XLXTVQ";
     document.head.appendChild(g);
-
-    if (document.documentElement.getAttribute("data-travelpayouts") === "1") {
-      var tp = document.createElement("script");
-      tp.async = true;
-      tp.src = "https://tp-em.com/NjAwNzQ0.js?t=600744";
-      tp.setAttribute("data-cmp-ab", "2");
-      document.head.appendChild(tp);
-    }
 
     (function (c, l, a, r, i, t, y) {
       c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
@@ -41,10 +33,10 @@
   window.sjLoadAnalytics = loadAll;
 
   function schedule() {
-    if (choice() === "declined") return;
+    if (choice() !== "accepted") return;
     var done = false;
     function go() {
-      if (done || choice() === "declined") return;
+      if (done || choice() !== "accepted") return;
       done = true;
       loadAll();
     }
