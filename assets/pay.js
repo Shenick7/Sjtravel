@@ -28,7 +28,7 @@
 
   function shotUrl(product, amount, page) {
     var msg = "Hi, I paid by UPI for the " + product + " (" + rupees(amount) + ", from " + page + "). Sending the payment screenshot.";
-    return "https://wa.me/919566977211?text=" + encodeURIComponent(msg);
+    return (window.SJ_SITE ? window.SJ_SITE.whatsapp : "https://wa.me/919566977211") + "?text=" + encodeURIComponent(msg);
   }
 
   var qrLoading = null;
@@ -74,8 +74,7 @@
     var pay = box.querySelector("[data-upi-link]");
     if (pay) {
       pay.href = link;
-      var singleKit = /travel kit/i.test(product) && Number(amount) === 999;
-      pay.textContent = (singleKit ? "Pay launch price " : "Pay ") + rupees(amount) + " by UPI";
+      pay.textContent = "Pay " + rupees(amount) + " by UPI";
       pay.setAttribute("data-kit", product);
     }
     var shot = box.querySelector("[data-upi-shot]");
@@ -90,7 +89,7 @@
     var noteEl = box.querySelector("[data-upi-note]");
     if (noteEl) noteEl.textContent = product;
     var amtEl = box.querySelector("[data-upi-amt]");
-    if (amtEl) amtEl.textContent = (/travel kit/i.test(product) && Number(amount) === 999 ? "Launch price " : "") + rupees(amount);
+    if (amtEl) amtEl.textContent = rupees(amount);
     drawQr(box.querySelector("[data-upi-qr]"), link);
     box.hidden = false;
   }

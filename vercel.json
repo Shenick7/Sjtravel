@@ -191,10 +191,6 @@
     {
       "source": "/travel-kits",
       "destination": "/travel-kits.html"
-    },
-    {
-      "source": "/rti-drafts",
-      "destination": "/rti-drafts.html"
     }
   ],
   "redirects": [
@@ -236,6 +232,11 @@
     {
       "source": "/thailand-30-day-visa-free",
       "destination": "/visa-free-countries-indian-passport",
+      "permanent": true
+    },
+    {
+      "source": "/rti-drafts",
+      "destination": "/visa-help",
       "permanent": true
     }
   ],

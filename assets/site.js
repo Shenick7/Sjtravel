@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var wa = document.querySelector(".tap-bar .tap-wa");
   if (!wa) return;
   var msg = "Hi SJ Tours, I am on this page: " + document.title;
-  wa.href = "https://wa.me/919566977211?text=" + encodeURIComponent(msg);
+  wa.href = (window.SJ_SITE ? window.SJ_SITE.whatsapp : "https://wa.me/919566977211") + "?text=" + encodeURIComponent(msg);
 });
 
 if ("serviceWorker" in navigator) {

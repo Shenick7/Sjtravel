@@ -564,7 +564,15 @@
       .related a span { display: block; font-weight: 400; color: var(--muted); font-size: 0.92rem; margin-top: 4px; }
       .page-list { margin: 0; padding-left: 18px; color: var(--muted); font-size: 1rem; display: grid; gap: 8px; }
       .page-list li::marker { color: var(--accent); }
-    </style>
+    .group-card{margin-top:28px;border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+.group-grid{display:grid;gap:18px}
+@media (min-width:720px){.group-grid{grid-template-columns:1fr 1fr}}
+.group-field{display:grid;gap:6px;align-content:start}
+.group-field label{font-weight:700;font-size:0.9rem}
+.group-field input,.group-field select{font:inherit;font-size:1rem;color:var(--ink);width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.group-field input:focus,.group-field select:focus{border-color:var(--accent);outline:2px solid var(--accent-soft);outline-offset:0}
+.group-card .btn{margin-top:20px}
+</style>
 <noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>    <link rel="alternate" type="application/rss+xml" title="SJ Tours and Travels — Read" href="https://www.sjtravel.in/read/feed.xml">
     <link rel="stylesheet" href="/assets/fonts.css">
     <link rel="stylesheet" href="/assets/extras.css">
@@ -630,6 +638,7 @@
 </script>
 </head>
   <body>
+    <script src="/assets/site-config.js"></script>
     <header class="site" id="top">
       <div class="wrap masthead">
         <a class="brand" href="/" aria-label="SJ Tours and Travels — Journeys Made Simple — home">
@@ -641,27 +650,30 @@
       </div>
       <nav class="title-bar" aria-label="Quick links"><a href="/" class="home-link" aria-label="Home"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></a><span class="sep">·</span><a href="/travel-kits">Travel Kits</a><span class="sep">·</span><a href="/holiday-packages#pilgrimages">Pilgrimages</a><span class="sep">·</span><a href="/holiday-packages">Holidays</a><span class="sep">·</span><a href="/flights">Flights</a><span class="sep">·</span><a href="/guides">Guides</a><span class="sep">·</span><a href="/contact">Contact</a><span class="sep">·</span><a class="wa-link" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20trip." target="_blank" rel="noopener">WhatsApp</a><button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menu">☰</button></nav>
       <div class="mobile-menu" id="mobileMenu" hidden>
-        <a href="/holiday-packages#pilgrimages">Pilgrimages</a>
-        <a href="/holiday-packages">Holiday packages</a>
-        <a href="/flights">Flights</a>
-        <a href="/guides">Guides</a>
-        <a href="/visa-help">Visa help</a>
-        <a href="/travel-kits">Travel kits</a>
-        <a href="/about">About</a>
-        <a href="/read">Travel Notes</a>
-        <a href="/contact">Contact</a>
-        <a href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20trip." target="_blank" rel="noopener">WhatsApp</a>
+<a href="/travel-kits">Travel Kits</a>
+<a href="/holiday-packages#pilgrimages">Pilgrimages</a>
+<a href="/holiday-packages">Holidays</a>
+<a href="/holiday-packages#groups">Group trips</a>
+<a href="/flights">Flights</a>
+<a href="/guides">Guides</a>
+<a href="/visa-help">Visa help</a>
+<a href="/about">About</a>
+<a href="/read">Travel Notes</a>
+<a href="/contact">Contact</a>
+<a href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20trip." target="_blank" rel="noopener">WhatsApp</a>
       </div>
       <div class="wrap nav-row">
         <nav aria-label="Main">
-          <a href="/travel-kits">Travel Kits</a>
-          <a href="/holiday-packages#pilgrimages">Pilgrimages</a>
-          <a href="/holiday-packages">Holidays</a>
-          <a href="/flights">Flights</a>
-          <a href="/guides">Guides</a>
-          <a href="/contact">Contact</a>
-          <a href="/about">About</a>
-          <a href="/read">Travel Notes</a>
+<a href="/travel-kits">Travel Kits</a>
+<a href="/holiday-packages#pilgrimages">Pilgrimages</a>
+<a href="/holiday-packages">Holidays</a>
+<a href="/holiday-packages#groups">Group trips</a>
+<a href="/flights">Flights</a>
+<a href="/guides">Guides</a>
+<a href="/visa-help">Visa help</a>
+<a href="/about">About</a>
+<a href="/read">Travel Notes</a>
+<a href="/contact">Contact</a>
         </nav>
         <a class="btn btn-wa btn-sm" aria-label="Ask a question on WhatsApp" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20trip." target="_blank" rel="noopener">WhatsApp Us</a>
       </div>
@@ -717,6 +729,36 @@
           </div>
         </div>
       </section>
+      <section class="block" id="groups">
+        <div class="wrap">
+          <div class="sec-head">
+            <h2>Group &amp; corporate trips</h2>
+            <p>Families, friends, offices, temple groups. 10+ travellers, one coordinator, one price.</p>
+          </div>
+          <div class="group-card">
+            <form class="group-grid" id="groupForm">
+              <div class="group-field">
+                <label for="g-size">Group size</label>
+                <select id="g-size"><option>10–20 travellers</option><option>21–50 travellers</option><option>50+ travellers</option></select>
+              </div>
+              <div class="group-field">
+                <label for="g-dest">Destination</label>
+                <input id="g-dest" type="text" placeholder="e.g. Dubai, Tirumala, Kerala" autocomplete="off" />
+              </div>
+              <div class="group-field">
+                <label for="g-dates">Travel dates</label>
+                <input id="g-dates" type="text" placeholder="e.g. 12–17 Dec 2026 (or flexible)" autocomplete="off" />
+              </div>
+              <div class="group-field">
+                <label for="g-contact">Your name &amp; WhatsApp number</label>
+                <input id="g-contact" type="text" placeholder="e.g. Shenick, +91 98XXX XXXXX" autocomplete="off" />
+              </div>
+            </form>
+            <button class="btn btn-wa" id="groupSend" type="button">Send group enquiry on WhatsApp</button>
+            <p class="wa-hint">Opens WhatsApp — your message is ready, just press send. A person replies Monday to Saturday, 10:00 AM to 8:00 PM IST. Closed Sunday.</p>
+          </div>
+        </div>
+      </section>
       <section class="block" id="prices" aria-labelledby="prices-heading">
         <div class="wrap">
           <div class="sec-head">
@@ -725,7 +767,7 @@
             <p>One all-inclusive price in your quote. Any government tax that applies, such as TCS on overseas packages, is shown as a separate line.</p>
           </div>
           <ul class="price-plain-list">
-            <li><strong>Travel kits — list ₹1,499, launch price ₹999.</strong> Any 3 for ₹1,999, all 6 for ₹3,999. PDF on WhatsApp after UPI payment. Book a holiday package with us and the kit price is adjusted in your package.</li>
+            <li><strong>Travel kits — ₹999.</strong> Any 3 for ₹1,999, all 6 for ₹3,999. PDF on WhatsApp after UPI payment. Book a holiday package with us and the kit price is adjusted in your package.</li>
             <li><strong>Flight Finder — ₹199</strong> per search.</li>
             <li><strong>Holiday packages — one flat, all-inclusive price</strong> in your quote, land costs broken down line by line. Airfares are live and can change until ticketed.</li>
             <li><strong>Visa help — priced per country</strong> on WhatsApp. No hidden fees.</li>
@@ -762,7 +804,7 @@
             <h2>Keep exploring</h2>
           </div>
           <div class="related">
-            <a href="/travel-kits">Travel Kits — <s>₹1,499</s> Launch price ₹999<span>Plan it yourself with a complete PDF guide per country.</span></a>
+            <a href="/travel-kits">Travel Kits — ₹999<span>Plan it yourself with a complete PDF guide per country.</span></a>
             <a href="/flight-finder">Flight Finder — ₹199<span>We hunt the best-value flights for your dates.</span></a>
             <a href="/visa-help">Visa Help<span>Guided through the official process, document by document.</span></a>
             <a href="/about">About SJ Tours and Travels<span>Planned with care, trip by trip — a note from the founder.</span></a>
@@ -783,9 +825,10 @@
         <div>
           <h3>Kits &amp; trips</h3>
           <ul>
-            <li><a href="/travel-kits">Travel Kits — <s>₹1,499</s> Launch price ₹999</a></li>
+            <li><a href="/travel-kits">Travel Kits — ₹999</a></li>
             <li><a href="/travel-kits#bundles">Bundles — 3 for ₹1,999 · 5 for ₹3,499 · all 6 for ₹3,999</a></li>
             <li><a href="/holiday-packages">Holiday Packages</a></li>
+            <li><a href="/holiday-packages#groups">Group trips</a></li>
             <li><a href="/dubai-tour-package-from-chennai">Dubai tour from Chennai</a></li>
           </ul>
         </div>
@@ -793,10 +836,9 @@
           <h3>Services</h3>
           <ul>
             <li><a href="/flights">Flights</a></li>
-            <li><a href="/deals">Flight deals from Chennai</a></li>
+            <li><a href="/deals">Special flight fares</a></li>
             <li><a href="/flight-finder">Flight Finder · ₹199</a></li>
             <li><a href="/visa-help">Visa help</a></li>
-            <li><a href="/rti-drafts">RTI drafts</a></li>
             <li><a href="/guides">Travel guides</a></li>
             <li><a href="/read">Travel Notes</a></li>
           </ul>
@@ -808,7 +850,7 @@
             <li><a href="/about/shenick-jain">Shenick Jain</a></li>
             <li><a href="/travel-agent-ambur">Travel agent in Ambur</a></li>
             <li><a href="/contact">Contact</a></li>
-            <li><a href="/sponsor">Partner with us</a></li>
+            <li><a href="/sponsor">Partner with us — for businesses</a></li>
             <li><a href="https://wa.me/919566977211" target="_blank" rel="noopener">WhatsApp: +91 95669 77211</a></li>
             <li><a href="mailto:hello@sjtravel.in">Email: hello@sjtravel.in</a></li>
             <li><a href="tel:+919566977211">Call: +91 95669 77211</a></li>
@@ -941,7 +983,7 @@
         }
       })();
     </script>
-      <script src="/assets/site.js" defer></script>
+      <script src="/assets/site.js?v=20261120-1" defer></script>
   <div class="cookie-note" id="cookieNote" hidden>
       <p>Analytics cookies. <a href="/privacy">Privacy</a>.</p>
       <div class="row">
@@ -954,5 +996,24 @@
       <a class="btn btn-ghost" href="tel:+919566977211">Call</a>
     </div>
     <script src="/assets/defer-analytics.js" defer></script>
-  </body>
+      <script>
+      (function () {
+        var btn = document.getElementById("groupSend");
+        if (!btn) return;
+        btn.addEventListener("click", function () {
+          var size = document.getElementById("g-size").value;
+          var dest = document.getElementById("g-dest").value.trim();
+          var dates = document.getElementById("g-dates").value.trim();
+          var contact = document.getElementById("g-contact").value.trim();
+          if (!dest) { document.getElementById("g-dest").focus(); return; }
+          if (!contact) { document.getElementById("g-contact").focus(); return; }
+          var lines = ["Hi SJ Tours, I want a group trip quote.", "Group size: " + size, "Destination: " + dest];
+          if (dates) lines.push("Dates: " + dates);
+          lines.push("Contact: " + contact);
+          var wa = window.SJ_SITE ? window.SJ_SITE.whatsapp : "https://wa.me/919566977211";
+          window.open(wa + "?text=" + encodeURIComponent(lines.join("\n")), "_blank", "noopener");
+        });
+      })();
+    </script>
+</body>
 </html>

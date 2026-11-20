@@ -564,7 +564,22 @@
       .related a span { display: block; font-weight: 400; color: var(--muted); font-size: 0.92rem; margin-top: 4px; }
       .page-list { margin: 0; padding-left: 18px; color: var(--muted); font-size: 1rem; display: grid; gap: 8px; }
       .page-list li::marker { color: var(--accent); }
-    </style>
+    .visa-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.visa-tabs::-webkit-scrollbar{display:none}
+.visa-tab{flex:0 0 auto;min-height:44px;padding:10px 18px;border:1.5px solid var(--line);border-radius:999px;background:#fff;font:inherit;font-weight:700;font-size:0.95rem;color:var(--ink);cursor:pointer}
+.visa-tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.visa-panel{margin-top:20px;border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.visa-panel[hidden]{display:none}
+.visa-panel h3{font-size:1.4rem;margin:0 0 12px}
+.visa-panel p{margin:0 0 12px;color:var(--muted)}
+.visa-panel p b{color:var(--ink)}
+.visa-verified{font-size:0.88rem;color:var(--muted)}
+.visa-panel .btn{margin-top:8px}
+.visa-form{display:grid;gap:14px;max-width:28rem}
+.visa-form label{font-weight:700;font-size:0.9rem;display:grid;gap:6px}
+.visa-form input{font:inherit;font-size:1rem;padding:11px 14px;border:1px solid var(--line);border-radius:10px;width:100%}
+.visa-form input:focus{border-color:var(--accent);outline:2px solid var(--accent-soft);outline-offset:0}
+</style>
 <noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>    <link rel="alternate" type="application/rss+xml" title="SJ Tours and Travels — Read" href="https://www.sjtravel.in/read/feed.xml">
     <link rel="stylesheet" href="/assets/fonts.css">
     <link rel="stylesheet" href="/assets/extras.css">
@@ -630,6 +645,7 @@
 </script>
 </head>
   <body>
+    <script src="/assets/site-config.js"></script>
     <header class="site" id="top">
       <div class="wrap masthead">
         <a class="brand" href="/" aria-label="SJ Tours and Travels — Journeys Made Simple — home">
@@ -641,27 +657,30 @@
       </div>
       <nav class="title-bar" aria-label="Quick links"><a href="/" class="home-link" aria-label="Home"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></a><span class="sep">·</span><a href="/travel-kits">Travel Kits</a><span class="sep">·</span><a href="/holiday-packages#pilgrimages">Pilgrimages</a><span class="sep">·</span><a href="/holiday-packages">Holidays</a><span class="sep">·</span><a href="/flights">Flights</a><span class="sep">·</span><a href="/guides">Guides</a><span class="sep">·</span><a href="/contact">Contact</a><span class="sep">·</span><a class="wa-link" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20trip." target="_blank" rel="noopener">WhatsApp</a><button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menu">☰</button></nav>
       <div class="mobile-menu" id="mobileMenu" hidden>
-        <a href="/holiday-packages#pilgrimages">Pilgrimages</a>
-        <a href="/holiday-packages">Holiday packages</a>
-        <a href="/flights">Flights</a>
-        <a href="/guides">Guides</a>
-        <a href="/visa-help">Visa help</a>
-        <a href="/travel-kits">Travel kits</a>
-        <a href="/about">About</a>
-        <a href="/read">Travel Notes</a>
-        <a href="/contact">Contact</a>
-        <a href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20trip." target="_blank" rel="noopener">WhatsApp</a>
+<a href="/travel-kits">Travel Kits</a>
+<a href="/holiday-packages#pilgrimages">Pilgrimages</a>
+<a href="/holiday-packages">Holidays</a>
+<a href="/holiday-packages#groups">Group trips</a>
+<a href="/flights">Flights</a>
+<a href="/guides">Guides</a>
+<a href="/visa-help">Visa help</a>
+<a href="/about">About</a>
+<a href="/read">Travel Notes</a>
+<a href="/contact">Contact</a>
+<a href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20trip." target="_blank" rel="noopener">WhatsApp</a>
       </div>
       <div class="wrap nav-row">
         <nav aria-label="Main">
-          <a href="/travel-kits">Travel Kits</a>
-          <a href="/holiday-packages#pilgrimages">Pilgrimages</a>
-          <a href="/holiday-packages">Holidays</a>
-          <a href="/flights">Flights</a>
-          <a href="/guides">Guides</a>
-          <a href="/contact">Contact</a>
-          <a href="/about">About</a>
-          <a href="/read">Travel Notes</a>
+<a href="/travel-kits">Travel Kits</a>
+<a href="/holiday-packages#pilgrimages">Pilgrimages</a>
+<a href="/holiday-packages">Holidays</a>
+<a href="/holiday-packages#groups">Group trips</a>
+<a href="/flights">Flights</a>
+<a href="/guides">Guides</a>
+<a href="/visa-help">Visa help</a>
+<a href="/about">About</a>
+<a href="/read">Travel Notes</a>
+<a href="/contact">Contact</a>
         </nav>
         <a class="btn btn-wa btn-sm" aria-label="Ask a question on WhatsApp" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20trip." target="_blank" rel="noopener">WhatsApp Us</a>
       </div>
@@ -675,6 +694,84 @@
             <p class="kicker">Visa Help</p>
             <h1>Visa help</h1>
             <p class="lede">Applying yourself but stuck on the forms? We guide you through the official process for your destination, document by document — you apply, we make sure it's right.</p>
+          </div>
+        </div>
+      </section>      <section class="block">
+        <div class="wrap">
+          <div class="sec-head">
+            <h2>Visa rules by country</h2>
+            <p>For Indian passports. Tap a country — the answer changes here, no page reload.</p>
+          </div>
+          <div class="visa-tabs" role="tablist" aria-label="Visa rules by country">
+            <button type="button" class="visa-tab" role="tab" id="visa-tab-dubai" aria-controls="visa-dubai" aria-selected="true" data-visa="dubai">Dubai</button>
+            <button type="button" class="visa-tab" role="tab" id="visa-tab-thailand" aria-controls="visa-thailand" aria-selected="false" data-visa="thailand">Thailand</button>
+            <button type="button" class="visa-tab" role="tab" id="visa-tab-singapore" aria-controls="visa-singapore" aria-selected="false" data-visa="singapore">Singapore</button>
+            <button type="button" class="visa-tab" role="tab" id="visa-tab-malaysia" aria-controls="visa-malaysia" aria-selected="false" data-visa="malaysia">Malaysia</button>
+            <button type="button" class="visa-tab" role="tab" id="visa-tab-sri-lanka" aria-controls="visa-sri-lanka" aria-selected="false" data-visa="sri-lanka">Sri Lanka</button>
+            <button type="button" class="visa-tab" role="tab" id="visa-tab-vietnam" aria-controls="visa-vietnam" aria-selected="false" data-visa="vietnam">Vietnam</button>
+            <button type="button" class="visa-tab" role="tab" id="visa-tab-others" aria-controls="visa-others" aria-selected="false" data-visa="others">Others</button>
+          </div>
+          <div class="visa-panel" id="visa-dubai" role="tabpanel" aria-labelledby="visa-tab-dubai">
+            <h3>Dubai (UAE)</h3>
+            <p><b>Visa type for Indian passports:</b> Tourist visa — apply before you travel. There is no general visa-free entry for ordinary Indian passports.</p>
+            <p><b>Official site:</b> <a href="https://u.ae/en/information-and-services/visa-and-emirates-id/Types-of-visas/tourist-visa" target="_blank" rel="noopener">u.ae — tourist visa</a> · <a href="https://icp.gov.ae" target="_blank" rel="noopener">icp.gov.ae — UAE visa portal</a></p>
+            <p><b>Main documents:</b> Passport valid for at least 6 months. Apply through a UAE airline, a licensed travel agent or a hotel — UAE embassies do not issue tourist visas. Indian passport holders with a US Green Card or a UK/EU residence visa can get a 14-day visa on arrival (extendable once).</p>
+            <p class="visa-verified">Last verified: 20 November 2026</p>
+            <a class="btn btn-wa" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20Dubai%20visa." target="_blank" rel="noopener">Ask about Dubai visa</a>
+          </div>
+          <div class="visa-panel" id="visa-thailand" role="tabpanel" aria-labelledby="visa-tab-thailand">
+            <h3>Thailand</h3>
+            <p><b>Visa type for Indian passports:</b> Visa-free for tourism — up to 30 days. The 30-day rule has applied since 15 September 2026, when Thailand cut it from 60 days.</p>
+            <p><b>Official site:</b> <a href="https://tdac.immigration.go.th" target="_blank" rel="noopener">tdac.immigration.go.th — Thailand Digital Arrival Card</a> · <a href="https://thaievisa.go.th" target="_blank" rel="noopener">thaievisa.go.th — e-visa for longer trips</a></p>
+            <p><b>Main documents:</b> Passport valid for at least 6 months. Fill the free Thailand Digital Arrival Card (TDAC) online within 72 hours before you land — for every person, including children. For a stay longer than 30 days, apply for an e-visa on thaievisa.go.th before you fly.</p>
+            <p class="visa-verified">Last verified: 20 November 2026</p>
+            <a class="btn btn-wa" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20Thailand%20visa." target="_blank" rel="noopener">Ask about Thailand visa</a>
+          </div>
+          <div class="visa-panel" id="visa-singapore" role="tabpanel" aria-labelledby="visa-tab-singapore">
+            <h3>Singapore</h3>
+            <p><b>Visa type for Indian passports:</b> Visa required in advance. There is no visa on arrival for Indian passport holders.</p>
+            <p><b>Official site:</b> <a href="https://www.ica.gov.sg/information-and-e-services/entry-and-departure/entering-singapore/visa-guidelines/visa-guideline-detail/india" target="_blank" rel="noopener">ica.gov.sg — visa rules for India</a></p>
+            <p><b>Main documents:</b> Form 14A (signed), a recent passport-sized colour photo taken within the last 3 months, and a photocopy of your passport biodata page (passport valid for at least 6 months from entry). Form V39A (Letter of Introduction) may be asked for. Apply within 30 days before arrival, through a local contact or strategic partner, an authorised visa agent, or the nearest Singapore Overseas Mission. The free SG Arrival Card must be filled within 3 days before arrival — it is not a visa.</p>
+            <p class="visa-verified">Last verified: 20 November 2026</p>
+            <a class="btn btn-wa" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20Singapore%20visa." target="_blank" rel="noopener">Ask about Singapore visa</a>
+          </div>
+          <div class="visa-panel" id="visa-malaysia" role="tabpanel" aria-labelledby="visa-tab-malaysia">
+            <h3>Malaysia</h3>
+            <p><b>Visa type for Indian passports:</b> Visa-free until 31 December 2026 — up to 30 days, for business, tourism, social or transit visits.</p>
+            <p><b>Official site:</b> <a href="https://malaysiavisa.imi.gov.my/terms-and-conditions/" target="_blank" rel="noopener">malaysiavisa.imi.gov.my — visa terms</a> · <a href="https://imigresen-online.imi.gov.my/mdac/main" target="_blank" rel="noopener">MDAC — Malaysia Digital Arrival Card</a></p>
+            <p><b>Main documents:</b> Passport valid for at least 6 months, confirmed return flight tickets, confirmed hotel booking, and the Malaysia Digital Arrival Card (MDAC) filed online within 3 days before arrival.</p>
+            <p class="visa-verified">Last verified: 20 November 2026</p>
+            <a class="btn btn-wa" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20Malaysia%20visa." target="_blank" rel="noopener">Ask about Malaysia visa</a>
+          </div>
+          <div class="visa-panel" id="visa-sri-lanka" role="tabpanel" aria-labelledby="visa-tab-sri-lanka">
+            <h3>Sri Lanka</h3>
+            <p><b>Visa type for Indian passports:</b> ETA required before arrival — free for Indian passports, 30 days, double entry.</p>
+            <p><b>Official site:</b> <a href="https://eta.gov.lk" target="_blank" rel="noopener">eta.gov.lk — Electronic Travel Authorization</a></p>
+            <p><b>Main documents:</b> Apply on eta.gov.lk before you travel. The ETA is free for Indian passports. We do not list a documents checklist here — the official ETA page we read did not publish one, and we do not invent it.</p>
+            <p class="visa-verified">Last verified: 20 November 2026</p>
+            <a class="btn btn-wa" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20Sri%20Lanka%20visa." target="_blank" rel="noopener">Ask about Sri Lanka visa</a>
+          </div>
+          <div class="visa-panel" id="visa-vietnam" role="tabpanel" aria-labelledby="visa-tab-vietnam">
+            <h3>Vietnam</h3>
+            <p><b>Visa type for Indian passports:</b> E-visa — apply online on the official portal before you travel.</p>
+            <p><b>Official site:</b> <a href="https://evisa.gov.vn" target="_blank" rel="noopener">evisa.gov.vn — Vietnam National Electronic Visa system</a></p>
+            <p><b>Main documents:</b> Stay length, fee and documents: check the official portal before you apply. We could not open the portal to verify them, so we do not publish them here.</p>
+            <p class="visa-verified">Last verified: 20 November 2026</p>
+            <a class="btn btn-wa" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20Vietnam%20visa." target="_blank" rel="noopener">Ask about Vietnam visa</a>
+          </div>
+          <div class="visa-panel" id="visa-others" role="tabpanel" aria-labelledby="visa-tab-others" hidden>
+            <h3>Another country</h3>
+            <p>Tell us where you are going and when — we check the official rule for your country and reply on WhatsApp.</p>
+            <div class="visa-form">
+              <label>Country
+                <input id="visaOthersCountry" type="text" placeholder="e.g. Georgia" autocomplete="off" />
+              </label>
+              <label>Travel dates
+                <input id="visaOthersDates" type="text" placeholder="e.g. 12–17 Dec 2026 (or flexible)" autocomplete="off" />
+              </label>
+              <div><button class="btn btn-wa" id="visaOthersSend" type="button">Ask on WhatsApp</button></div>
+            </div>
+            <p class="visa-verified">Last verified: 20 November 2026</p>
           </div>
         </div>
       </section>      <section class="block">
@@ -750,7 +847,7 @@
               <h3>Visa help</h3>
               <p>Applying yourself but stuck on the forms? We guide you through the official process for your destination, document by document — you apply, we make sure it's right.</p>
               <div class="svc-price">Ask on WhatsApp <small>priced per country</small></div>
-              <p class="svc-note"><strong>Last verified: 19 November 2026.</strong> Visa rules change often — before you apply, please check the latest rules on the official government website for your destination (our kits link only to official sites).</p>
+              <p class="svc-note"><strong>Last verified: 20 November 2026.</strong> Visa rules change often — before you apply, please check the latest rules on the official government website for your destination (our kits link only to official sites).</p>
               <a class="btn btn-wa" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20need%20visa%20help." target="_blank" rel="noopener">Ask about a visa</a>
               <p style="margin-top:10px"><a href="/waitlist-visa-check">Join the waitlist — visa file check →</a></p>
             </div>
@@ -794,7 +891,7 @@
           <div class="related">
             <a href="/visa-free-countries-indian-passport">Visa-Free Countries for Indian Passports — free guide<span>Which countries India's MEA lists as visa-free or visa on arrival.</span></a>
             <a href="/read/dubai-visa-for-indians-documents-cost">Dubai Visa for Indians — free article<span>Documents, official fees in rupees, and the visa-on-arrival shortcut</span></a>
-            <a href="/travel-kits">Travel Kits — <s>₹1,499</s> Launch price ₹999<span>Each kit includes visa steps on official sites only.</span></a>
+            <a href="/travel-kits">Travel Kits — ₹999<span>Each kit includes visa steps on official sites only.</span></a>
             <a href="/holiday-packages">Holiday Packages<span>Prefer everything done for you?</span></a>
             <a href="/flight-finder">Flight Finder — ₹199<span>Best-value flights for your dates.</span></a>
             <a href="/about">About SJ Tours and Travels<span>Planned with care, trip by trip.</span></a>
@@ -818,9 +915,10 @@
         <div>
           <h3>Kits &amp; trips</h3>
           <ul>
-            <li><a href="/travel-kits">Travel Kits — <s>₹1,499</s> Launch price ₹999</a></li>
+            <li><a href="/travel-kits">Travel Kits — ₹999</a></li>
             <li><a href="/travel-kits#bundles">Bundles — 3 for ₹1,999 · 5 for ₹3,499 · all 6 for ₹3,999</a></li>
             <li><a href="/holiday-packages">Holiday Packages</a></li>
+            <li><a href="/holiday-packages#groups">Group trips</a></li>
             <li><a href="/dubai-tour-package-from-chennai">Dubai tour from Chennai</a></li>
           </ul>
         </div>
@@ -828,10 +926,9 @@
           <h3>Services</h3>
           <ul>
             <li><a href="/flights">Flights</a></li>
-            <li><a href="/deals">Flight deals from Chennai</a></li>
+            <li><a href="/deals">Special flight fares</a></li>
             <li><a href="/flight-finder">Flight Finder · ₹199</a></li>
             <li><a href="/visa-help">Visa help</a></li>
-            <li><a href="/rti-drafts">RTI drafts</a></li>
             <li><a href="/guides">Travel guides</a></li>
             <li><a href="/read">Travel Notes</a></li>
           </ul>
@@ -843,7 +940,7 @@
             <li><a href="/about/shenick-jain">Shenick Jain</a></li>
             <li><a href="/travel-agent-ambur">Travel agent in Ambur</a></li>
             <li><a href="/contact">Contact</a></li>
-            <li><a href="/sponsor">Partner with us</a></li>
+            <li><a href="/sponsor">Partner with us — for businesses</a></li>
             <li><a href="https://wa.me/919566977211" target="_blank" rel="noopener">WhatsApp: +91 95669 77211</a></li>
             <li><a href="mailto:hello@sjtravel.in">Email: hello@sjtravel.in</a></li>
             <li><a href="tel:+919566977211">Call: +91 95669 77211</a></li>
@@ -976,7 +1073,7 @@
         }
       })();
     </script>
-      <script src="/assets/site.js" defer></script>
+      <script src="/assets/site.js?v=20261120-1" defer></script>
   <div class="cookie-note" id="cookieNote" hidden>
       <p>Analytics cookies. <a href="/privacy">Privacy</a>.</p>
       <div class="row">
@@ -989,5 +1086,29 @@
       <a class="btn btn-ghost" href="tel:+919566977211">Call</a>
     </div>
     <script src="/assets/defer-analytics.js" defer></script>
-  </body>
+      <script>
+      (function () {
+        var tabs = document.querySelectorAll(".visa-tab");
+        var panels = document.querySelectorAll(".visa-panel");
+        function show(id) {
+          tabs.forEach(function (t) { t.setAttribute("aria-selected", t.getAttribute("data-visa") === id ? "true" : "false"); });
+          panels.forEach(function (p) { p.hidden = p.id !== "visa-" + id; });
+        }
+        tabs.forEach(function (t) {
+          t.addEventListener("click", function () { show(t.getAttribute("data-visa")); });
+        });
+        var send = document.getElementById("visaOthersSend");
+        if (send) {
+          send.addEventListener("click", function () {
+            var c = document.getElementById("visaOthersCountry").value.trim();
+            var d = document.getElementById("visaOthersDates").value.trim();
+            if (!c) { document.getElementById("visaOthersCountry").focus(); return; }
+            var msg = "Hi SJ Tours, I need visa help for " + c + (d ? ". Travel dates: " + d + "." : ".");
+            var wa = window.SJ_SITE ? window.SJ_SITE.whatsapp : "https://wa.me/919566977211";
+            window.open(wa + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
+          });
+        }
+      })();
+    </script>
+</body>
 </html>
