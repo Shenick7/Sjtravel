@@ -54,7 +54,10 @@ window.SJ_SITE = {
         node.nodeValue = node.nodeValue.split(OLD_DISPLAY).join(S.phoneDisplay);
       }
       if (node.nodeValue.indexOf(OLD_UPI) !== -1) {
-        node.nodeValue = node.nodeValue.split(OLD_UPI).join(S.phoneDigits + "@upi");
+        // Only the old id, not the correct one: "919566977211@upi" contains
+        // the old id as a substring, so a plain split/join would turn it
+        // into "91919566977211@upi" (seen live on the kit pages).
+        node.nodeValue = node.nodeValue.replace(/(^|[^0-9])9566977211@upi/g, "$1" + S.phoneDigits + "@upi");
       }
     });
     var ld = document.querySelectorAll('script[type="application/ld+json"]');
