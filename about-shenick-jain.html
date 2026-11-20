@@ -94,8 +94,8 @@
         text-align: center;
         padding: 24px 24px 20px;
         background-image: linear-gradient(rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.78)), url("/assets/masthead-landmarks.jpg");
-        background-size: cover;
-        background-position: center bottom;
+        background-size: auto 100%, auto calc(100% - 16px);
+        background-position: center top, center bottom;
         background-repeat: no-repeat;
       }
       @media (min-width: 860px) { .masthead { padding: 40px 24px 32px; } }
@@ -628,7 +628,7 @@
       .read-list{display:grid;gap:20px;margin-top:24px}
       @media (max-width:640px){.hero-card{padding:26px 20px}}
 </style>
-<noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>    <link rel="alternate" type="application/rss+xml" title="SJ Tours and Travels — Read" href="https://www.sjtravel.in/read/feed.xml">
+<noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
     <link rel="stylesheet" href="/assets/fonts.css">
     <link rel="stylesheet" href="/assets/extras.css">
 <script type="application/ld+json">
@@ -747,7 +747,7 @@
         <div>
           <h3>Kits &amp; trips</h3>
           <ul>
-            <li><a href="/travel-kits">Travel Kits — ₹999</a></li>
+            <li><a href="/travel-kits">Travel Kits — <s>₹1,499</s> Launch price ₹999</a></li>
             <li><a href="/travel-kits#bundles">Bundles — 3 for ₹1,999 · 5 for ₹3,499 · all 6 for ₹3,999</a></li>
             <li><a href="/holiday-packages">Holiday Packages</a></li>
             <li><a href="/holiday-packages#groups">Group trips</a></li>

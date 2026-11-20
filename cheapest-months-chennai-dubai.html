@@ -80,8 +80,8 @@
         text-align: center;
         padding: 24px 24px 20px;
         background-image: linear-gradient(rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.78)), url("/assets/masthead-landmarks.jpg");
-        background-size: cover;
-        background-position: center bottom;
+        background-size: auto 100%, auto calc(100% - 16px);
+        background-position: center top, center bottom;
         background-repeat: no-repeat;
       }
       @media (min-width: 860px) { .masthead { padding: 40px 24px 32px; } }
@@ -565,7 +565,7 @@
       .page-list { margin: 0; padding-left: 18px; color: var(--muted); font-size: 1rem; display: grid; gap: 8px; }
       .page-list li::marker { color: var(--accent); }
     .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:24px}.cal-day{border:1px solid var(--line);border-radius:10px;padding:10px 8px;min-height:64px;text-align:left;background:#fff;font:inherit;cursor:pointer}.cal-day .dnum{display:block;font-weight:800;font-size:0.95rem}.cal-day .dprice{display:block;font-size:0.82rem;color:var(--accent);font-weight:700;margin-top:2px}.cal-day .dret{display:block;font-size:0.72rem;color:var(--muted);margin-top:1px}.cal-day.cheapest .dret{color:#fff}.cal-day .dnone{display:block;font-size:0.78rem;color:var(--muted);margin-top:2px}.cal-day:hover{border-color:var(--accent)}.cal-day.cheapest{background:var(--accent);border-color:var(--accent);color:#fff}.cal-day.cheapest .dprice{color:#fff}.cal-day.cheapest .dnum::after{content:" ★ cheapest";font-size:0.72rem;font-weight:700}.cal-day:disabled{cursor:default;opacity:0.55}.cal-head{font-size:0.78rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-align:center;padding:4px 0}.cal-note{margin-top:18px;font-size:0.92rem;color:var(--muted)}.cal-status{margin-top:16px;font-weight:600;color:var(--muted)}.cal-form{margin-top:28px;border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:#fff}@media (min-width:720px){.cal-form{padding:36px}}.cal-form label{font-weight:700;font-size:0.9rem;display:block;margin-bottom:6px}.cal-form input[type="month"]{font:inherit;font-size:1rem;color:var(--ink);width:100%;max-width:22rem;padding:11px 14px;border:1px solid var(--line);border-radius:10px;background:#fff}.cal-form input[type="month"]:focus{border-color:var(--accent);outline:2px solid var(--accent-soft);outline-offset:0}.cal-form .btn{margin-top:18px;min-height:2.75rem}@media (max-width:360px){.cal-grid{gap:5px}.cal-day{padding:8px 5px;min-height:56px}}@media (max-width:500px){.cal-grid{gap:4px}.cal-head{font-size:0.62rem;letter-spacing:0.02em}.cal-day{padding:6px 2px;min-height:52px;border-radius:8px;min-width:0;overflow:hidden}.cal-day .dnum{font-size:0.85rem}.cal-day .dprice,.cal-day .dnone{font-size:0.68rem}.cal-day .dret{font-size:0.62rem}.cal-day .dprice-full,.cal-day .dnone-full{display:none}.cal-day .dprice-short,.cal-day .dnone-short{display:block}}@media (min-width:501px){.cal-day .dprice-short,.cal-day .dnone-short{display:none}}</style>
-<noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>    <link rel="alternate" type="application/rss+xml" title="SJ Tours and Travels — Read" href="https://www.sjtravel.in/read/feed.xml">
+<noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
     <link rel="stylesheet" href="/assets/fonts.css">
     <link rel="stylesheet" href="/assets/extras.css">
 <script type="application/ld+json">
@@ -709,12 +709,12 @@
       </section>      <section class="block">
         <div class="wrap">
           <div class="sec-head">
-            <h2>Want the full plan? Get the Dubai Travel Kit — ₹999</h2>
+            <h2>Want the full plan? Get the Dubai Travel Kit — launch price ₹999</h2>
           </div>
-          <p>Once the flights are sorted, the Dubai Travel Kit (₹999) plans the 5 days on the ground — where to stay for Jain food, the day-by-day plan, the visa checklist and a full budget in rupees. ₹999 on WhatsApp, PDF delivered the same evening you pay.</p>
+          <p>Once the flights are sorted, the Dubai Travel Kit (list ₹1,499, launch price ₹999) plans the 5 days on the ground — where to stay for Jain food, the day-by-day plan, the visa checklist and a full budget in rupees. Launch price ₹999 on WhatsApp, PDF delivered the same evening you pay.</p>
               <div class="budget">Budget for 4 travellers: <b>₹1,07,000–₹1,59,000</b> land costs, international flights extra</div>
           <div class="buy-row">
-            <a data-track="kit_buy_click" data-kit="Dubai" class="btn btn-wa" href="https://wa.me/919566977211?text=Hi%2C%20I%20want%20the%20Dubai%20kit%20%28from%20/cheapest-months-chennai-dubai%29" target="_blank" rel="noopener" aria-label="Buy the Dubai kit on WhatsApp">Buy on WhatsApp — ₹999</a>
+            <a data-track="kit_buy_click" data-kit="Dubai" class="btn btn-wa" href="https://wa.me/919566977211?text=Hi%2C%20I%20want%20the%20Dubai%20kit%20%28from%20/cheapest-months-chennai-dubai%29" target="_blank" rel="noopener" aria-label="Buy the Dubai kit on WhatsApp">Buy on WhatsApp — launch price ₹999</a>
             <a class="btn btn-ghost" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20please%20find%20me%20the%20cheapest%20Chennai%20to%20Dubai%20flights." target="_blank" rel="noopener">Plan My Trip on WhatsApp</a>
           </div>
         </div>
@@ -725,7 +725,7 @@
           </div>
           <ul class="page-list">
             <li>Dubai Visa for Indians: Documents and Cost — SJ Tours and Travels Read article, 17 November 2026.</li>
-            <li>Dubai Travel Kit — SJ Tours and Travels, ₹999. The fare pattern in this guide comes from the kit.</li>
+            <li>Dubai Travel Kit — SJ Tours and Travels, launch price ₹999. The fare pattern in this guide comes from the kit.</li>
           </ul>
           <p style="margin-top:16px;color:var(--muted);font-size:.92rem"><strong>Last verified: 17 November 2026.</strong></p>
         </div>
@@ -764,7 +764,7 @@
             <h2>Keep exploring</h2>
           </div>
           <div class="related">
-            <a href="/dubai-travel-kit">Dubai Travel Kit — ₹999<span>5-day plan, Jain food guide, visa checklist, budget in rupees</span></a>
+            <a href="/dubai-travel-kit">Dubai Travel Kit — launch price ₹999<span>5-day plan, Jain food guide, visa checklist, budget in rupees</span></a>
             <a href="/jain-food-dubai">Jain Food in Dubai<span>Where to eat, the exact words to order, and the traps to avoid</span></a>
             <a href="/flight-finder">Flight Finder — ₹199<span>We hunt across options and send you the best-value flights</span></a>
             <a href="/holiday-packages">Holiday Packages<span>Prefer everything done for you? One flat, all-inclusive price.</span></a>
@@ -772,7 +772,7 @@
           </div>
         </div>
       </section>
-    <section class="block" id="related"><div class="wrap"><div class="sec-head"><h2>Related</h2></div><div class="related"><a href="/dubai-travel-kit">Dubai travel kit<span>5-day plan and Jain food notes, ₹999</span></a><a href="/dubai-tour-package-from-chennai">Dubai tour package<span>A quote for a booked holiday</span></a><a href="/read/dubai-visa-for-indians-documents-cost">Dubai visa for Indians<span>Documents and official fees</span></a><a href="/read/cheapest-month-to-fly-chennai-singapore">Cheapest month to fly Chennai–Singapore<span>February is cheapest, December dearest — fares seen 18 Nov 2026</span></a></div></div></section>
+    <section class="block" id="related"><div class="wrap"><div class="sec-head"><h2>Related</h2></div><div class="related"><a href="/dubai-travel-kit">Dubai travel kit<span>5-day plan and Jain food notes, launch price ₹999</span></a><a href="/dubai-tour-package-from-chennai">Dubai tour package<span>A quote for a booked holiday</span></a><a href="/read/dubai-visa-for-indians-documents-cost">Dubai visa for Indians<span>Documents and official fees</span></a><a href="/read/cheapest-month-to-fly-chennai-singapore">Cheapest month to fly Chennai–Singapore<span>February is cheapest, December dearest — fares seen 18 Nov 2026</span></a></div></div></section>
     </main>
 
     <footer class="site">
@@ -787,7 +787,7 @@
         <div>
           <h3>Kits &amp; trips</h3>
           <ul>
-            <li><a href="/travel-kits">Travel Kits — ₹999</a></li>
+            <li><a href="/travel-kits">Travel Kits — <s>₹1,499</s> Launch price ₹999</a></li>
             <li><a href="/travel-kits#bundles">Bundles — 3 for ₹1,999 · 5 for ₹3,499 · all 6 for ₹3,999</a></li>
             <li><a href="/holiday-packages">Holiday Packages</a></li>
             <li><a href="/holiday-packages#groups">Group trips</a></li>

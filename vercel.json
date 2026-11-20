@@ -121,10 +121,6 @@
       "source": "/sponsor"
     },
     {
-      "destination": "/read/feed.xml",
-      "source": "/read/feed.xml"
-    },
-    {
       "source": "/contact",
       "destination": "/contact.html"
     },
@@ -237,6 +233,11 @@
     {
       "source": "/rti-drafts",
       "destination": "/visa-help",
+      "permanent": true
+    },
+    {
+      "source": "/read/feed.xml",
+      "destination": "/read",
       "permanent": true
     }
   ],
