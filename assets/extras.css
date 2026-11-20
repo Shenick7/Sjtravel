@@ -30,4 +30,60 @@
 @media (max-width:414px){
   .brand .bname{font-size:1.28rem;letter-spacing:0.03em}
   .wrap{padding-left:16px;padding-right:16px}
+  .masthead{padding-top:12px;padding-bottom:8px}
+  .brand .btag{margin-top:10px}
+  .brand .bsub{margin-top:6px}
+  .hero{padding-top:16px}
+  .hero p.lede{margin-top:10px}
+  .hero-cta{margin-top:14px}
+}
+@media (max-width:720px){
+  .cookie-note{
+    left:0;
+    right:0;
+    bottom:0;
+    max-width:none;
+    border-radius:0;
+    border-left:0;
+    border-right:0;
+    border-bottom:0;
+    padding:6px 10px;
+    max-height:72px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    box-sizing:border-box;
+  }
+  .cookie-note[hidden]{display:none}
+  .cookie-note p{margin:0;font-size:13px;line-height:1.2;flex:1 1 auto}
+  .cookie-note .row{flex-wrap:nowrap;gap:6px;margin:0}
+  .cookie-note .btn{min-height:32px!important;padding:4px 10px;font-size:13px}
+  body:has(#cookieNote:not([hidden])) .tap-bar{display:none!important}
+  body:has(#cookieNote:not([hidden])){padding-bottom:72px}
+  .crumbs a,footer a,footer.site a{
+    min-height:44px;
+    display:inline-flex;
+    align-items:center;
+  }
+  .flight-form:has(#calGrid){overflow-x:auto;max-width:100%}
+  #calGrid.cal-grid{
+    grid-template-columns:repeat(7,44px);
+    width:max-content;
+    min-width:calc(44px * 7 + 4px * 6);
+    gap:4px;
+  }
+  #calGrid .cal-day{
+    min-width:44px;
+    width:44px;
+    box-sizing:border-box;
+    padding:4px 2px;
+    overflow:hidden;
+  }
+  #calGrid .cal-head,
+  #calGrid .cal-day .dnum,
+  #calGrid .cal-day .dprice,
+  #calGrid .cal-day .dnone,
+  #calGrid .cal-day .dret,
+  #calGrid .cal-day.cheapest .dnum::after{font-size:12px}
+  #calGrid .cal-day.cheapest .dnum::after{content:"★"}
 }

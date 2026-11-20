@@ -3,6 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/newsreader-500.woff2" as="font" type="font/woff2" crossorigin>
+
     <meta name="color-scheme" content="light" />
     <title>Jain Food in Bangkok for Indian Families | SJ Tours</title>
     <meta name="description" content="How a Jain family can order in Bangkok: the sentence to say, what a jay sign does not guarantee, and why this page names no restaurant it has not verified." />
@@ -25,7 +28,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="SJ Travel" />
 
-    <link rel="apple-touch-icon" href="/assets/IMG_1541.png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/assets/fonts.css" />
     <link rel="stylesheet" href="/assets/guide.css" />
     <link rel="stylesheet" href="/assets/extras.css" />
   </head>
@@ -39,8 +43,9 @@
           <span class="bnote">No S at the end — sjtravels.in is a different company</span>
         </a>
       </div>
-      <nav class="title-bar" aria-label="Quick links"><a href="/" class="home-link" aria-label="Home"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></a><span class="sep">·</span><a href="/travel-kits">Travel Kits</a><span class="sep">·</span><a href="/holiday-packages">Holidays</a><span class="sep">·</span><a href="/flights">Flights</a><span class="sep">·</span><a href="/guides">Guides</a><span class="sep">·</span><a href="/contact">Contact</a><span class="sep">·</span><a class="wa-link" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20trip." target="_blank" rel="noopener">WhatsApp</a><button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menu">☰</button></nav>
+      <nav class="title-bar" aria-label="Quick links"><a href="/" class="home-link" aria-label="Home"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></a><span class="sep">·</span><a href="/travel-kits">Travel Kits</a><span class="sep">·</span><a href="/holiday-packages#pilgrimages">Pilgrimages</a><span class="sep">·</span><a href="/holiday-packages">Holidays</a><span class="sep">·</span><a href="/flights">Flights</a><span class="sep">·</span><a href="/guides">Guides</a><span class="sep">·</span><a href="/contact">Contact</a><span class="sep">·</span><a class="wa-link" href="https://wa.me/919566977211?text=Hi%20SJ%20Tours%2C%20I%20have%20a%20question%20about%20a%20trip." target="_blank" rel="noopener">WhatsApp</a><button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menu">☰</button></nav>
       <div class="mobile-menu" id="mobileMenu" hidden>
+        <a href="/holiday-packages#pilgrimages">Pilgrimages</a>
         <a href="/holiday-packages">Holiday packages</a>
         <a href="/flights">Flights</a>
         <a href="/guides">Guides</a>
@@ -83,6 +88,7 @@
             <li><a href="/travel-kits">Travel Kits — ₹999 each</a></li>
             <li><a href="/travel-kits#bundles">Bundles — 3 for ₹1,999 · All 6 for ₹3,999</a></li>
             <li><a href="/holiday-packages">Holiday Packages</a></li>
+            <li><a href="/tirumala-darshan-tickets">Tirumala darshan tickets</a></li>
             <li><a href="/flight-finder">Flight Finder — ₹199</a></li>
           </ul>
         </div>
@@ -109,7 +115,7 @@
     <a class="wa-float" data-track="whatsapp_click" href="https://wa.me/919566977211?text=Hi%2C%20please%20plan%20Jain%20food%20for%20our%20Bangkok%20trip%20%28from%20/jain-food-bangkok%29" target="_blank" rel="noopener" aria-label="WhatsApp SJ Tours"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg><span>WhatsApp Us</span></a>
     <script src="/assets/site.js?v=20261117-1" defer></script>
   <div class="cookie-note" id="cookieNote" hidden>
-      <p>We use Google Analytics, Microsoft Clarity and, on some pages, Travelpayouts. They can set cookies. <a href="/privacy">How this works</a>.</p>
+      <p>Analytics cookies. <a href="/privacy">Privacy</a>.</p>
       <div class="row">
         <button type="button" class="btn btn-accent btn-sm" id="cookieAccept">Accept</button>
         <button type="button" class="btn btn-ghost btn-sm" id="cookieDecline">Decline</button>
