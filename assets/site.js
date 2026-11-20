@@ -5,6 +5,17 @@ window.sjTrack = function(name, params){
   try { if (window.gtag) gtag("event", name, params); } catch (e) {}
   try { if (window.clarity) clarity("event", name); } catch (e) {}
 };
+document.addEventListener("click", function (e) {
+  var show = e.target && e.target.closest ? e.target.closest("[data-show-upi]") : null;
+  if (show) {
+    var panel = document.getElementById(show.getAttribute("aria-controls"));
+    if (panel) {
+      var open = panel.hidden;
+      panel.hidden = !open;
+      show.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  }
+});
 document.addEventListener("click", function(e){
   var t = e.target && e.target.closest ? e.target.closest("a,button") : null;
   if (!t || !window.sjTrack) return;
