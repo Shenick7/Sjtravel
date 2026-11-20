@@ -65,6 +65,14 @@
     if (!box) return;
     var product = box.getAttribute("data-product") || "";
     var amount = box.getAttribute("data-amount") || "";
+    /* Kit prices come from the one settings file (assets/site-config.js):
+       a single travel kit costs the current period's single price, so the
+       amount paid always matches the price on screen. Bundle boxes get
+       their amount from the bundle builder, which already reads the
+       settings. Non-kit products (Flight Finder) are untouched. */
+    if (window.SJ_PRICES && /travel kit/i.test(product) && Number(amount) === window.SJ_PRICES.launch.single) {
+      amount = String(window.SJ_PRICES.single());
+    }
     var page = box.getAttribute("data-page") || (location.pathname || "/");
     if (!cfg.enabled || !cfg.upiId || !product || !amount || Number(amount) <= 0) {
       box.hidden = true;
@@ -74,8 +82,7 @@
     var pay = box.querySelector("[data-upi-link]");
     if (pay) {
       pay.href = link;
-      var singleKit = /travel kit/i.test(product) && Number(amount) === 999;
-      pay.textContent = (singleKit ? "Pay launch price " : "Pay ") + rupees(amount) + " by UPI";
+      pay.textContent = "Pay " + rupees(amount) + " by UPI";
       pay.setAttribute("data-kit", product);
     }
     var shot = box.querySelector("[data-upi-shot]");
@@ -90,7 +97,7 @@
     var noteEl = box.querySelector("[data-upi-note]");
     if (noteEl) noteEl.textContent = product;
     var amtEl = box.querySelector("[data-upi-amt]");
-    if (amtEl) amtEl.textContent = (/travel kit/i.test(product) && Number(amount) === 999 ? "Launch price " : "") + rupees(amount);
+    if (amtEl) amtEl.textContent = rupees(amount);
     drawQr(box.querySelector("[data-upi-qr]"), link);
     box.hidden = false;
   }
