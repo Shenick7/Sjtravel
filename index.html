@@ -162,8 +162,49 @@
   ]
 }
 </script>
+    <!-- DHONI TRIBUTE SPLASH — TEMPORARY. To take it down, delete this style block and the #dhoniTribute block below. -->
+    <style>
+      #dhoniTribute{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#F9CD05;color:#1B2A4A;padding:24px;cursor:pointer;transition:opacity .6s ease;}
+      #dhoniTribute.splash-hide{opacity:0;pointer-events:none;}
+      #dhoniTribute .tribute-num{font-size:96px;line-height:1;font-weight:800;}
+      #dhoniTribute .tribute-name{font-size:34px;line-height:1.1;font-weight:800;letter-spacing:.06em;margin-top:4px;}
+      #dhoniTribute .tribute-sub{font-size:16px;margin-top:8px;}
+      #dhoniTribute .tribute-line{font-size:15px;line-height:1.5;margin-top:14px;max-width:320px;}
+      #dhoniTribute .tribute-thanks{font-size:18px;font-weight:700;margin-top:14px;}
+      #dhoniTribute .tribute-foot{font-size:12px;margin-top:24px;opacity:.75;}
+    </style>
 </head>
   <body>
+    <!-- DHONI TRIBUTE SPLASH — TEMPORARY. Shows once per visit, 5 seconds, tap to skip. -->
+    <div id="dhoniTribute" role="dialog" aria-label="A tribute to MS Dhoni">
+      <div class="tribute-num">7</div>
+      <div class="tribute-name">MS DHONI</div>
+      <div class="tribute-sub">Captain Cool &middot; Thala</div>
+      <p class="tribute-line">The man who taught us to stay calm &mdash; and finish it.</p>
+      <div class="tribute-thanks">Thank you, Captain.</div>
+      <div class="tribute-foot">A tribute from SJ Tours and Travels &middot; Tap anywhere to continue</div>
+    </div>
+    <script>
+      (function () {
+        var el = document.getElementById("dhoniTribute");
+        if (!el) return;
+        try {
+          if (sessionStorage.getItem("dhoniTributeShown")) { el.remove(); return; }
+          sessionStorage.setItem("dhoniTributeShown", "1");
+        } catch (e) {}
+        document.body.style.overflow = "hidden";
+        var done = false;
+        function hide() {
+          if (done) return;
+          done = true;
+          el.classList.add("splash-hide");
+          document.body.style.overflow = "";
+          setTimeout(function () { el.remove(); }, 650);
+        }
+        setTimeout(hide, 5000);
+        el.addEventListener("click", hide);
+      })();
+    </script>
     <canvas id="glitter-canvas" aria-hidden="true"></canvas>
     <header class="site" id="top">
       <div class="wrap masthead">
