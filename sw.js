@@ -3,7 +3,7 @@
    Core pages and the new guides are cached so they open offline.
    If a page was never opened and the network is down, /offline.html is shown.
    Cache name bumps when the shell changes so old copies are dropped. */
-var CACHE = "sj-shell-v6";
+var CACHE = "sj-shell-v5";
 var CORE = [
   "/",
   "/offline.html",
@@ -32,7 +32,7 @@ var CORE = [
   "/visa-free-countries-indian-passport",
   "/visa-free-finder",
   "/family-trip-budget",
-  "/dubai-budget-from-chennai",
+  "/dubai-tour-package-from-chennai",
   "/thailand-budget-from-chennai",
   "/malaysia-visa-free-for-indians",
   "/assets/extras.css",

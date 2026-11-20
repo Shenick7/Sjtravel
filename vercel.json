@@ -73,10 +73,6 @@
       "source": "/jain-food-dubai"
     },
     {
-      "destination": "/thailand-30-day-visa-free.html",
-      "source": "/thailand-30-day-visa-free"
-    },
-    {
       "destination": "/cheapest-months-chennai-dubai.html",
       "source": "/cheapest-months-chennai-dubai"
     },
@@ -181,10 +177,6 @@
       "destination": "/family-trip-budget.html"
     },
     {
-      "source": "/dubai-budget-from-chennai",
-      "destination": "/dubai-budget-from-chennai.html"
-    },
-    {
       "source": "/thailand-budget-from-chennai",
       "destination": "/thailand-budget-from-chennai.html"
     },
@@ -235,36 +227,19 @@
       "source": "/jain-pilgrimage-india-for-nri",
       "destination": "/holiday-packages",
       "permanent": true
+    },
+    {
+      "source": "/dubai-budget-from-chennai",
+      "destination": "/dubai-tour-package-from-chennai",
+      "permanent": true
+    },
+    {
+      "source": "/thailand-30-day-visa-free",
+      "destination": "/visa-free-countries-indian-passport",
+      "permanent": true
     }
   ],
   "headers": [
-    {
-      "source": "/content/(.*\\.(?:png|jpe?g|webp|avif))",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=604800"
-        }
-      ]
-    },
-    {
-      "source": "/assets/photos/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=604800"
-        }
-      ]
-    },
-    {
-      "source": "/assets/(.*\\.(?:png|jpe?g|webp|avif))",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=604800"
-        }
-      ]
-    },
     {
       "source": "/assets/(.*)",
       "headers": [

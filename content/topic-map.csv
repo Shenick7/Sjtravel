@@ -1,0 +1,15 @@
+question,cluster,intent,target page,priority,status
+How do I book a Tirumala darshan ticket myself?,Tirumala,learn,/tirumala-darshan-tickets (live),done,draft
+What is the cheapest month to fly Chennai to Dubai?,Flights,learn,/cheapest-months-chennai-dubai (unindexed — request indexing),high,draft
+Do Indians get 30 days visa-free in Thailand?,Visa,learn,merged into /visa-free-countries-indian-passport (redirect),high,draft
+Where can Jains eat in Singapore? (no restaurants confirmed),Jain food,learn,/jain-food-singapore,medium,draft
+Where can Jains eat in Colombo? (no restaurants confirmed),Jain food,learn,/jain-food-colombo,medium,draft
+What are the cheapest live fares from Chennai today?,Flights,tool,/deals (only 1 inlink — link it more),high,draft
+Is there a travel agent in Ambur?,Local,local,/travel-agent-ambur (only 3 inlinks),high,draft
+How much does a Dubai family trip from Chennai cost?,Budget,learn,merged into /dubai-tour-package-from-chennai (redirect),medium,draft
+How much does a Thailand family trip from Chennai cost?,Budget,learn,/thailand-budget-from-chennai,medium,draft
+Will my IRCTC waitlisted ticket get confirmed?,Railways,learn,/irctc-waitlist-confirmation,medium,draft
+When does Tatkal open for my travel date?,Railways,tool,/tatkal-booking-window,medium,draft
+Which countries are visa-free for Indian passports?,Visa,compare,/visa-free-countries-indian-passport,medium,draft
+What is in the Dubai travel kit?,Kits,buy,/dubai-travel-kit,medium,draft
+Who is Shenick Jain?,Trust,learn,"/about/shenick-jain (thinnest page, 502 words)",low,draft
