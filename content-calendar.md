@@ -1,6 +1,6 @@
 # SJ Tours and Travels — 12-Week Content Calendar
 
-**Site:** https://www.sjtravel.in/ · **WhatsApp:** +91 95669 77211 · **Hours:** replies 10am–8pm
+**Site:** https://www.sjtravel.in/ · **WhatsApp:** +91 95669 77211 · **Hours:** Monday to Saturday, 10:00 AM to 8:00 PM IST. Closed Sunday.
 **Starts:** week of Monday 16 November 2026 · **Ends:** week of Monday 1 February 2027
 
 ## How to use this (30 minutes a week, ₹0)
@@ -25,7 +25,7 @@
 | 9 | 11–17 Jan 2027 | Visa help — the free-form trap | Some arrival forms are free on official sites and paid on look-alike sites. We guide you through the official process, document by document — you apply, we make sure it is right. Priced per country on WhatsApp. Last verified: 14 November 2026 — check official sites for the latest rules. | sjtravel.in → Plan My Trip → Visa |
 | 10 | 18–24 Jan 2027 | Bundles — 3 for ₹1,999, all 6 for ₹3,999 | Planning more than one trip? Any 3 kits ₹1,999, all 6 kits ₹3,999. Picking 5 kits costs ₹3,997 — the bundle builder on the site works it out for you. | sjtravel.in/#bundles |
 | 11 | 25–31 Jan 2027 | Jain food abroad, honestly | Where Jain food is realistically available, what to ask for, and the traps (fish sauce, meat broths). Jain vegetarian food can be arranged on request — tell us when you ask for a quote. | sjtravel.in/#kits |
-| 12 | 1–7 Feb 2027 | Plan My Trip — ask us anything | One short form, three choices: Holiday, Flight or Visa. It opens as a ready-to-send WhatsApp message. An enquiry is not a booking — nothing is booked until we confirm it with you. Replies 10am–8pm. | sjtravel.in/#plan |
+| 12 | 1–7 Feb 2027 | Plan My Trip — ask us anything | One short form, three choices: Holiday, Flight or Visa. It opens as a ready-to-send WhatsApp message. An enquiry is not a booking — nothing is booked until we confirm it with you. Monday to Saturday, 10:00 AM to 8:00 PM IST. Closed Sunday. | sjtravel.in/#plan |
 
 ## Rules (from the Master Growth Prompt)
 

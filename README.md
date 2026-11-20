@@ -10,7 +10,7 @@ which hand off to WhatsApp.
 - Website: https://www.sjtravel.in/
 - WhatsApp / phone: +91 95669 77211
 - Email: jainshenick@gmail.com
-- Hours: WhatsApp replies 10am–8pm
+- Hours: Monday to Saturday, 10:00 AM to 8:00 PM IST. Closed Sunday.
 
 ## Files
 

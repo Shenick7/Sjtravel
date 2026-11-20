@@ -1,6 +1,6 @@
 # SJ Tours and Travels — 90-Day Roadmap
 
-**Site:** https://www.sjtravel.in/ · **Owner:** Shenick Jain, Ambur · **WhatsApp:** +91 95669 77211 · **Email:** jainshenick@gmail.com · **Hours:** WhatsApp replies 10am–8pm
+**Site:** https://www.sjtravel.in/ · **Owner:** Shenick Jain, Ambur · **WhatsApp:** +91 95669 77211 · **Email:** jainshenick@gmail.com · **Hours:** Monday to Saturday, 10:00 AM to 8:00 PM IST. Closed Sunday.
 **Plan dates:** 14 November 2026 – 12 February 2027 (Day 1 = 14 Nov 2026)
 **Budget:** ₹0 for everything in this plan, unless a line says otherwise. No paid ads, no paid tools.
 
@@ -14,7 +14,7 @@
 | 1.2 | Phase 1 full website audit (evidence, priorities) | Muse | 1 day | ₹0 | Know what is broken, in order | Audit file saved, findings presented | ✅ DONE — `sjtravel-audit-2026-11-14.md` |
 | 1.3 | Publish email + "Plan My Trip" enquiry journeys (Holiday / Flight / Visa) with WhatsApp handoff | Muse | 1 day | ₹0 | Enquiries arrive structured, not as blank chats | Live forms tested on sjtravel.in | ✅ DONE |
 | 1.4 | SEO basics: canonical, OG/Twitter, TravelAgency JSON-LD, favicon, trimmed title/description | Muse | 0.5 day | ₹0 | Shares look right; Google can read the business | Meta + schema present in live source | ✅ DONE |
-| 1.5 | Trust: hours 10am–8pm, Privacy / Terms / Cancellation & Refunds, soften "cheapest" | Muse | 0.5 day | ₹0 | Visitors know the rules before paying by UPI | Policies live, no "cheapest sensible" left | ✅ DONE |
+| 1.5 | Trust: hours Monday to Saturday, 10:00 AM to 8:00 PM IST, closed Sunday; Privacy / Terms / Cancellation & Refunds, soften "cheapest" | Muse | 0.5 day | ₹0 | Visitors know the rules before paying by UPI | Policies live, no "cheapest sensible" left | ✅ DONE |
 | 1.6 | Performance: photos 1,013 KB → 575 KB, page 1.6 MB → 960 KB, Dubai photo de-duplicated; visa "Last verified: 14 November 2026" | Muse | 0.5 day | ₹0 | Faster on weak mobile data; visa guidance dated | Live file size + visa date verified | ✅ DONE |
 | 1.7 | Analytics code in the site (Vercel Web Analytics + Speed Insights scripts, WhatsApp/call/email click tracking, no personal data) | Muse | 0.5 day | ₹0 | Page views + click events ready to record | Scripts present in live source | ✅ DONE (this push) |
 | 1.8 | Enable Web Analytics + Speed Insights in Vercel dashboard | Shenick | 5 min | ₹0 | Visit data actually appears | Analytics tab shows visits | ⏳ OWNER TAP — Vercel → project `sjtravel` → Analytics → Enable, then redeploy (auto) |
