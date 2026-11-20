@@ -1,6 +1,6 @@
 # Founder notes — Shenick Jain
 
-These are my real experiences, opinions and photos for the Read articles.
+These are my real experiences, opinions and photos for the Travel Notes articles.
 Nothing here is invented: if a section is empty, the article must not claim
 that trip, that opinion or that photo. Fill in your own words, a few lines
 at a time — the daily editor only uses what is written here.
