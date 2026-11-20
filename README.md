@@ -3,14 +3,14 @@
 Website for **SJ Tours and Travels, Ambur, Tamil Nadu, India** — live at
 https://www.sjtravel.in/
 
-Holiday packages, flights, visa help and travel kits (₹999 each) for Indian
+Holiday packages, flights, visa help and travel kits (launch price ₹999 each) for Indian
 travellers. Enquiries come in through the Plan My Trip forms on the site,
 which hand off to WhatsApp.
 
 - Website: https://www.sjtravel.in/
 - WhatsApp / phone: +91 95669 77211
 - Email: jainshenick@gmail.com
-- Hours: WhatsApp replies 10am–8pm
+- Hours: Monday to Saturday, 10:00 AM to 8:00 PM IST. Closed Sunday.
 
 ## Files
 

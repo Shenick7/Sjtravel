@@ -4,7 +4,12 @@
 .crumbs li{display:inline-flex;align-items:center}
 .crumbs li+li::before{content:"/";margin:0 8px;color:#b7c0cc;font-weight:500}
 .crumbs a{color:var(--accent);text-decoration:none}
-.section-label{font-family:"Newsreader",Georgia,serif;font-size:clamp(1.9rem,4.5vw,2.6rem);line-height:1.15;margin:0;font-weight:500}
+.section-label{font-family:"Newsreader",Georgia,serif;font-size:clamp(1.9rem,4.5vw,2.6rem);line-height:1.35;margin:0 0 0.55em;font-weight:500}
+/* Newsreader paints outside a 1.15 line box, and the scroll-reveal
+   slide was pushing these headings onto the next line. */
+.sec-head h2{line-height:1.35;margin:0 0 0.6em}
+.sec-head.rv,.sec-head.rv.in{transform:none}
+.page-head h1{line-height:1.25}
 .tap-bar{display:none}
 .cookie-note{position:fixed;left:12px;right:12px;bottom:16px;z-index:80;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:0 10px 30px rgba(20,24,26,.12);max-width:440px}
 .cookie-note[hidden]{display:none}
@@ -86,4 +91,20 @@
   #calGrid .cal-day .dret,
   #calGrid .cal-day.cheapest .dnum::after{font-size:12px}
   #calGrid .cal-day.cheapest .dnum::after{content:"★"}
+}
+@media (max-width:480px){
+  .masthead{padding:8px 12px 4px}
+  .brand .bname{font-size:1.05rem;line-height:1.05;letter-spacing:0.04em}
+  .brand .btag{margin-top:4px;font-size:0.62rem;letter-spacing:0.14em}
+  .brand .bsub{margin-top:2px;font-size:0.68rem;letter-spacing:0.12em}
+  .brand .bnote{margin-top:2px;font-size:0.7rem}
+}
+.faq summary{min-height:44px;display:flex;align-items:center}
+a[href="/about#faq"]{min-height:44px;display:inline-flex;align-items:center}
+.from-shenick > .story:only-child{grid-column:1 / -1}
+.launch-tag{font-weight:800;color:var(--accent,#034694)}
+s,.list-price{text-decoration:line-through;color:var(--muted,#5a6573);font-weight:600}
+.kit-tile-price s,.price s{margin-right:6px}
+@media (min-width:820px){
+  footer.site .wrap{grid-template-columns:1.15fr 1fr 1fr 1fr 0.8fr}
 }
