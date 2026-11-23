@@ -223,11 +223,6 @@
       "permanent": true
     },
     {
-      "source": "/read/tirumala-one-day-trip-from-chennai-timings-budget",
-      "destination": "/tirumala-darshan-tickets",
-      "permanent": true
-    },
-    {
       "source": "/jain-tirth-yatra-packages",
       "destination": "/holiday-packages",
       "permanent": true
