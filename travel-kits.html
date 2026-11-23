@@ -278,7 +278,7 @@
         border-top: 1px solid var(--line); padding-top: 24px;
       }
       .bundle-total { font-size: 1.05rem; font-weight: 700; }
-      .bundle-total .amount { font-family: "Newsreader", Georgia, serif; font-size: 1.9rem; font-weight: 600; color: var(--accent); }
+      .bundle-total .amount { font-family: "Manrope", system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: 1.9rem; font-weight: 800; color: var(--accent); letter-spacing: 0; }
       .bundle-total .save { color: var(--accent); font-weight: 800; }
       .bundle-note { font-size: 0.86rem; color: var(--muted); width: 100%; margin: 0; }
 
@@ -1022,29 +1022,15 @@
         var orderBtn = document.getElementById("bundleOrder");
         var WA = (window.SJ_SITE ? window.SJ_SITE.whatsapp : "https://wa.me/919566977211") + "?text=";
 
+        var LAUNCH = {1: 999, 2: 1998, 3: 1999, 4: 2998, 5: 3499, 6: 3999};
         function priceFor(n) {
-          if (window.SJ_PRICES) return window.SJ_PRICES.priceFor(n);
-          var table = {1: 999, 2: 1998, 3: 1999, 4: 2998, 5: 3499, 6: 3999};
-          return table[n] || 0;
+          if (window.SJ_PRICES && window.SJ_PRICES.isRegular()) return window.SJ_PRICES.priceFor(n);
+          return LAUNCH[n] || 0;
         }
-
-        var displayedPrice = 0;
-        var animToken = 0;
-        var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        function animateAmount(el, from, to) {
-          var token = ++animToken;
-          function label(v) { return "₹" + v.toLocaleString("en-IN"); }
-          if (reduceMotion || from === to) { el.textContent = label(to); return; }
-          var startTs = null;
-          function frame(ts) {
-            if (token !== animToken) return;
-            if (startTs === null) startTs = ts;
-            var t = Math.min((ts - startTs) / 550, 1);
-            var eased = 1 - Math.pow(1 - t, 3);
-            el.textContent = label(Math.round(from + (to - from) * eased));
-            if (t < 1) requestAnimationFrame(frame);
-          }
-          requestAnimationFrame(frame);
+        function rupees(n) {
+          var s = String(n);
+          if (s.length <= 3) return "₹" + s;
+          return "₹" + s.slice(0, -3).replace(/\B(?=(\d{2})+(?!\d))/g, ",") + "," + s.slice(-3);
         }
 
         function update() {
@@ -1052,7 +1038,6 @@
                             .map(function (p) { return p.getAttribute("data-kit"); });
           var n = chosen.length;
           if (n === 0) {
-            displayedPrice = 0;
             totalEl.textContent = "Select at least 1 kit to see your price";
             orderBtn.setAttribute("aria-disabled", "true");
             orderBtn.href = WA + encodeURIComponent("Hi, I want travel kits (from /travel-kits#bundles)");
@@ -1061,13 +1046,10 @@
             return;
           }
           var price = priceFor(n);
-          var html = n + (n === 1 ? " kit" : " kits") + " — <span class=\"amount\">₹" + price.toLocaleString("en-IN") + "</span>";
-          totalEl.innerHTML = html;
-          var amtEl = totalEl.querySelector(".amount");
-          if (amtEl) animateAmount(amtEl, displayedPrice, price);
-          displayedPrice = price;
+          var label = rupees(price);
+          totalEl.innerHTML = n + (n === 1 ? " kit" : " kits") + " — <span class=\"amount\">" + label + "</span>";
           orderBtn.removeAttribute("aria-disabled");
-          var msg = "Hi, I want the " + chosen.join(", ") + " kit" + (n === 1 ? "" : "s") + " (from /travel-kits#bundles)";
+          var msg = "Hi, I want the " + chosen.join(", ") + " kit" + (n === 1 ? "" : "s") + " — " + label + " (from /travel-kits#bundles)";
           orderBtn.href = WA + encodeURIComponent(msg);
           var upi = document.getElementById("bundleUpi");
           if (upi) {
