@@ -1,0 +1,176 @@
+/* ============================================================
+   Look 2 — Classic trust (design build, 23 Nov 2026)
+   Shared override layer for the Look 2 redesign, applied to the
+   49 sitemap pages. Loaded LAST in <head> (right before </head>)
+   so it wins at equal specificity over the inline styles and over
+   guide.css / extras.css. Presentation ONLY: no copy, prices,
+   links, JSON-LD, meta or JS are touched.
+   UNDO: delete the <link rel="stylesheet"
+   href="/assets/look2-classic-trust.css"> line from each page
+   and delete this file.
+   Image URLs are relative to this file (assets/) so they resolve
+   both live and in file:// render copies.
+   ============================================================ */
+
+/* --- Playfair Display 700 for the header firm name: Google Fonts CDN ---
+   Sample 2, Shenick's pick, 23 Nov 2026. Loaded from the CDN via the
+   <link> added to each page (css2?family=Playfair+Display:wght@700).
+   Switched from self-hosted 23 Nov 2026: the woff2 was deleted because
+   push-files handles TEXT ONLY and cannot carry the binary. UNDO: restore
+   the @font-face block + assets/fonts/playfair-700.woff2 (copy kept in
+   design-refresh/font-samples/fonts/) and remove the CDN link. */
+
+/* --- Design tokens: remap the site's own variables --- */
+:root{
+  --bg:#FBF7EE;
+  --soft:#FFFFFF;
+  --ink:#1E2A33;
+  --muted:#4A5A64;
+  --line:#D9CFB2;
+  --accent:#034694;
+  --accent-dark:#0A2A52;
+  --accent-soft:#F5EDD8;
+  --radius:4px;
+  --navy:#0A2A52;
+  --navy-soft:#123A66;
+  --gold:#C9A227;
+  --gold-dark:#B8931F;
+  --gold-light:#E8C95A;
+  --cream:#F5EDD8;
+  --heading:#12233A;
+  --line-warm:#E7DFC8;
+}
+
+/* --- Base --- */
+body{background:var(--bg);color:var(--ink);line-height:1.65}
+h1,h2,h3{color:var(--heading)}
+a{color:var(--accent)}
+::selection{background:var(--accent-soft)}
+
+/* --- Header: deep navy, brand in cream, tagline in gold --- */
+header.site{background:var(--navy);border-bottom:1px solid var(--navy)}
+/* Taller title block so the landmark drawing has room to read large. */
+.masthead{position:relative;overflow:hidden;background-image:none!important;padding:48px 24px 44px}
+@media (min-width:860px){.masthead{padding:72px 24px 60px}}
+/* --- Monuments BEHIND the title (v2 revision, 23 Nov 2026) ---
+   The drawing is dark-blue line art on white (JPG, no transparency), so it
+   is inverted to light-blue lines on black, then screen-blended over the
+   navy: the black vanishes into the navy and the light-blue lines show.
+   No white wash anywhere — the old 78% wash is what made the monuments
+   small and faint on the live site. Tops never cropped: height-fit scaling,
+   artwork anchored to the bottom. The separate band below the header is
+   gone (the header.site::after rule from v1 is deleted). */
+.masthead::before{content:"";position:absolute;inset:0;pointer-events:none;background:url("masthead-landmarks-mobile.jpg") center bottom/auto 100% no-repeat;filter:invert(1) hue-rotate(180deg);mix-blend-mode:screen;opacity:1}
+@media (min-width:860px){.masthead::before{background-image:url("masthead-landmarks.jpg");-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}}
+/* Soft navy veil over the artwork, under the text, so the words stay clear. */
+.masthead::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,42,82,.5),rgba(10,42,82,.25) 45%,rgba(10,42,82,.45))}
+.brand{position:relative;z-index:1}
+.brand .bname{font-family:"Playfair Display",Georgia,serif;font-weight:700;letter-spacing:0.02em;color:var(--cream);font-size:clamp(1.5rem,5vw,2.2rem);text-shadow:0 2px 14px rgba(10,42,82,.95),0 0 30px rgba(10,42,82,.8)}
+.brand .btag{color:var(--gold);margin-top:8px;text-shadow:0 1px 8px rgba(10,42,82,.9)}
+.brand .bsub,.brand .bnote{color:#B9C4D6;text-shadow:0 1px 8px rgba(10,42,82,.9)}
+.brand .bsub b{color:var(--gold-light)}
+.brand .bsub .dot{color:var(--gold-light)}
+
+/* --- Title-bar nav --- */
+.title-bar{background:transparent}
+.title-bar a{color:var(--cream)}
+.title-bar a.wa-link{color:var(--gold-light)}
+.title-bar .sep{color:rgba(245,237,216,.5)}
+.menu-toggle{color:#fff}
+.mobile-menu{background:var(--navy)}
+.mobile-menu a:hover,.mobile-menu a:active{background:var(--navy-soft)}
+
+/* --- Buttons: square 4px corners --- */
+.btn{border-radius:4px}
+.btn-accent,.btn-wa,.btn-teal{background:var(--accent);color:#fff}
+.btn-accent:hover,.btn-wa:hover,.btn-teal:hover{background:var(--accent-dark)}
+.btn-ghost{background:transparent;color:var(--heading);border-color:var(--heading)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.plan-tab,.pick,.filter-btn{border-radius:4px}
+.hero-badge{border-radius:4px}
+
+/* --- Hero: tighter top padding under the taller title block --- */
+.hero{padding:40px 0 0}
+
+/* --- Flight search card (homepage) + flight form (flights pages): navy --- */
+.fs-card{background:var(--navy);color:var(--cream);border-color:var(--navy);box-shadow:0 14px 34px rgba(10,42,82,.25)}
+.fs-card h2,.fs-card h3{color:var(--cream)}
+.fs-card .f-field label{color:var(--gold-light)}
+.fs-card .btn-accent{background:var(--gold);color:var(--heading)}
+.fs-card .btn-accent:hover{background:var(--gold-dark);color:var(--heading)}
+.fs-card a:not(.btn){color:var(--gold-light)}
+.fs-card .fs-nearby{color:#B9C4D6}
+.aff-note{color:#B9C4D6}
+.flight-form{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.flight-form .f-field label{color:var(--gold-light)}
+.flight-form .trip-type label{color:var(--cream)}
+.flight-form .btn-accent{background:var(--gold);color:var(--heading)}
+.flight-form .btn-accent:hover{background:var(--gold-dark);color:var(--heading)}
+.flight-form .btn-ghost{color:var(--cream);border-color:var(--cream)}
+.flight-form .btn-ghost:hover{color:var(--gold-light);border-color:var(--gold-light)}
+.flight-form a:not(.btn){color:var(--gold-light)}
+.flight-form .cal-note,.flight-form .cal-status{color:#B9C4D6}
+.flight-form .cal-head{color:var(--gold-light)}
+.flight-form .flight-msg{color:#F5C6C6}
+
+/* --- Forms --- */
+.f-field input,.f-field select{border-radius:4px}
+.f-field input:focus,.f-field select:focus{outline-color:var(--accent)}
+
+/* --- Founder card: white, tan border, gold top rule --- */
+.from-shenick{background:#fff;border:1px solid var(--line-warm);border-top:3px solid var(--gold);border-radius:4px}
+.founder-photo{width:96px;height:96px;border:3px solid var(--gold)}
+
+/* --- Kit cards, price options, bundles, route cards --- */
+.kit-tile{border-color:var(--line-warm);border-radius:4px}
+.kit figure img{border-radius:4px}
+.price-option,.bundle,.tool-card,.finder-item,.route-card{border-color:var(--line-warm);border-radius:4px}
+.price-option .tag,.finder-item .kind{background:var(--accent-soft);color:var(--accent-dark)}
+.route-card{background:#fff}
+
+/* --- Services / steps: gold numbers --- */
+.svc{border-top-color:var(--line)}
+.step .num{color:var(--gold)}
+
+/* --- Calendar: cheapest day in gold --- */
+.cal-day{border-radius:4px}
+.cal-day.cheapest{background:var(--gold);border-color:var(--gold);color:var(--heading)}
+.cal-day.cheapest .dprice,.cal-day.cheapest .dret{color:var(--heading)}
+
+/* --- Visa tabs: selected tab is navy --- */
+.visa-tab{border-radius:4px}
+.visa-tab[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+
+/* --- UPI pay box --- */
+.upi-box{border-color:var(--line-warm);border-radius:4px;background:#fff}
+
+/* --- Guide / article pages --- */
+.taste{background:#fff;border-left-color:var(--accent)}
+.related a{border-color:var(--line-warm);border-radius:4px}
+.article-fig img{border-radius:4px}
+.guide-table th,.guide-table td{border-bottom-color:var(--line)}
+
+/* --- Footer: deep navy --- */
+footer.site{background:var(--navy);border-top:1px solid var(--navy)}
+footer h3{color:var(--gold)}
+footer p,footer li{color:#D8E0EC}
+footer a{color:var(--cream)}
+footer a:hover{color:var(--gold-light)}
+footer a .ig-icon{color:var(--gold)}
+.foot-note{border-top-color:rgba(245,237,216,.25);color:#93A3B8}
+.install-btn{background:transparent;color:var(--cream);border-color:var(--gold);border-radius:4px}
+.install-btn:hover{border-color:var(--gold-light);color:var(--gold-light)}
+
+/* --- WhatsApp float: gold (pulse redefined in gold to match) --- */
+.wa-float{background:var(--gold);color:var(--heading);border-radius:4px}
+.wa-float:hover{background:var(--gold-dark);color:var(--heading)}
+@keyframes waPulse{0%{box-shadow:0 8px 24px rgba(10,42,82,.28),0 0 0 0 rgba(201,162,39,.25)}70%{box-shadow:0 8px 24px rgba(10,42,82,.28),0 0 0 16px rgba(201,162,39,0)}100%{box-shadow:0 8px 24px rgba(10,42,82,.28),0 0 0 0 rgba(201,162,39,0)}}
+
+/* --- Mobile tap bar + cookie note --- */
+.tap-bar{background:var(--navy);border-top-color:var(--navy)}
+.tap-bar .btn-ghost{color:var(--cream);border-color:var(--cream)}
+.tap-bar .btn-ghost:hover{color:var(--gold-light);border-color:var(--gold-light)}
+.cookie-note{border-color:var(--line-warm);border-radius:4px}
+
+/* --- Small screens: keep the title block tall so the monuments read large --- */
+@media (max-width:640px){.masthead{padding:44px 16px 40px}}
