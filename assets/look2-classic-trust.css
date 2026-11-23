@@ -12,80 +12,96 @@
    both live and in file:// render copies.
    ============================================================ */
 
-/* --- Playfair Display 700 for the header firm name: Google Fonts CDN ---
-   Sample 2, Shenick's pick, 23 Nov 2026. Loaded from the CDN via the
-   <link> added to each page (css2?family=Playfair+Display:wght@700).
-   Switched from self-hosted 23 Nov 2026: the woff2 was deleted because
-   push-files handles TEXT ONLY and cannot carry the binary. UNDO: restore
-   the @font-face block + assets/fonts/playfair-700.woff2 (copy kept in
-   design-refresh/font-samples/fonts/) and remove the CDN link. */
+/* --- Playfair Display 700 for the header firm name: self-hosted ---
+   Sample 2, Shenick's pick, 23 Nov 2026. Loaded from
+   assets/fonts/playfair-700.woff2 via assets/fonts.css (Latin + ₹,
+   font-display:swap). The Google Fonts CDN link was removed from all
+   52 pages on 23 Nov 2026 (final pre-launch). UNDO: restore the CDN
+   <link> on each page and remove the @font-face block from fonts.css. */
 
-/* --- Design tokens: remap the site's own variables --- */
+/* --- ONE COLOUR SYSTEM (final pre-launch, 23 Nov 2026) ---
+   Tokens: --navy (header/footer/flight box), --gold (accent),
+   --cream (page background), --ink (body text). The bright royal blue
+   (#034694) is gone everywhere: the old --accent now IS navy, and
+   --accent-dark / --accent-soft are navy / cream tones, so every
+   legacy var(--accent) use follows. Gold used as TEXT on light
+   grounds fails contrast (2.26:1), so gold text on cream uses
+   --gold-text (#7A5F0E, 5.66:1). Gold BACKGROUNDS (buttons, cheapest
+   day, WhatsApp float) stay #C9A227 — they pass with dark text. */
 :root{
-  --bg:#FBF7EE;
-  --soft:#FFFFFF;
-  --ink:#1E2A33;
-  --muted:#4A5A64;
-  --line:#D9CFB2;
-  --accent:#034694;
-  --accent-dark:#0A2A52;
-  --accent-soft:#F5EDD8;
-  --radius:4px;
   --navy:#0A2A52;
+  --navy-dark:#071F3D;
   --navy-soft:#123A66;
   --gold:#C9A227;
   --gold-dark:#B8931F;
   --gold-light:#E8C95A;
-  --cream:#F5EDD8;
+  --gold-text:#7A5F0E;
+  --cream:#FBF7EE;
+  --cream-soft:#F5EDD8;
+  --ink:#1E2A33;
   --heading:#12233A;
+  --bg:#FBF7EE;
+  --soft:#FFFFFF;
+  --muted:#4A5A64;
+  --line:#D9CFB2;
   --line-warm:#E7DFC8;
+  --accent:#0A2A52;
+  --accent-dark:#071F3D;
+  --accent-soft:#F5EDD8;
+  --radius:4px;
 }
 
 /* --- Base --- */
 body{background:var(--bg);color:var(--ink);line-height:1.65}
 h1,h2,h3{color:var(--heading)}
-a{color:var(--accent)}
+a{color:var(--navy)}
 ::selection{background:var(--accent-soft)}
+/* Links in text are navy + underlined. Chrome links (nav, buttons,
+   cards, footer) keep no underline. */
+main p a:not(.btn),main li a:not(.btn),.policy-body a,.faq details p a{text-decoration:underline}
+.fs-card .fs-more{text-decoration:underline}
+/* Card headings: no underline by default, underline on hover/focus. */
+.related a{text-decoration:none}
+.related a:hover,.related a:focus{text-decoration:underline}
+.kit-tile:hover .kit-tile-name,.kit-tile:focus .kit-tile-name{text-decoration:underline}
 
-/* --- Header: deep navy, brand in cream, tagline in gold --- */
-header.site{background:var(--navy);border-bottom:1px solid var(--navy)}
-/* Taller title block so the landmark drawing has room to read large. */
-.masthead{position:relative;overflow:hidden;background-image:none!important;padding:48px 24px 44px}
-@media (min-width:860px){.masthead{padding:72px 24px 60px}}
-/* --- Monuments BEHIND the title (v2 revision, 23 Nov 2026) ---
-   The drawing is dark-blue line art on white (JPG, no transparency), so it
-   is inverted to light-blue lines on black, then screen-blended over the
-   navy: the black vanishes into the navy and the light-blue lines show.
-   No white wash anywhere — the old 78% wash is what made the monuments
-   small and faint on the live site. Tops never cropped: height-fit scaling,
-   artwork anchored to the bottom. The separate band below the header is
-   gone (the header.site::after rule from v1 is deleted). */
-.masthead::before{content:"";position:absolute;inset:0;pointer-events:none;background:url("masthead-landmarks-mobile.jpg") center bottom/auto 100% no-repeat;filter:invert(1) hue-rotate(180deg);mix-blend-mode:screen;opacity:1}
-@media (min-width:860px){
-  /* --- Header-fill fix, 23 Nov 2026 (Shenick: "Header - fill it and fix it") ---
-     The masthead was capped at the 1160px .wrap width, so the panorama sat
-     as a ~711px rectangle with navy gaps on both sides. Now, on desktop
-     only, the masthead goes full-width (max-width:none) and its height
-     follows the artwork aspect (min-height:28vw) so the drawing spans edge
-     to edge. Measured ink in the JPG runs 12.0%–82.6% of its height, so the
-     ink bottom sits at 0.275×viewport width; 28vw leaves ~8px of breathing
-     room below the monument bases — the most the header can shrink without
-     cutting into the bases (Shenick, 23 Nov: "slightly reduce the tallness"). Width-fit (100% auto), anchored TOP:
-     any excess eats bottom whitespace only — monument tops are never
-     cropped. The edge-fade mask is gone (it would faint the edges again).
-     No stretch, no tiling. Mobile (<860px) keeps the height-fit treatment
-     above, unchanged. UNDO: delete this whole media block. */
-  .masthead{max-width:none;min-height:28vw;display:flex;flex-direction:column;align-items:center;justify-content:center}
-  .masthead::before{background-image:url("masthead-landmarks.jpg");background-size:100% auto;background-position:center top;-webkit-mask-image:none;mask-image:none}
+/* --- Header: ONE navy; brand in cream, tagline in gold --- */
+header.site{position:relative;background:var(--navy);border-bottom:1px solid var(--navy)}
+/* --- Header redesign (final pre-launch, 23 Nov 2026) ---
+   Desktop (min-width:768px): the masthead is exactly 240px tall. The
+   artwork is a 720px-wide panel (240px tall, the panorama's 3:1
+   aspect), centred, with a wide soft fade into the navy at the sides
+   — never a hard rectangle. Full monuments, tops never cropped. A soft
+   dark radial gradient sits behind the title + tagline so text never
+   sits on monument lines; the monuments stay fully visible at the
+   sides. Title 44–48px.
+   WHY 720px, not full-width: the artwork is 3:1, so full-width at
+   1440px would be 480px tall — over the 240px cap. Full-width +
+   no-crop + ≤240px is impossible with this artwork; the centred 720px
+   panel with a side fade is the honest resolution (see BUILD-LOG).
+   Mobile (max-width:767px): the header and menu bar merge into ONE
+   64px navy bar (brand left, hamburger right); below it a 70px
+   artwork strip carries the gold tagline. The SJTRAVEL.IN line is
+   removed from the header (the domain + "no S" note live in the
+   footer and the domain-note box). The H1 starts at ~158px on the
+   home page (134px header + 24px hero padding).
+   UNDO: restore the previous .masthead / .masthead::before /
+   .masthead::after / .title-bar rules from the pre-final version of
+   this file (header-fill fix, 28vw). */
+.masthead{position:relative;overflow:hidden;background:var(--navy);background-image:none!important;max-width:none;height:134px;padding:0 16px}
+.masthead::before{content:"";position:absolute;left:0;right:0;bottom:0;height:70px;pointer-events:none;background:url("masthead-landmarks-mobile.webp") center/auto 100% no-repeat;filter:invert(1) hue-rotate(180deg);mix-blend-mode:screen}
+.masthead::after{content:"";position:absolute;left:0;right:0;bottom:0;height:70px;pointer-events:none;background:radial-gradient(ellipse 62% 95% at 50% 50%,rgba(10,42,82,.95) 0%,rgba(10,42,82,.55) 55%,rgba(10,42,82,0) 100%)}
+.brand{position:relative;z-index:1;display:flex;align-items:center;height:64px}
+.brand .bname{font-family:"Playfair Display",Georgia,serif;font-weight:700;letter-spacing:0.02em;color:var(--cream);font-size:1.25rem;line-height:1.15;white-space:nowrap;text-shadow:0 2px 14px rgba(10,42,82,.95),0 0 30px rgba(10,42,82,.8)}
+.brand .btag{position:absolute;top:64px;left:0;right:0;height:70px;display:flex;align-items:center;justify-content:center;margin:0;color:var(--gold);font-size:.8rem;letter-spacing:.28em;text-shadow:0 1px 8px rgba(10,42,82,.9)}
+@media (min-width:768px){
+  .masthead{height:240px;padding:0 24px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .masthead::before{left:50%;right:auto;bottom:auto;top:0;width:720px;height:240px;transform:translateX(-50%);background:url("masthead-landmarks.webp") center/auto 100% no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+  .masthead::after{left:0;right:0;bottom:auto;top:0;height:240px;background:radial-gradient(ellipse 58% 85% at 50% 50%,rgba(10,42,82,.88) 0%,rgba(10,42,82,.55) 48%,rgba(10,42,82,0) 78%)}
+  .brand{display:block;height:auto}
+  .brand .bname{font-size:clamp(2.75rem,3.5vw,3rem)}
+  .brand .btag{position:static;display:block;height:auto;margin-top:8px;font-size:clamp(0.8rem,2.6vw,0.98rem);letter-spacing:0.32em}
 }
-/* Soft navy veil over the artwork, under the text, so the words stay clear. */
-.masthead::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,42,82,.5),rgba(10,42,82,.25) 45%,rgba(10,42,82,.45))}
-.brand{position:relative;z-index:1}
-.brand .bname{font-family:"Playfair Display",Georgia,serif;font-weight:700;letter-spacing:0.02em;color:var(--cream);font-size:clamp(1.5rem,5vw,3rem);text-shadow:0 2px 14px rgba(10,42,82,.95),0 0 30px rgba(10,42,82,.8)}
-.brand .btag{color:var(--gold);margin-top:8px;text-shadow:0 1px 8px rgba(10,42,82,.9)}
-.brand .bsub,.brand .bnote{color:#B9C4D6;text-shadow:0 1px 8px rgba(10,42,82,.9)}
-.brand .bsub b{color:var(--gold-light)}
-.brand .bsub .dot{color:var(--gold-light)}
 
 /* --- Title-bar nav --- */
 .title-bar{background:transparent}
@@ -95,33 +111,58 @@ header.site{background:var(--navy);border-bottom:1px solid var(--navy)}
 .menu-toggle{color:#fff}
 .mobile-menu{background:var(--navy)}
 .mobile-menu a:hover,.mobile-menu a:active{background:var(--navy-soft)}
+/* Mobile: the title-bar overlays the 64px masthead bar (hamburger on
+   the right). The home-icon link is hidden — the logo links home. */
+@media (max-width:767px){
+  .title-bar{position:absolute;top:0;right:0;height:64px;background:transparent;border:0;padding:0 4px 0 0;display:flex;align-items:center;justify-content:flex-end;z-index:2}
+  .title-bar .home-link{display:none!important}
+  .title-bar .menu-toggle{display:inline-flex;align-items:center;min-height:48px;min-width:48px;padding:10px 12px}
+}
 
-/* --- Buttons: square 4px corners --- */
+/* --- Buttons: square 4px corners ---
+   Primary on cream: navy background, cream text. On navy areas: gold
+   background, navy text (see .fs-card / .flight-form below).
+   Secondary: navy outline, navy text. */
 .btn{border-radius:4px}
-.btn-accent,.btn-wa,.btn-teal{background:var(--accent);color:#fff}
-.btn-accent:hover,.btn-wa:hover,.btn-teal:hover{background:var(--accent-dark)}
-.btn-ghost{background:transparent;color:var(--heading);border-color:var(--heading)}
-.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn-accent,.btn-wa,.btn-teal{background:var(--navy);color:var(--cream)}
+.btn-accent:hover,.btn-wa:hover,.btn-teal:hover{background:var(--navy-dark)}
+.btn-ghost{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-ghost:hover{border-color:var(--navy);color:var(--navy)}
 .plan-tab,.pick,.filter-btn{border-radius:4px}
 .hero-badge{border-radius:4px}
 
-/* --- Hero: tighter top padding under the taller title block --- */
+/* --- Hero: tighter top padding; H1 within 200px on mobile --- */
 .hero{padding:40px 0 0}
+@media (max-width:767px){.hero{padding:24px 0 0}}
+/* Dubai banner (hero photo): max-height 280px desktop / 200px mobile,
+   object-fit cover. */
+.hero-photo img{max-height:200px;object-fit:cover}
+@media (min-width:900px){.hero-photo img{max-height:280px}}
 
 /* --- Flight search card (homepage) + flight form (flights pages): navy --- */
 .fs-card{background:var(--navy);color:var(--cream);border-color:var(--navy);box-shadow:0 14px 34px rgba(10,42,82,.25)}
 .fs-card h2,.fs-card h3{color:var(--cream)}
 .fs-card .f-field label{color:var(--gold-light)}
-.fs-card .btn-accent{background:var(--gold);color:var(--heading)}
-.fs-card .btn-accent:hover{background:var(--gold-dark);color:var(--heading)}
+.fs-card .btn-accent{background:var(--gold);color:var(--navy)}
+.fs-card .btn-accent:hover{background:var(--gold-dark);color:var(--navy)}
 .fs-card a:not(.btn){color:var(--gold-light)}
 .fs-card .fs-nearby{color:#B9C4D6}
-.aff-note{color:#B9C4D6}
+/* "More options" / "Fewer options": gold-light (same gold family as the
+   Search button), underlined. Gold-light on navy is 8.82:1; the button
+   gold #C9A227 would also pass (5.92:1) but gold-light matches the
+   labels and the "See cheapest dates" link already in this card. */
+.fs-card .fs-toggle{color:var(--gold-light);text-decoration:underline}
+.fs-card .f-field input::placeholder,.flight-form .f-field input::placeholder{color:#595959;opacity:1}
+/* .aff-note sits on CREAM (outside the navy card), so it uses the muted
+   body colour (6.69:1). Only inside a navy box is it the pale #B9C4D6
+   (8.14:1 on navy; 1.65:1 on cream — the old rule was unreadable). */
+.aff-note{color:var(--muted)}
+.fs-card .aff-note,.flight-form .aff-note{color:#B9C4D6}
 .flight-form{background:var(--navy);color:var(--cream);border-color:var(--navy)}
 .flight-form .f-field label{color:var(--gold-light)}
 .flight-form .trip-type label{color:var(--cream)}
-.flight-form .btn-accent{background:var(--gold);color:var(--heading)}
-.flight-form .btn-accent:hover{background:var(--gold-dark);color:var(--heading)}
+.flight-form .btn-accent{background:var(--gold);color:var(--navy)}
+.flight-form .btn-accent:hover{background:var(--gold-dark);color:var(--navy)}
 .flight-form .btn-ghost{color:var(--cream);border-color:var(--cream)}
 .flight-form .btn-ghost:hover{color:var(--gold-light);border-color:var(--gold-light)}
 .flight-form a:not(.btn){color:var(--gold-light)}
@@ -144,9 +185,11 @@ header.site{background:var(--navy);border-bottom:1px solid var(--navy)}
 .price-option .tag,.finder-item .kind{background:var(--accent-soft);color:var(--accent-dark)}
 .route-card{background:#fff}
 
-/* --- Services / steps: gold numbers --- */
+/* --- Services / steps: gold numbers ---
+   .step .num is gold TEXT on cream — plain gold fails (2.26:1), so it
+   uses the dark gold-text token (5.66:1). */
 .svc{border-top-color:var(--line)}
-.step .num{color:var(--gold)}
+.step .num{color:var(--gold-text)}
 
 /* --- Calendar: cheapest day in gold --- */
 .cal-day{border-radius:4px}
@@ -176,17 +219,29 @@ footer a .ig-icon{color:var(--gold)}
 .foot-note{border-top-color:rgba(245,237,216,.25);color:#93A3B8}
 .install-btn{background:transparent;color:var(--cream);border-color:var(--gold);border-radius:4px}
 .install-btn:hover{border-color:var(--gold-light);color:var(--gold-light)}
+/* Mobile footer: no cream strip between the footer and the sticky
+   tap-bar. The footer navy runs to the bottom, with bottom padding
+   equal to the tap-bar's height (64px + safe area). The body's
+   96px bottom padding (extras.css) is removed on mobile; the
+   cookie-note-visible variant (72px) still applies when the note
+   is up, by higher specificity. */
+@media (max-width:720px){
+  body{padding-bottom:0}
+  footer.site .wrap{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+}
 
-/* --- WhatsApp float: gold (pulse redefined in gold to match) --- */
-.wa-float{background:var(--gold);color:var(--heading);border-radius:4px}
-.wa-float:hover{background:var(--gold-dark);color:var(--heading)}
+/* --- WhatsApp float: gold background, navy text (same on mobile and
+   desktop — on mobile the sticky tap-bar carries the WhatsApp button
+   in the same gold style, and the float stays hidden there as before
+   to avoid two WhatsApp buttons). --- */
+.wa-float{background:var(--gold);color:var(--navy);border-radius:4px}
+.wa-float:hover{background:var(--gold-dark);color:var(--navy)}
 @keyframes waPulse{0%{box-shadow:0 8px 24px rgba(10,42,82,.28),0 0 0 0 rgba(201,162,39,.25)}70%{box-shadow:0 8px 24px rgba(10,42,82,.28),0 0 0 16px rgba(201,162,39,0)}100%{box-shadow:0 8px 24px rgba(10,42,82,.28),0 0 0 0 rgba(201,162,39,0)}}
 
 /* --- Mobile tap bar + cookie note --- */
 .tap-bar{background:var(--navy);border-top-color:var(--navy)}
+.tap-bar .tap-wa{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.tap-bar .tap-wa:hover{background:var(--gold-dark);color:var(--navy)}
 .tap-bar .btn-ghost{color:var(--cream);border-color:var(--cream)}
 .tap-bar .btn-ghost:hover{color:var(--gold-light);border-color:var(--gold-light)}
 .cookie-note{border-color:var(--line-warm);border-radius:4px}
-
-/* --- Small screens: keep the title block tall so the monuments read large --- */
-@media (max-width:640px){.masthead{padding:44px 16px 40px}}
