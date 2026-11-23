@@ -87,10 +87,10 @@ window.SJ_SITE = {
  * or ?prices=launch to force the launch prices. Ordinary visitors see
  * nothing different — the preview only changes this one browser's view.
  *
- * The kit has never sold at ₹1,499, so ₹1,499 is never shown as a "was"
- * price: no strikethrough, no "List price", no "List total", no "You save".
- * The launch offer is dated instead — "launch price till 31 Dec 2026",
- * going up to ₹1,499 on 1 Jan 2027.
+ * During the launch window the regular price ₹1,499 is shown struck, next
+ * to "Launch price ₹999" (full price, not a tax-exclusive figure). On/after
+ * 1 Jan 2027 this script removes every s.list-price and rewrites the launch
+ * wording to the regular price. It does not add "You save" copy.
  */
 window.SJ_PRICES = {
   switchDate: "2027-01-01",
@@ -215,7 +215,10 @@ window.SJ_PRICES = {
 
   function rewritePrices() {
     if (!window.SJ_PRICES || !window.SJ_PRICES.isRegular()) return;
-    var i, links, el;
+    var i, links, el, struck = document.querySelectorAll("s.list-price");
+    for (i = 0; i < struck.length; i++) {
+      if (struck[i].parentNode) struck[i].parentNode.removeChild(struck[i]);
+    }
     document.title = swapText(document.title);
     var metas = document.querySelectorAll('meta[name="description"], meta[property="og:description"], meta[name="twitter:description"], meta[property="og:title"], meta[name="twitter:title"], meta[property="og:image:alt"]');
     for (i = 0; i < metas.length; i++) {
