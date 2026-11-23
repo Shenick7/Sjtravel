@@ -4,7 +4,7 @@
     "intent": "informational",
     "pillar": "when-to-go",
     "best_publish_month": "September",
-    "status": "idea"
+    "status": "published"
   },
   {
     "keyword": "best time to visit Singapore with kids from Bengaluru",
@@ -397,7 +397,7 @@
     "intent": "informational",
     "pillar": "tips",
     "best_publish_month": "November",
-    "status": "idea"
+    "status": "published"
   },
   {
     "keyword": "what to pack for Tirumala one-day trip",
@@ -418,6 +418,20 @@
     "intent": "informational",
     "pillar": "tips",
     "best_publish_month": "February",
+    "status": "idea"
+  },
+  {
+    "keyword": "Dubai Metro timings and Nol card for tourists from India",
+    "intent": "informational",
+    "pillar": "tips",
+    "best_publish_month": "December",
+    "status": "idea"
+  },
+  {
+    "keyword": "how many days in Dubai with family is enough",
+    "intent": "informational",
+    "pillar": "itineraries",
+    "best_publish_month": "January",
     "status": "idea"
   }
 ]
