@@ -69,50 +69,55 @@ main p a:not(.btn),main li a:not(.btn),.policy-body a,.faq details p a{text-deco
 
 /* --- Header: ONE navy; brand in cream, tagline in gold --- */
 header.site{position:relative;background:var(--navy);border-bottom:1px solid var(--navy)}
-/* --- Header redesign (final pre-launch, 23 Nov 2026) ---
-   Desktop (min-width:768px): the masthead is exactly 240px tall. The
-   artwork is a 720px-wide panel (240px tall, the panorama's 3:1
-   aspect), centred, with a wide soft fade into the navy at the sides
-   — never a hard rectangle. Full monuments, tops never cropped. A very
-   soft radial gradient (peak .45, long falloff, no hard edge) sits
-   behind the title + tagline so text never sits on monument lines;
-   the monuments stay fully visible at the sides. Title 44–48px.
-   WHY 720px, not full-width: the artwork is 3:1, so full-width at
-   1440px would be 480px tall — over the 240px cap. Full-width +
-   no-crop + ≤240px is impossible with this artwork; the centred 720px
-   panel with a side fade is the honest resolution (see BUILD-LOG).
-   Mobile (max-width:767px, final polish 23 Nov 2026): the brand block
-   stacks the name + tagline on plain navy (tagline on its own line
-   under the name, no artwork behind it); below it a 60px artwork
-   strip at 40% opacity, no text over it. The hamburger stays in the
-   64px title-bar at the top right. The H1 starts at ~157px on the
-   home page (~133px header + 24px hero padding).
-   The dark veil behind the title is gone on both widths (mobile
-   ::after removed; desktop ::after is now a very soft radial, peak
-   .45, long falloff, no hard edge) and the heavy text-shadows on the
-   brand name/tagline are removed — no dark rectangle or blur behind
-   the title. The SJTRAVEL.IN line is removed from the header (the
-   domain + "no S" note live in the footer and the domain-note box).
+/* --- Header redesign (stacked header, 23 Nov 2026) ---
+   The header is THREE stacked rows with NO overlap, on both widths:
+   (1) "SJ Tours and Travels", (2) "Journeys made simple." in gold,
+   (3) the monument artwork as its own row, then the menu bar.
+   Desktop (min-width:768px): the artwork is a flex row of the
+   masthead (::before as a static flex item, order 2): 110px tall,
+   background-size:contain so all 8 monuments show in full, centred,
+   60% opacity, with a 13px gap above it (tagline to tallest
+   monument >= 12px). No ::after veil — the title no longer sits over
+   the artwork. Total header (masthead + menu bar) <= 300px at 768 /
+   1280 / 1440 on the homepage (280 / 266 / 270) and on the 51 pages
+   carrying the .bnote line ("No S at the end") at 1280 / 1440
+   (296 / 299) — but those pages run 310px at 768px, 10px over the
+   cap: the note line adds ~30px and the tablet menu bar (hamburger)
+   is ~62px. Fitting 768px with the note would need the artwork
+   below its 110px floor or a gap under 12px, so the cap holds
+   everywhere except .bnote pages at 768px (see BUILD-LOG).
+   Mobile (max-width:767px): row 1 is the name + hamburger (the
+   title-bar overlays the 64px bar), row 2 the tagline on its own
+   line, row 3 a 60px full-width artwork strip at 50% opacity,
+   background-size:contain centred at the bottom — all 8 monuments
+   in full, nothing cropped (the old width-fit crop cut the bases).
+   The tagline's left edge is aligned to the title's left edge
+   (padding-left on .btag, corrected for glyph bearings — see
+   BUILD-LOG for the measured values). H1 starts < 200px on mobile.
    UNDO: restore the previous .masthead / .masthead::before /
-   .masthead::after / .title-bar rules from the pre-final version of
-   this file (header-fill fix, 28vw). */
+   .masthead::after / .title-bar rules from the final-polish version
+   of this file (240px desktop masthead, 60px mobile strip). */
 .masthead{position:relative;overflow:hidden;background:var(--navy);background-image:none!important;max-width:none;height:auto;padding:0 16px 60px}
-.masthead::before{content:"";position:absolute;left:0;right:0;bottom:0;height:60px;pointer-events:none;background:url("masthead-landmarks-mobile.webp") center 24%/100% auto no-repeat;filter:invert(1) hue-rotate(180deg);mix-blend-mode:screen;opacity:.4}
+.masthead::before{content:"";position:absolute;left:0;right:0;bottom:0;height:60px;pointer-events:none;background:url("masthead-landmarks-mobile.webp") center bottom/contain no-repeat;filter:invert(1) hue-rotate(180deg);mix-blend-mode:screen;opacity:.5}
 .masthead::after{display:none}
 .brand{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-height:64px;height:auto;padding:14px 0}
 .brand .bname{font-family:"Playfair Display",Georgia,serif;font-weight:700;letter-spacing:0.02em;color:var(--cream);font-size:1.25rem;line-height:1.15;white-space:nowrap}
 .brand .btag{position:static;display:block;height:auto;margin:4px 0 0;color:var(--gold);font-size:.8rem;letter-spacing:.28em}
 @media (min-width:768px){
-  .masthead{height:240px;padding:0 24px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-  .masthead::before{left:50%;right:auto;bottom:auto;top:0;width:720px;height:240px;transform:translateX(-50%);background:url("masthead-landmarks.webp") center/auto 100% no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);opacity:1}
-  .masthead::after{content:"";display:block;left:0;right:0;bottom:auto;top:0;height:240px;background:radial-gradient(ellipse 78% 92% at 50% 50%,rgba(10,42,82,.45) 0%,rgba(10,42,82,.16) 45%,rgba(10,42,82,0) 75%)}
-  .brand{display:block;height:auto}
+  .masthead{height:auto;padding:10px 24px 8px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+  .masthead::before{content:"";position:static;left:auto;right:auto;top:auto;bottom:auto;order:2;flex:none;width:100%;height:110px;margin-top:13px;transform:none;-webkit-mask-image:none;mask-image:none;background:url("masthead-landmarks.webp") center bottom/contain no-repeat;opacity:.6}
+  .masthead::after{display:none}
+  .brand{display:block;height:auto;padding:0}
   .brand .bname{font-size:clamp(2.75rem,3.5vw,3rem)}
-  .brand .btag{position:static;display:block;height:auto;margin-top:8px;font-size:clamp(0.8rem,2.6vw,0.98rem);letter-spacing:0.32em}
+  .brand .btag{position:static;display:block;height:auto;margin-top:4px;font-size:clamp(0.8rem,2.6vw,0.98rem);letter-spacing:0.32em}
 }
 
 /* --- Title-bar nav --- */
 .title-bar{background:transparent}
+/* Tablet (768–1279px): the menu bar carries the 48px hamburger, so its
+   legacy 13px padding makes it ~72px tall — too tall for the 300px
+   header cap. 8px padding keeps the tap target and fits the cap. */
+@media (min-width:768px) and (max-width:1279px){.title-bar{padding:8px 16px}}
 .title-bar a{color:var(--cream)}
 .title-bar a.wa-link{color:var(--gold-light)}
 .title-bar .sep{color:rgba(245,237,216,.5)}
@@ -125,6 +130,12 @@ header.site{position:relative;background:var(--navy);border-bottom:1px solid var
   .title-bar{position:absolute;top:0;right:0;height:64px;background:transparent;border:0;padding:0 4px 0 0;display:flex;align-items:center;justify-content:flex-end;z-index:2}
   .title-bar .home-link{display:none!important}
   .title-bar .menu-toggle{display:inline-flex;align-items:center;min-height:48px;min-width:48px;padding:10px 12px}
+  /* Tagline left edge = title left edge: the legacy .bname carries
+     padding:0 4px; the tagline needs 3px (canvas-measured with the
+     real fonts loaded: Playfair "S" bearing -1px, Manrope "J"
+     bearing 0px, so 4 - 1 + 0 = 3px puts both ink edges at the
+     same x; inkDiff 0.00 at 360px). */
+  .brand .btag{padding-left:3px}
 }
 
 /* --- Buttons: square 4px corners ---
