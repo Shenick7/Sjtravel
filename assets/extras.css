@@ -102,7 +102,7 @@
 .faq summary{min-height:44px;display:flex;align-items:center}
 a[href="/about#faq"]{min-height:44px;display:inline-flex;align-items:center}
 .from-shenick > .story:only-child{grid-column:1 / -1}
-.launch-tag{font-weight:800;color:var(--accent,#034694)}
+.launch-tag{font-weight:800;color:var(--accent,#0A2A52)}
 s,.list-price{text-decoration:line-through;color:var(--muted,#5a6573);font-weight:600}
 .kit-tile-price s,.price s{margin-right:6px}
 @media (min-width:820px){

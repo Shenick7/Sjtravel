@@ -34,7 +34,7 @@
     <link rel="icon" href="/favicon.ico" sizes="48x48">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="manifest" href="/assets/manifest.webmanifest" />
-    <meta name="theme-color" content="#034694" />
+    <meta name="theme-color" content="#0A2A52" />
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -49,9 +49,9 @@
         --ink: #14181a;
         --muted: #5a6573;
         --line: #e3e7ee;
-        --accent: #034694;
-        --accent-dark: #02305f;
-        --accent-soft: #e8eef7;
+        --accent: #0A2A52;
+        --accent-dark: #071F3D;
+        --accent-soft: #F5EDD8;
         --radius: 12px;
       }
       * { box-sizing: border-box; }
@@ -371,7 +371,7 @@
       /* ---------- Flight search (homepage) ---------- */
       .flight-search { min-width: 0; }
       .flight-search .sec-head h2 { font-size: clamp(1.7rem, 3.5vw, 2.1rem); }
-      .fs-card { margin-top: 20px; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; background: #fff; box-shadow: 0 14px 34px rgba(3, 70, 148, 0.07); }
+      .fs-card { margin-top: 20px; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; background: #fff; box-shadow: 0 14px 34px rgba(10, 42, 82, 0.07); }
       .fs-grid { display: grid; gap: 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .fs-grid .f-field { min-width: 0; }
       .fs-from, .fs-to, .fs-trip { grid-column: span 2; }
@@ -438,7 +438,7 @@
       .wa-float {
         position: fixed; right: 16px; bottom: 16px; z-index: 60;
         background: var(--accent); color: #fff; text-decoration: none; font-weight: 700;
-        padding: 14px 22px; border-radius: 999px; box-shadow: 0 8px 24px rgba(3, 70, 148, 0.28);
+        padding: 14px 22px; border-radius: 999px; box-shadow: 0 8px 24px rgba(10, 42, 82, 0.28);
         display: inline-flex; align-items: center; gap: 8px; min-height: 3rem;
       }
       .wa-float:hover { background: var(--accent-dark); }
@@ -467,9 +467,9 @@
       @keyframes kenburns { from { transform: scale(1.01) translateY(0); } to { transform: scale(1.1) translateY(-1.4%); } }
       @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
       @keyframes waPulse {
-        0% { box-shadow: 0 8px 24px rgba(3, 70, 148, 0.28), 0 0 0 0 rgba(3, 70, 148, 0.22); }
-        70% { box-shadow: 0 8px 24px rgba(3, 70, 148, 0.28), 0 0 0 16px rgba(3, 70, 148, 0); }
-        100% { box-shadow: 0 8px 24px rgba(3, 70, 148, 0.28), 0 0 0 0 rgba(3, 70, 148, 0); }
+        0% { box-shadow: 0 8px 24px rgba(10, 42, 82, 0.28), 0 0 0 0 rgba(10, 42, 82, 0.22); }
+        70% { box-shadow: 0 8px 24px rgba(10, 42, 82, 0.28), 0 0 0 16px rgba(10, 42, 82, 0); }
+        100% { box-shadow: 0 8px 24px rgba(10, 42, 82, 0.28), 0 0 0 0 rgba(10, 42, 82, 0); }
       }
 
       /* Load choreography */
@@ -491,7 +491,7 @@
 
       /* Buttons */
       .btn { transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.3s ease, box-shadow 0.3s ease; }
-      .btn-accent:hover, .btn-wa:hover, .btn-teal:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(3, 70, 148, 0.25); }
+      .btn-accent:hover, .btn-wa:hover, .btn-teal:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(10, 42, 82, 0.25); }
       .btn-ghost:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(20, 24, 26, 0.08); }
 
       /* Nav underline sweep */
@@ -513,10 +513,10 @@
 
       /* Price options & bundle */
       .price-option, .bundle { transition: transform 0.45s ease, box-shadow 0.45s ease, border-color 0.45s ease; }
-      .price-option:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 14px 30px rgba(3, 70, 148, 0.09); }
+      .price-option:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 14px 30px rgba(10, 42, 82, 0.09); }
       .pick { transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, transform 0.18s ease, box-shadow 0.2s ease; }
       .pick:active { transform: scale(0.94); }
-      .pick[aria-pressed="true"] { box-shadow: 0 8px 20px rgba(3, 70, 148, 0.22); }
+      .pick[aria-pressed="true"] { box-shadow: 0 8px 20px rgba(10, 42, 82, 0.22); }
 
       /* Services */
       .svc { transition: border-color 0.35s ease; }
@@ -569,10 +569,7 @@
       .page-list li::marker { color: var(--accent); }
     </style>
 <noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
-    <link rel="stylesheet" href="/assets/fonts.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/fonts.css?v=20261123-1">
     <link rel="stylesheet" href="/assets/extras.css">
 <script type="application/ld+json">
 {
@@ -669,7 +666,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="/assets/look2-classic-trust.css?v=20261123-1" />
+<link rel="stylesheet" href="/assets/look2-classic-trust.css?v=20261123-2" />
   </head>
   <body>
     <script src="/assets/site-config.js?v=20261120-1"></script>
@@ -678,7 +675,6 @@
         <a class="brand" href="/" aria-label="SJ Tours and Travels — Journeys Made Simple — home">
           <span class="bname">SJ Tours and Travels</span>
           <span class="btag">Journeys Made Simple.</span>
-          <span class="bsub"><b>sjtravel.in</b></span>
           <span class="bnote">No S at the end — sjtravels.in is a different company</span>
         </a>
       </div>
@@ -972,7 +968,7 @@
       })();
     </script>
       <script src="/assets/payment-config.js?v=20261120-1" defer></script>
-      <script src="/assets/pay.js?v=20261120-2" defer></script>
+      <script src="/assets/pay.js?v=20261123-1" defer></script>
       <script src="/assets/site.js?v=20261120-1" defer></script>
   <div class="cookie-note" id="cookieNote" hidden>
       <p>Analytics cookies. <a href="/privacy">Privacy</a>.</p>
