@@ -245,14 +245,18 @@ HEADER = """<header class="site" id="top">
           <span class="bnote">No S at the end — sjtravels.in is a different company</span>
         </a>
       </div>
-      <nav class="title-bar" aria-label="Quick links"><a href="/" class="home-link" aria-label="Home"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></a><span class="sep">·</span><a href="/holiday-packages">Holiday Packages</a><span class="sep">·</span><a href="/flights">Flights</a><span class="sep">·</span><a href="/visa-help">Visa Help</a><span class="sep">·</span><a href="/guides">Guides</a><span class="sep">·</span><a href="/#kits">Travel Kits</a><span class="sep">·</span><a href="/about">About</a><span class="sep">·</span><a class="wa-link" data-track="whatsapp_click" href="__PAGEWA__" target="_blank" rel="noopener">WhatsApp</a><button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menu">☰</button></nav>
+      <nav class="title-bar" aria-label="Quick links"><a href="/" class="home-link" aria-label="Home"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></a><span class="sep">·</span><a href="/travel-kits">Travel Kits</a><span class="sep">·</span><a href="/holiday-packages#pilgrimages">Pilgrimages</a><span class="sep">·</span><a href="/holiday-packages">Holidays</a><span class="sep">·</span><a href="/holiday-packages#groups">Group trips</a><span class="sep">·</span><a href="/flights">Flights</a><span class="sep">·</span><a href="/guides">Guides</a><span class="sep">·</span><a href="/visa-help">Visa help</a><span class="sep">·</span><a href="/about">About</a><span class="sep">·</span><a href="/read">Travel Notes</a><span class="sep">·</span><a href="/contact">Contact</a><span class="sep">·</span><a class="wa-link" data-track="whatsapp_click" href="__PAGEWA__" target="_blank" rel="noopener">WhatsApp</a><button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menu">☰</button></nav>
       <div class="mobile-menu" id="mobileMenu" hidden>
-        <a href="/holiday-packages">Holiday Packages</a>
+        <a href="/travel-kits">Travel Kits</a>
+        <a href="/holiday-packages#pilgrimages">Pilgrimages</a>
+        <a href="/holiday-packages">Holidays</a>
+        <a href="/holiday-packages#groups">Group trips</a>
         <a href="/flights">Flights</a>
-        <a href="/visa-help">Visa Help</a>
         <a href="/guides">Guides</a>
-        <a href="/#kits">Travel Kits</a>
+        <a href="/visa-help">Visa help</a>
         <a href="/about">About</a>
+        <a href="/read">Travel Notes</a>
+        <a href="/contact">Contact</a>
         <a data-track="whatsapp_click" href="__PAGEWA__" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </header>"""
@@ -261,14 +265,14 @@ FOOTER = """<footer class="site">
       <div class="wrap">
         <div>
           <h3>SJ Tours and Travels</h3>
-          <p>Travel kits, holiday packages, flight finding, visa help and RTI drafts — from Ambur, for travellers everywhere in India.</p>
+          <p>Holiday packages, flights, visa help and travel kits — from Ambur, Tirupattur district.</p>
           <p><strong>sjtravel.in</strong> — no S at the end. sjtravels.in (with an S) is a different company.</p>
         </div>
         <div>
           <h3>Shop</h3>
           <ul>
-            <li><a href="/#kits">Travel Kits — ₹999 each</a></li>
-            <li><a href="/#bundles">Bundles — 3 for ₹1,999 · All 6 for ₹3,999</a></li>
+            <li><a href="/travel-kits">Travel Kits — <s class="list-price">₹1,499</s> Launch price ₹999 till 31 Dec 2026</a></li>
+            <li><a href="/travel-kits#bundles">Bundles — launch prices till 31 Dec: 3 for ₹1,999 · 5 for ₹3,499 · all 6 for ₹3,999</a></li>
             <li><a href="/holiday-packages">Holiday Packages</a></li>
             <li><a href="/flight-finder">Flight Finder — ₹199</a></li>
           </ul>
