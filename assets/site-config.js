@@ -13,6 +13,9 @@
  *   phoneDisplay — how the number reads on the page (+91 95669 77211)
  *   phoneTel — the tel: link value (+919566977211)
  *   phoneSchema — the schema.org telephone value (+91-95669-77211)
+ *   The UPI ID is phoneDigits WITHOUT the leading 91 (9566977211@upi) —
+ *   the 10-digit mobile number, founder-confirmed 24 Nov 2026. wa.me and
+ *   tel: keep the 91 prefix; only the UPI ID drops it.
  */
 window.SJ_SITE = {
   phoneDigits: "919566977211",
@@ -23,9 +26,13 @@ window.SJ_SITE = {
 };
 (function () {
   var S = window.SJ_SITE;
+  /* UPI ID: the 10-digit mobile number, no country code (9566977211@upi).
+     Derived from phoneDigits by dropping the leading 91 — founder-
+     confirmed 24 Nov 2026. Do NOT use phoneDigits itself here: that is
+     the wa.me/tel form and would pay the wrong VPA. */
+  var UPI_ID = S.phoneDigits.replace(/^91/, "") + "@upi";
   var OLD_DISPLAY = "+91 95669 77211";
   var OLD_SCHEMA = "+91-95669-77211";
-  var OLD_UPI = "9566977211@upi";
   function rewrite() {
     var i, links;
     links = document.querySelectorAll('a[href*="wa.me/"]');
@@ -38,7 +45,7 @@ window.SJ_SITE = {
     }
     links = document.querySelectorAll('a[href^="upi://pay"]');
     for (i = 0; i < links.length; i++) {
-      links[i].href = links[i].href.replace(/pa=[^&]+/, "pa=" + encodeURIComponent(S.phoneDigits + "@upi"));
+      links[i].href = links[i].href.replace(/pa=[^&]+/, "pa=" + encodeURIComponent(UPI_ID));
     }
     var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
       acceptNode: function (node) {
@@ -52,12 +59,6 @@ window.SJ_SITE = {
     nodes.forEach(function (node) {
       if (node.nodeValue.indexOf(OLD_DISPLAY) !== -1) {
         node.nodeValue = node.nodeValue.split(OLD_DISPLAY).join(S.phoneDisplay);
-      }
-      if (node.nodeValue.indexOf(OLD_UPI) !== -1) {
-        // Only the old id, not the correct one: "919566977211@upi" contains
-        // the old id as a substring, so a plain split/join would turn it
-        // into "91919566977211@upi" (seen live on the kit pages).
-        node.nodeValue = node.nodeValue.replace(/(^|[^0-9])9566977211@upi/g, "$1" + S.phoneDigits + "@upi");
       }
     });
     var ld = document.querySelectorAll('script[type="application/ld+json"]');
