@@ -264,11 +264,6 @@
       "permanent": true
     },
     {
-      "source": "/rti-drafts",
-      "destination": "/visa-help",
-      "permanent": true
-    },
-    {
       "source": "/read/feed.xml",
       "destination": "/read",
       "permanent": true
